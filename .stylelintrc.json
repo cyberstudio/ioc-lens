@@ -1,0 +1,4 @@
+{
+    "extends": "stylelint-config-standard",
+    "ignoreFiles": ["src/modules/design-system/**/*.css"]
+}

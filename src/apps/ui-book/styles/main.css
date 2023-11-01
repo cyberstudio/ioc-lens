@@ -1,0 +1,7 @@
+@import url('../../../modules/design-system/index.css');
+
+body {
+    margin: var(--kbq-size-l);
+    padding: 0;
+    background-color: var(--kbq-light-color-scheme-background-background-under);
+}

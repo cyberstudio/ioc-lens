@@ -1,0 +1,169 @@
+/**
+ * Do not edit directly
+ * Generated on Wed, 01 Nov 2023 10:54:40 GMT
+ */
+
+.display-1 {
+    font-size: 57px;
+    line-height: 64px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.display-2 {
+    font-size: 45px;
+    line-height: 52px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.display-3 {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.headline {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: normal;
+    font-weight: 700;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: normal;
+    font-weight: 700;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.subheading {
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.body {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.body-tabular {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.body-strong {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.body-caps {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.caption {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.caption-tabular {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.caption-strong {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.5%;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.caption-caps {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.small-text {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.extra-small-text {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.extra-small-text-strong {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.extra-small-text-caps {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}

@@ -1,0 +1,31 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": ["prettier"],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "prettier/prettier": "error"
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "rules": {
+                "@typescript-eslint/no-var-requires": "off"
+            }
+        },
+        {
+            "files": ["*.ts"],
+            "rules": {
+                "no-console": "warn"
+            }
+        }
+    ]
+}

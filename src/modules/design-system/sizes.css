@@ -1,0 +1,20 @@
+/**
+ * Do not edit directly
+ * Generated on Wed, 01 Nov 2023 10:54:40 GMT
+ */
+
+:root {
+  --kbq-size-3xs: 2px;
+  --kbq-size-xxs: 4px;
+  --kbq-size-xs: 6px;
+  --kbq-size-s: 8px;
+  --kbq-size-m: 12px;
+  --kbq-size-l: 16px;
+  --kbq-size-xl: 20px;
+  --kbq-size-xxl: 24px;
+  --kbq-size-3xl: 32px;
+  --kbq-size-4xl: 40px;
+  --kbq-size-5xl: 48px;
+  --kbq-size-6xl: 56px;
+  --kbq-size-7xl: 64px;
+}
