@@ -1,0 +1,7 @@
+@import url('../../../design-system/index.css');
+
+.kbq-input-field-example {
+    & .kbq-input-field-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+}

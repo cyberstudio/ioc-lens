@@ -1,0 +1,31 @@
+@import url('../../../design-system/index.css');
+
+.kbq-input-field {
+    display: inline-flex;
+    width: 100%;
+    padding: var(--kbq-input-size-padding-vertical) var(--kbq-input-size-padding-horizontal);
+    height: var(--kbq-form-field-size-height);
+    color: var(--kbq-form-field-light-color-scheme-default-text);
+    background-color: var(--kbq-form-field-light-color-scheme-default-background);
+    border-style: solid;
+    border-width: var(--kbq-form-field-size-border-width);
+    border-radius: var(--kbq-form-field-size-border-radius);
+    border-color: var(--kbq-form-field-light-color-scheme-default-border-color);
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--kbq-form-field-light-color-scheme-default-placeholder);
+    }
+
+    &:focus {
+        background-color: var(--kbq-form-field-light-color-scheme-states-focused-background);
+        border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
+        color: var(--kbq-form-field-light-color-scheme-states-focused-text);
+        box-shadow: 0 0 0 1px var(--kbq-form-field-light-color-scheme-states-focused-focus-outline);
+        outline:none;
+
+        &::placeholder {
+            color: var(--kbq-form-field-light-color-scheme-states-focused-placeholder);
+        }
+    }
+}
