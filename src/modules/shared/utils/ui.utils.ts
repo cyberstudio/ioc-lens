@@ -5,7 +5,15 @@ export abstract class Component<Props> {
 
     constructor(protected props: Props) {}
 
-    abstract render(): HTMLElement;
+    render(): HTMLElement {
+        if (this.el) {
+            return this.el;
+        }
+
+        this.el = this.createComponent();
+
+        return this.el;
+    }
 
     destroy(): void {
         if (this.el) {
@@ -13,6 +21,12 @@ export abstract class Component<Props> {
             this.el.remove();
             this.el = null;
         }
+    }
+
+    protected abstract createComponent(): HTMLElement;
+
+    protected parseTemplate(template: string): HTMLElement {
+        return new DOMParser().parseFromString(template, 'text/html').body.firstChild as HTMLElement;
     }
 
     protected unsubscribe(): void {
@@ -29,6 +43,24 @@ export abstract class Component<Props> {
         el.addEventListener(type, listener, options);
 
         const unsubscribe = () => el.removeEventListener(type, listener);
+
+        this.subscriptions.push(unsubscribe);
+
+        return () => {
+            unsubscribe();
+
+            this.subscriptions = this.subscriptions.filter((u) => u !== unsubscribe);
+        };
+    }
+
+    protected globalOn<K extends keyof WindowEventMap>(
+        type: K,
+        listener: (this: Window, ev: WindowEventMap[K]) => void,
+        options?: boolean | AddEventListenerOptions
+    ): () => void {
+        window.addEventListener(type, listener, options);
+
+        const unsubscribe = () => window.removeEventListener(type, listener);
 
         this.subscriptions.push(unsubscribe);
 

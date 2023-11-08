@@ -1,6 +1,6 @@
-import { Component } from '../../modules/shared/utils';
+import { Component } from './ui.utils';
 
-export interface IUIBookExample<ComponentProps = unknown> {
+export interface UIBookExample<ComponentProps = unknown> {
     title: string;
     content: Component<ComponentProps>;
 }
@@ -8,7 +8,7 @@ export interface IUIBookExample<ComponentProps = unknown> {
 export const createExample = <ComponentProps = unknown>(
     title: string,
     content: Component<ComponentProps>
-): IUIBookExample<ComponentProps> => ({
+): UIBookExample<ComponentProps> => ({
     title,
     content
 });

@@ -1,24 +1,24 @@
-import { Component, renderComponent } from '../../modules/shared/utils';
-import { IUIBookExample } from './utils';
+import { tooltipComponentExample } from '../../modules/shared/components';
+import { Component, renderComponent, UIBookExample } from '../../modules/shared/utils';
 
 import './styles/main.css';
 
-class UIBookPage extends Component<{ examples: IUIBookExample[] }> {
-    render(): HTMLElement {
-        this.el = document.createElement('div');
+class UIBookPage extends Component<{ examples: UIBookExample[] }> {
+    createComponent(): HTMLElement {
+        const el = document.createElement('div');
 
-        this.el.innerHTML = `
+        el.innerHTML = `
             <h1 class="headline">IoC Lens UI Book</h1>
         `;
 
         this.props.examples.forEach((e) => {
-            this.renderExample(e);
+            this.renderExample(el, e);
         });
 
-        return this.el;
+        return el;
     }
 
-    private renderExample(e: IUIBookExample): void {
+    private renderExample(root: HTMLElement, e: UIBookExample): void {
         const titleEl = document.createElement('h2');
 
         titleEl.classList.add('title');
@@ -26,12 +26,12 @@ class UIBookPage extends Component<{ examples: IUIBookExample[] }> {
 
         const componentEl = e.content.render();
 
-        this.el?.appendChild(titleEl);
-        this.el?.appendChild(componentEl);
+        root.appendChild(titleEl);
+        root.appendChild(componentEl);
     }
 }
 
-const examples: IUIBookExample[] = [];
+const examples: UIBookExample[] = [tooltipComponentExample];
 
 const page = new UIBookPage({ examples });
 
