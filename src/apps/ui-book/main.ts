@@ -1,4 +1,4 @@
-import { tooltipComponentExample } from '../../modules/shared/components';
+import { badgeExample, tooltipComponentExample } from '../../modules/shared/components';
 import { Component, renderComponent, UIBookExample } from '../../modules/shared/utils';
 
 import './styles/main.css';
@@ -31,7 +31,7 @@ class UIBookPage extends Component<{ examples: UIBookExample[] }> {
     }
 }
 
-const examples: UIBookExample[] = [tooltipComponentExample];
+const examples: UIBookExample[] = [badgeExample, tooltipComponentExample];
 
 const page = new UIBookPage({ examples });
 

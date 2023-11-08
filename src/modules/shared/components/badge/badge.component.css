@@ -1,0 +1,82 @@
+@import url('../../../design-system/index.css');
+
+.kbq-badge {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: var(--kbq-badge-size-compact-vertical-padding) var(--kbq-badge-size-compact-horizontal-padding);
+    border-radius: var(--kbq-badge-size-compact-border-radius);
+    max-width: 100%;
+
+    &.kbq-badge--filled {
+        border-style: solid;
+        border-width: var(--kbq-badge-size-compact-border-width);
+        border-color: transparent;
+
+        &.kbq-badge--contrast {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-on-contrast-color);
+            background: var(--kbq-badge-light-color-scheme-filled-fade-on-contrast-background);
+        }
+
+        &.kbq-badge--warning-off {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-off-warning-color);
+            background: var(--kbq-badge-light-color-scheme-filled-fade-off-warning-background);
+        }
+
+        &.kbq-badge--warning-on {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-on-warning-color);
+            background: var(--kbq-badge-light-color-scheme-filled-fade-on-warning-background);
+        }
+
+        &.kbq-badge--error {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-on-error-color);
+            background: var(--kbq-badge-light-color-scheme-filled-fade-on-error-background);
+        }
+
+        &.kbq-badge--success {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-off-success-color);
+            background: var(--kbq-badge-light-color-scheme-filled-fade-off-success-background);
+        }
+
+        &.kbq-badge--grey {
+            background: var(--kbq-badge-light-color-scheme-outline-fade-on-contrast-border);
+            color: var(--kbq-badge-light-color-scheme-filled-fade-on-contrast-color);
+        }
+
+        &.kbq-badge--dark {
+            color: var(--kbq-light-color-scheme-foreground-white);
+            background: var(--kbq-light-color-scheme-secondary-default);
+        }
+    }
+
+    &.kbq-badge--outline {
+        background: transparent;
+        border-style: solid;
+        border-width: var(--kbq-badge-size-compact-border-width);
+
+        &.kbq-badge--contrast {
+            color: var(--kbq-badge-light-color-scheme-outline-fade-on-contrast-color);
+            border-color: var(--kbq-badge-light-color-scheme-outline-fade-on-contrast-border);
+        }
+
+        &.kbq-badge--warning {
+            color: var(--kbq-badge-light-color-scheme-outline-fade-on-warning-color);
+            border-color: var(--kbq-badge-light-color-scheme-outline-fade-on-warning-border);
+        }
+
+        &.kbq-badge--error {
+            color: var(--kbq-badge-light-color-scheme-filled-fade-on-error-color);
+            border-color: var(--kbq-badge-light-color-scheme-outline-fade-on-error-border);
+        }
+    }
+
+    & .kbq-badge__content {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

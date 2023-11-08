@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-badge-example {
+    & .kbq-badge-example__row {
+        margin-bottom: var(--kbq-size-m);
+
+        & .kbq-badge {
+            margin-right: var(--kbq-size-s);
+        }
+    }
+}
