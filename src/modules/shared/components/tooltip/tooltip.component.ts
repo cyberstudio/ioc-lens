@@ -1,9 +1,11 @@
 import { Component, renderComponent } from '../../utils';
+import isNil from 'lodash/isNil';
 
 import './tooltip.component.css';
 
 interface TooltipProps {
     target: HTMLElement;
+    trigger?: 'hover' | 'manual';
     text: string;
 }
 
@@ -15,9 +17,31 @@ export class TooltipComponent extends Component<TooltipProps> {
     constructor(props: TooltipProps) {
         super(props);
 
+        this.setDefaultProps();
+
         renderComponent(document.body, this);
 
-        this.initEvents();
+        if (this.props.trigger === 'hover') {
+            this.initHoverEvents();
+        }
+
+        this.globalOn('scroll', () => this.hide());
+    }
+
+    attachTarget(target: HTMLElement): void {
+        this.props.target = target;
+    }
+
+    updateText(text: string): void {
+        this.props.text = text;
+
+        if (this.el) {
+            const contentEl = this.el.querySelector('.kbq-tooltip__content');
+
+            if (contentEl) {
+                contentEl.textContent = this.props.text;
+            }
+        }
     }
 
     show(): void {
@@ -38,11 +62,15 @@ export class TooltipComponent extends Component<TooltipProps> {
         this.el?.classList.toggle('kbq-tooltip--visible', false);
     }
 
-    private initEvents(): void {
+    private setDefaultProps() {
+        if (isNil(this.props.trigger)) {
+            this.props.trigger = 'hover';
+        }
+    }
+
+    private initHoverEvents(): void {
         this.on(this.props.target, 'mouseenter', () => this.show());
         this.on(this.props.target, 'mouseleave', () => this.hide());
-
-        this.globalOn('scroll', () => this.hide());
     }
 
     private updateTooltipPosition(): void {
@@ -68,7 +96,7 @@ export class TooltipComponent extends Component<TooltipProps> {
 
     protected createComponent(): HTMLElement {
         const el = this.parseTemplate(`
-            <div class="kbq-tooltip kbq-tooltip--hidden small-text ">
+            <div class="kbq-tooltip kbq-tooltip--hidden small-text">
                 <div class="kbq-tooltip__inner">
                     <div class="kbq-tooltip__arrow"></div>
                     <div class="kbq-tooltip__content">${this.props.text}</span>

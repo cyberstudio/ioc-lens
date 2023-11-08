@@ -1,0 +1,74 @@
+@import url('../../../design-system/index.css');
+
+.kbq-button {
+    display: inline-flex;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    position: relative;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-left: calc(var(--kbq-button-size-horizontal-padding) + 4px - var(--kbq-button-size-border-width));
+    padding-right: calc(var(--kbq-button-size-horizontal-padding) + 4px - var(--kbq-button-size-border-width));
+    max-width: 100%;
+    height: var(--kbq-button-size-height);
+    min-height: var(--kbq-button-size-height);
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: baseline;
+    border: var(--kbq-button-size-border-width) solid transparent;
+    border-radius: var(--kbq-button-size-border-radius);
+
+    &.kbq-button--primary {
+        border-color: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-border);
+        color: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-foreground);
+        background: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-background);
+
+        &:focus-visible {
+            border-color: var(--kbq-light-color-scheme-states-focused-color);
+        }
+
+        &:hover {
+            background: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-states-hover-background);
+        }
+
+        &:active {
+            background: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-states-active-background);
+        }
+
+        &:active:hover {
+            background: var(--kbq-button-light-color-scheme-filled-contrast-fade-off-states-active-hover-background);
+        }
+    }
+
+    &.kbq-button--transparent {
+        border-color: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-border);
+        color: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-foreground);
+        background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-background);
+
+        &:focus-visible {
+            border-color: var(--kbq-light-color-scheme-states-focused-color);
+        }
+
+        &:hover {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-hover-background);
+        }
+
+        &:active {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-active-background);
+        }
+
+        &:active:hover {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-active-hover-background);
+        }
+    }
+
+    & .kbq-button__text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

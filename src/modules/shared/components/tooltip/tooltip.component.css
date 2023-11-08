@@ -4,6 +4,7 @@
     display: block;
     position: absolute;
     margin-top: 8px;
+    max-width: var(--kbq-tooltip-size-max-width);
     opacity: 0;
     pointer-events: none;
     transform-origin: center top;
@@ -17,7 +18,7 @@
         animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
 
-    .kbq-tooltip__inner {
+    & .kbq-tooltip__inner {
         padding: var(--kbq-tooltip-size-padding-vertical) var(--kbq-tooltip-size-padding-horizontal);
         border-radius: var(--kbq-tooltip-size-border-radius, 8px);
         color: var(--kbq-tooltip-light-color-scheme-contrast-fade-off-text);
@@ -25,7 +26,7 @@
         word-break: break-word;
     }
 
-    .kbq-tooltip__arrow {
+    & .kbq-tooltip__arrow {
         position: absolute;
         width: var(--kbq-tooltip-size-arrow-size);
         height: var(--kbq-tooltip-size-arrow-size);
