@@ -1,0 +1,7 @@
+@import url('../../../design-system/index.css');
+
+.kbq-toggle-field-example {
+    & .kbq-toggle-field-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+}

@@ -1,0 +1,106 @@
+@import url('../../../design-system/index.css');
+
+.kbq-toggle-field {
+    display: inline-flex;
+    cursor: pointer;
+
+    & .kbq-toggle-field__bar {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        height: var(--kbq-toggle-size-normal-height);
+        width: var(--kbq-toggle-size-normal-width);
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--kbq-toggle-light-color-scheme-theme-default-border);
+        border-radius: 8px;
+        background-color: var(--kbq-toggle-light-color-scheme-theme-default-background);
+    }
+
+    & .kbq-toggle-field__circle {
+        position: absolute;
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        background: var(--kbq-toggle-light-color-scheme-theme-default-circle-background);
+        transition: transform 170ms ease-in-out;
+        transform: translateX(2px);
+    }
+
+    & .kbq-toggle-field__input {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+        outline: 0;
+        appearance: none;
+        left: 0;
+    }
+
+    &:hover {
+        & .kbq-toggle-field__bar {
+            border-color: var(--kbq-toggle-light-color-scheme-theme-states-hover-border);
+            background-color: var(--kbq-toggle-light-color-scheme-theme-states-hover-background);
+        }
+
+        & .kbq-toggle-field__circle {
+            background: var(--kbq-toggle-light-color-scheme-theme-states-hover-circle-background);
+        }
+    }
+
+    & .kbq-toggle-field__input:focus-visible {
+        & + .kbq-toggle-field__bar {
+            border-color: var(--kbq-toggle-light-color-scheme-theme-states-focused-border);
+            background-color: var(--kbq-toggle-light-color-scheme-theme-states-focused-background);
+            box-shadow: 0 0 0 1px var(--kbq-toggle-light-color-scheme-theme-states-focused-focus-outline);
+
+            & .kbq-toggle-field__circle {
+                background: var(--kbq-toggle-light-color-scheme-theme-states-focused-circle-background);
+            }
+        }
+    }
+
+    &.kbq-toggle-field--checked {
+        /* stylelint-disable-next-line no-descending-specificity */
+        & .kbq-toggle-field__bar {
+            border-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-border);
+            background-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-background);
+        }
+
+        /* stylelint-disable-next-line no-descending-specificity */
+        & .kbq-toggle-field__circle {
+            background: var(--kbq-toggle-light-color-scheme-theme-states-checked-circle-background);
+            transform: translateX(calc(var(--kbq-toggle-size-normal-width) - 10px - 4px));
+        }
+
+        &:hover {
+            & .kbq-toggle-field__bar {
+                border-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-hover-border);
+                background-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-hover-background);
+
+                & .kbq-toggle-field__circle {
+                    background: var(--kbq-toggle-light-color-scheme-theme-states-checked-hover-circle-background);
+                }
+            }
+        }
+
+        & .kbq-toggle-field__input:focus-visible {
+            & + .kbq-toggle-field__bar {
+                border-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-focused-border);
+                background-color: var(--kbq-toggle-light-color-scheme-theme-states-checked-focused-background);
+                box-shadow: 0 0 0 1px
+                    var(--kbq-toggle-light-color-scheme-theme-states-checked-focused-focus-outline);
+
+                & .kbq-toggle-field__circle {
+                    background: var(--kbq-toggle-light-color-scheme-theme-states-checked-focused-circle-background);
+                }
+            }
+        }
+    }
+}
