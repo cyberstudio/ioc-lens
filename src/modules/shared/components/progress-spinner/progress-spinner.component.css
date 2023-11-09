@@ -1,0 +1,35 @@
+@import url('../../../design-system/index.css');
+
+.kbq-progress-spinner {
+    display: inline-block;
+    width: var(--kbq-progress-spinner-size-compact-size);
+    height: var(--kbq-progress-spinner-size-compact-size);
+    transform: rotateZ(-90deg);
+    animation: kbq-progress-spinner-rotation 1.5s cubic-bezier(0.455,  0.030, 0.515, 0.955) infinite;
+    font-size: 0;
+
+    & .kbq-progress-spinner__circle {
+        fill: none;
+        stroke: var(--kbq-progress-spinner-light-color-scheme-circle-background);
+        stroke-dasharray: 295%;
+        stroke-width: 13%;
+        stroke-dashoffset: 80%;
+        transform-origin: center center;
+    }
+
+    &.kbq-progress-spinner--big {
+        width: var(--kbq-progress-spinner-size-big-size);
+        height: var(--kbq-progress-spinner-size-big-size);
+
+        & .kbq-progress-spinner__circle {
+            stroke-width: 6%;
+        }
+    }
+
+}
+
+@keyframes kbq-progress-spinner-rotation {
+    100% {
+        transform: rotateZ(270deg);
+    }
+}

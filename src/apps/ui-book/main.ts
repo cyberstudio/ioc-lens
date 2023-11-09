@@ -3,6 +3,7 @@ import {
     buttonComponentExample,
     inputFieldComponentExample,
     popupComponentExample,
+    progressSpinnerComponentExample,
     toggleFieldComponentExample,
     tooltipComponentExample
 } from '../../modules/shared/components';
@@ -43,6 +44,7 @@ const examples: UIBookExample[] = [
     buttonComponentExample,
     inputFieldComponentExample,
     popupComponentExample,
+    progressSpinnerComponentExample,
     toggleFieldComponentExample,
     tooltipComponentExample
 ];

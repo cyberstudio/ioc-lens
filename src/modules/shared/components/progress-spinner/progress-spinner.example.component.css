@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-progress-spinner-example {
+    & .kbq-progress-spinner-example__row {
+        margin-bottom: var(--kbq-size-l);
+
+        & .kbq-progress-spinner {
+            margin-right: var(--kbq-size-l);
+        }
+    }
+}
