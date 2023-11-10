@@ -1,8 +1,7 @@
-import isEqual from 'lodash/isEqual';
 import isNil from 'lodash/isNil';
-import pickBy from 'lodash/pickBy';
 
-type EmptyObject = Record<string, unknown>;
+import { DeepPartial, EmptyObject } from '../types';
+import { getObjectDiff } from '../utils';
 
 export class ChromeStorageAdapter {
     static async init<Data extends EmptyObject>(namespace: string, defaultData: Data): Promise<void> {
@@ -12,7 +11,7 @@ export class ChromeStorageAdapter {
     }
 
     static async get<Data extends EmptyObject>(namespace: string): Promise<Data> {
-        return (await ChromeStorageAdapter.getNamespaceData(namespace)) as Data;
+        return { ...(await ChromeStorageAdapter.getNamespaceData(namespace)) } as Data;
     }
 
     static async set<Data extends EmptyObject>(namespace: string, data: Partial<Data>): Promise<void> {
@@ -21,7 +20,7 @@ export class ChromeStorageAdapter {
         return chrome.storage.local.set({ [namespace]: { ...currentData, ...data } });
     }
 
-    static onChange<Data extends EmptyObject>(namespace: string, cb: (changes: Partial<Data>) => void): () => void {
+    static onChange<Data extends EmptyObject>(namespace: string, cb: (changes: DeepPartial<Data>) => void): () => void {
         const listener = (storageChanges: { [key: string]: chrome.storage.StorageChange }) => {
             const namespaceChanges = storageChanges[namespace];
 
@@ -32,12 +31,7 @@ export class ChromeStorageAdapter {
                 return;
             }
 
-            const changes = pickBy(
-                namespaceChanges.newValue,
-                (newValue, k) => !isEqual(newValue, namespaceChanges.oldValue?.[k])
-            ) as Partial<Data>;
-
-            cb(changes);
+            cb(getObjectDiff(namespaceChanges.newValue, namespaceChanges.oldValue) as DeepPartial<Data>);
         };
 
         chrome.storage.local.onChanged.addListener(listener);
