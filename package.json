@@ -12,6 +12,7 @@
         "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider TS_NODE_PROJECT='./tsconfig.spec.json' uvu -r ts-node/register"
     },
     "devDependencies": {
+        "@badrap/result": "0.2.13",
         "@koobiq/design-tokens": "3.0.0-beta.7",
         "@namics/stylelint-bem": "9.0.0",
         "@types/chrome": "0.0.250",
