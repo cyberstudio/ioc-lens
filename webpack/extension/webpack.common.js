@@ -53,6 +53,14 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [{ from: helpers.root('src/apps/extension/assets') }]
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: helpers.root('src/modules/shared/resources/images'),
+                    to: 'images'
+                }
+            ]
         })
     ]
 };

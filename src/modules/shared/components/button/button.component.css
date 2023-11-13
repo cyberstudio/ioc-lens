@@ -66,6 +66,31 @@
         }
     }
 
+    &.kbq-button--icon {
+        width: 32px;
+        height: 32px;
+        padding: var(--kbq-button-size-content-padding);
+        border-color: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-border);
+        color: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-foreground);
+        background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-background);
+
+        &:focus-visible {
+            border-color: var(--kbq-light-color-scheme-states-focused-color);
+        }
+
+        &:hover {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-hover-background);
+        }
+
+        &:active {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-active-background);
+        }
+
+        &:active:hover {
+            background: var(--kbq-button-light-color-scheme-transparent-contrast-fade-on-states-active-hover-background);
+        }
+    }
+
     & .kbq-button__text {
         white-space: nowrap;
         text-overflow: ellipsis;

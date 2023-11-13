@@ -2,6 +2,7 @@ import {
     badgeExample,
     buttonComponentExample,
     inputFieldComponentExample,
+    popupComponentExample,
     toggleFieldComponentExample,
     tooltipComponentExample
 } from '../../modules/shared/components';
@@ -41,6 +42,7 @@ const examples: UIBookExample[] = [
     badgeExample,
     buttonComponentExample,
     inputFieldComponentExample,
+    popupComponentExample,
     toggleFieldComponentExample,
     tooltipComponentExample
 ];

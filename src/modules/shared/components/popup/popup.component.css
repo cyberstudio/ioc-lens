@@ -1,0 +1,58 @@
+@import url('../../../design-system/index.css');
+
+.kbq-popup {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--kbq-size-m);
+    background-color: var(--kbq-modal-light-color-scheme-container-background);
+    box-shadow: var(--kbq-modal-light-color-scheme-container-box-shadow);
+    max-width: 500px;
+    color: var(--kbq-light-color-scheme-foreground-text);
+
+    & .kbq-popup__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--kbq-size-s) var(--kbq-size-m);
+        box-sizing: border-box;
+
+        &.kbq-popup__header--separated {
+            box-shadow: inset 0 -1px 0 var(--kbq-divider-light-color-scheme-color);
+        }
+    }
+
+    & .kbq-popup__header-content-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-grow: 1;
+        min-width: 0;
+        padding-top: var(--kbq-size-xxs);
+        padding-bottom: var(--kbq-size-xs);
+        padding-right: var(--kbq-size-l);
+    }
+
+    & .kbq-popup__header-icon {
+        width: 24px;
+        height: 24px;
+        background-image: image-set(
+            url('../../resources/images/icon_24.png') 1x,
+            url('../../resources/images/icon_48.png') 2x
+        );
+    }
+
+    & .kbq-popup__header-content {
+        padding-left: var(--kbq-size-m);
+    }
+
+    & .kbq-popup__close {
+        width: 32px;
+        height: 32px;
+    }
+
+    & .kbq-popup__body {
+        overflow-y: auto;
+        padding: var(--kbq-size-m) var(--kbq-size-xxl) var(--kbq-size-3xl) var(--kbq-size-5xl);
+    }
+}

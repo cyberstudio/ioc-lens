@@ -22,7 +22,7 @@ export class ButtonComponent extends Component<ButtonProps> {
         const el = this.parseTemplate(`<button class="kbq-button kbq-button--${this.props.type} small-text"></button>`);
 
         if (this.props.type === 'icon') {
-            el.appendChild(this.parseTemplate('<span class="kbq-button__icon"></span>'));
+            el.appendChild(this.parseTemplate('<span class="kbq-button__icon">i</span>'));
         } else {
             const textTemplate = this.parseTemplate(`<span class="kbq-button__text">${this.props.text}</span>`);
 
@@ -30,6 +30,8 @@ export class ButtonComponent extends Component<ButtonProps> {
 
             el.appendChild(textTemplate);
         }
+
+        this.on(el, 'click', (e) => this.props.onClick(e));
 
         return el;
     }

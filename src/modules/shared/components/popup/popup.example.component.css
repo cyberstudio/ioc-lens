@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-popup-example {
+    & .kbq-popup-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+
+    & .kbq-popup {
+        max-height: 300px;
+    }
+}
