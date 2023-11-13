@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-property-row-example {
+    & .kbq-property-row-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+
+    & .kbq-property-row {
+        max-width: 400px;
+    }
+}

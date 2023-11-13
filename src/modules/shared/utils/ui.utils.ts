@@ -2,6 +2,7 @@ export abstract class Component<Props> {
     protected el: HTMLElement | null = null;
 
     private subscriptions: (() => void)[] = [];
+    private innerComponents: Component<unknown>[] = [];
 
     constructor(protected props: Props) {}
 
@@ -17,6 +18,8 @@ export abstract class Component<Props> {
 
     destroy(): void {
         if (this.el) {
+            this.destroyInnerComponents();
+
             this.unsubscribe();
             this.el.remove();
             this.el = null;
@@ -24,6 +27,26 @@ export abstract class Component<Props> {
     }
 
     protected abstract createComponent(): HTMLElement;
+
+    protected registerInnerComponent(c: Component<unknown>): void {
+        this.innerComponents.push(c);
+    }
+
+    protected renderContent(root: HTMLElement | null, content: string | HTMLElement | Component<unknown> | null): void {
+        if (!root || !content) {
+            return;
+        }
+
+        if (content instanceof Component) {
+            this.registerInnerComponent(content);
+
+            renderComponent(root, content);
+        } else if (content instanceof HTMLElement) {
+            root.appendChild(content);
+        } else {
+            root.textContent = content;
+        }
+    }
 
     protected parseTemplate(template: string): HTMLElement {
         return new DOMParser().parseFromString(template, 'text/html').body.firstChild as HTMLElement;
@@ -69,6 +92,16 @@ export abstract class Component<Props> {
 
             this.subscriptions = this.subscriptions.filter((u) => u !== unsubscribe);
         };
+    }
+
+    private destroyInnerComponents(): void {
+        this.innerComponents.forEach((c) => {
+            if (c instanceof Component) {
+                c.destroy();
+            }
+        });
+
+        this.innerComponents = [];
     }
 }
 

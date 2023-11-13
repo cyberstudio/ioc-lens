@@ -1,0 +1,22 @@
+@import url('../../../design-system/index.css');
+
+.kbq-property-row {
+    display: flex;
+    width: 100%;
+    padding-bottom: var(--kbq-size-m);
+
+    & .kbq-property-row__header {
+        width: 128px;
+        flex-shrink: 0;
+        color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
+    }
+
+    & .kbq-property-row__body {
+        display: block;
+        max-width: 100%;
+        padding-left: var(--kbq-size-l);
+        flex-grow: 1;
+        min-width: 0;
+        color: var(--kbq-light-color-scheme-foreground-contrast);
+    }
+}

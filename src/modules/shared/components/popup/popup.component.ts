@@ -1,5 +1,5 @@
 import { ButtonComponent } from '..';
-import { Component, renderComponent } from '../../utils';
+import { Component } from '../../utils';
 
 import './popup.component.css';
 
@@ -12,12 +12,6 @@ interface PopupProps {
 
 export class PopupComponent extends Component<PopupProps> {
     private closeButton: ButtonComponent | null = null;
-
-    destroy(): void {
-        this.destroyInnerComponents();
-
-        super.destroy();
-    }
 
     protected createComponent(): HTMLElement {
         const el = this.parseTemplate(`
@@ -47,7 +41,7 @@ export class PopupComponent extends Component<PopupProps> {
 
     private renderCloseButton(root: HTMLElement): void {
         if (this.closeButton) {
-            this.closeButton.destroy();
+            return;
         }
 
         this.closeButton = new ButtonComponent({
@@ -57,25 +51,5 @@ export class PopupComponent extends Component<PopupProps> {
         });
 
         this.renderContent(root?.querySelector('.kbq-popup__close'), this.closeButton);
-    }
-
-    private renderContent(root: HTMLElement | null, content: HTMLElement | Component<unknown> | null): void {
-        if (!root || !content) {
-            return;
-        }
-
-        if (content instanceof Component) {
-            renderComponent(root, content);
-        } else {
-            root.appendChild(content);
-        }
-    }
-
-    private destroyInnerComponents(): void {
-        [this.props.headerContent, this.props.bodyContent, this.closeButton].forEach((c) => {
-            if (c instanceof Component) {
-                c.destroy();
-            }
-        });
     }
 }
