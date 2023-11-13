@@ -12,10 +12,10 @@ export class ApiService {
 
     get<Response>(
         path: string,
-        params: GetParams,
+        params: ApiGetParams | null,
         options: ApiRequestOptions = { authenticatedRequest: true }
     ): ApiCallResult<Response> {
-        return this.sendRequest('get', path, this.mapGetParamsToUrlSearchParams(params), options);
+        return this.sendRequest('get', path, params ? this.mapGetParamsToUrlSearchParams(params) : null, options);
     }
 
     private sendRequest<Response>(
@@ -89,7 +89,7 @@ export class ApiService {
         return { result, cancel: () => abortController.abort() };
     }
 
-    private mapGetParamsToUrlSearchParams(params: GetParams): URLSearchParams {
+    private mapGetParamsToUrlSearchParams(params: ApiGetParams): URLSearchParams {
         const urlSearchParams = new URLSearchParams();
 
         Object.keys(params).forEach((key) => {
@@ -143,4 +143,4 @@ interface ApiRequestOptions {
     authenticatedRequest: boolean;
 }
 
-type GetParams = Record<string, string | number | boolean | (string | number | boolean)[]>;
+export type ApiGetParams = Record<string, string | number | boolean | (string | number | boolean)[]>;
