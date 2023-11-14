@@ -16,6 +16,7 @@ const requiredComponents = [
     'divider',
     'form-field',
     'input',
+    'link',
     'modal',
     'progress-spinner',
     'toggle',

@@ -1,0 +1,34 @@
+@import url('../../../design-system/index.css');
+
+.kbq-link {
+    display: inline-block;
+    color: var(--kbq-link-light-color-scheme-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color ease-out 300ms;
+    border-bottom: 1px solid var(--kbq-link-light-color-scheme-border-bottom);
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &:focus-visible {
+         outline: var(--kbq-link-light-color-scheme-state-focused-outline) solid var(--kbq-link-size-state-focused-outline-width);
+         outline-offset: var(--kbq-link-size-state-focused-outline-offset);
+     }
+
+    &:hover {
+         color: var(--kbq-link-light-color-scheme-state-hover-text);
+         border-bottom-color: var(--kbq-link-light-color-scheme-state-hover-border-bottom);
+         transition: color 0ms;
+     }
+
+    &:active {
+         color: var(--kbq-link-light-color-scheme-state-active-text);
+         border-bottom-color: var(--kbq-link-light-color-scheme-state-active-border-bottom);
+    }
+}
+
+.kbq-link--pseudo {
+    border-bottom: none !important;
+}

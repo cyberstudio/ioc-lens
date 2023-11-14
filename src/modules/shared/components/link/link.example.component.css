@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-link-example {
+    & .kbq-link-example__row {
+          margin-bottom: var(--kbq-size-l);
+
+    & .kbq-link {
+          margin-right: var(--kbq-size-l);
+      }
+    }
+}

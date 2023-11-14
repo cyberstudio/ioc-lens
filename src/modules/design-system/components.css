@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 01 Nov 2023 10:54:40 GMT
+ * Generated on Sun, 12 Nov 2023 18:44:16 GMT
  */
 
 :root {
@@ -284,6 +284,31 @@
   --kbq-form-field-light-color-scheme-states-disabled-text: #A7ABBE;
   --kbq-input-size-padding-horizontal: 12px;
   --kbq-input-size-padding-vertical: 4px;
+  --kbq-link-light-color-scheme-text: #0066FF;
+  --kbq-link-light-color-scheme-border-bottom: #99C2FF;
+  --kbq-link-light-color-scheme-state-visited-text: #831FC1;
+  --kbq-link-light-color-scheme-state-visited-border-bottom: #D5A7F1;
+  --kbq-link-light-color-scheme-state-hover-text: #005CE5;
+  --kbq-link-light-color-scheme-state-hover-border-bottom: #99C2FF;
+  --kbq-link-light-color-scheme-state-active-text: #0052CC;
+  --kbq-link-light-color-scheme-state-active-border-bottom: #99C2FF;
+  --kbq-link-light-color-scheme-state-focused-outline: #3385FF;
+  --kbq-link-light-color-scheme-state-disabled-text: #A7ABBE;
+  --kbq-link-light-color-scheme-state-disabled-border-bottom: #D9DBE3;
+  --kbq-link-dark-color-scheme-text: #66A3FF;
+  --kbq-link-dark-color-scheme-border-bottom: rgba(#66A3FF, 0.32);;
+  --kbq-link-dark-color-scheme-state-visited-text: #AA50E2;
+  --kbq-link-dark-color-scheme-state-visited-border-bottom: rgba(#AA50E2, 0.32);
+  --kbq-link-dark-color-scheme-state-hover-text: #3385FF;
+  --kbq-link-dark-color-scheme-state-hover-border-bottom: rgba(#3385FF, 0.32);
+  --kbq-link-dark-color-scheme-state-active-text: #0052CC;
+  --kbq-link-dark-color-scheme-state-active-border-bottom: #99C2FF;
+  --kbq-link-dark-color-scheme-state-focused-outline: #3385FF;
+  --kbq-link-size-state-focused-outline-offset: 0px;
+  --kbq-link-size-state-focused-outline-width: 2px;
+  --kbq-link-size-caption-content-padding: 2px;
+  --kbq-link-size-normal-content-padding: 2px;
+  --kbq-link-size-big-content-padding: 4px;
   --kbq-modal-size-small-width: 400px;
   --kbq-modal-size-medium-width: 640px;
   --kbq-modal-size-large-width: 960px;
