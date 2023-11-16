@@ -1,4 +1,5 @@
 import {
+    alertExample,
     badgeExample,
     buttonComponentExample,
     inputFieldComponentExample,
@@ -50,7 +51,8 @@ const examples: UIBookExample[] = [
     progressSpinnerComponentExample,
     propertyRowComponentExample,
     toggleFieldComponentExample,
-    tooltipComponentExample
+    tooltipComponentExample,
+    alertExample
 ];
 
 const page = new UIBookPage({ examples });

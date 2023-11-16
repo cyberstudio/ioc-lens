@@ -1,0 +1,16 @@
+@import url('../../../design-system/index.css');
+
+.kbq-alert {
+    display: flex;
+    flex-direction: column;
+    min-width: var(--kbq-alert-size-container-min-weight);
+    width: 0;
+    border-radius: var(--kbq-alert-size-container-border-radius);
+    padding: var(--kbq-alert-size-container-padding-vertical) var(--kbq-alert-size-container-padding-horizontal);
+    background: var(--kbq-light-color-scheme-foreground-error-less);
+    color: var(--kbq-alert-light-color-scheme-error-container-text);
+
+    & .kbq-alert__action {
+      padding-top: var(--kbq-alert-size-container-padding-vertical);
+    }
+}

@@ -1,0 +1,7 @@
+@import url('../../../design-system/index.css');
+
+.kbq-alert-example {
+    & .kbq-alert:first-child {
+        margin-bottom: 16px;
+    }
+}
