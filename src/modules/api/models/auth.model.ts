@@ -1,5 +1,5 @@
 import { ApiGetParams } from '../../shared/services';
-import { IDataSource } from './data-source.model';
+import { DataSource } from './data-source.model';
 import { ShareLevel } from './share-level.model';
 
 export interface AccessTokenRequest extends ApiGetParams {
@@ -19,7 +19,7 @@ export interface UserInfoResponse {
     email: string | null;
     isDisabled: boolean;
     authProviderID: string;
-    dataSource: IDataSource | null;
+    dataSource: DataSource | null;
     accessLevel: ShareLevel;
     permissions: string[];
     roles: { uuid: string; name: Role }[];

@@ -4,6 +4,13 @@ import castArray from 'lodash/castArray';
 
 import { AuthStore, SettingsStore, isSuccessAuthState } from '../stores';
 import { AbortRequestError } from '../utils';
+import isEmpty from 'lodash/isEmpty';
+import { PaginationParams } from '../../api/models';
+
+export interface IFullListResponse<T> {
+    currentCursor: string;
+    fullList: T[];
+}
 
 export class ApiService {
     constructor(
@@ -13,6 +20,53 @@ export class ApiService {
 
     get<Response>(path: string, params: ApiGetParams | null, options: ApiRequestOptions): ApiCallResult<Response> {
         return this.sendRequest('get', path, params ? this.mapGetParamsToUrlSearchParams(params) : null, options);
+    }
+
+    getFullList<T, P extends PaginationParams>(
+        url: string,
+        params: P,
+        signal: AbortSignal
+    ): ApiCallResult<IFullListResponse<T>> {
+        const requestOptions = params ? this.mapGetParamsToUrlSearchParams(params as unknown as ApiGetParams) : {};
+        let data: T[] = [];
+        let currentCursor = params?.cursor || '';
+        let nextCursor: string | null;
+
+        const walkThroughPages = async (): ApiCallResult<IFullListResponse<T>> =>
+            this.get<Response>(
+                url,
+                {
+                    ...requestOptions,
+                    cursor: currentCursor as string
+                },
+                {
+                    signal,
+                    responseType: ResponseType.RAW
+                }
+            ).then(async (result) => {
+                const response = result.unwrap();
+
+                if (result.isOk) {
+                    const newData: T[] = await response.json();
+
+                    nextCursor = this.getNextCursor(response.headers);
+                    data = [...data, ...newData];
+
+                    if (isEmpty(nextCursor)) {
+                        const fulList: IFullListResponse<T> = { currentCursor, fullList: data };
+
+                        return new Promise((resolve) => resolve(Result.ok<IFullListResponse<T>, ApiError>(fulList)));
+                    } else {
+                        currentCursor = nextCursor as string;
+
+                        return walkThroughPages();
+                    }
+                } else {
+                    return Result.err(result.error);
+                }
+            });
+
+        return walkThroughPages();
     }
 
     private sendRequest<Response>(
@@ -66,7 +120,7 @@ export class ApiService {
                             throw new ApiError(ApiErrorCode.Unknown);
                         }
 
-                        return response.json();
+                        return options.responseType === ResponseType.RAW ? response : response.json();
                     })
                     .then((response: Response) => Result.ok<Response, ApiError>(response));
             })
@@ -106,6 +160,10 @@ export class ApiService {
             }
         );
     }
+
+    private getNextCursor(headers: Headers): string | null {
+        return headers.get('X-Cursor') || null;
+    }
 }
 
 export const ApiErrorCode = Object.freeze({
@@ -128,11 +186,17 @@ export class ApiError<ErrorName extends ApiErrorCodes = ApiErrorCodes> extends E
     }
 }
 
-type ApiCallResult<Response> = Promise<Result<Response, ApiError | AbortRequestError>>;
+export type ApiCallResult<Response> = Promise<Result<Response, ApiError | AbortRequestError>>;
+
+enum ResponseType {
+    JSON = 'JSON',
+    RAW = 'RAW'
+}
 
 interface ApiRequestOptions {
-    authenticatedRequest?: boolean;
     signal: AbortSignal;
+    authenticatedRequest?: boolean;
+    responseType?: ResponseType;
 }
 
 export type ApiGetParams = Record<string, string | number | boolean | (string | number | boolean)[]>;

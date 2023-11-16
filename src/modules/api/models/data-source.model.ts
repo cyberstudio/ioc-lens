@@ -1,13 +1,13 @@
-export interface IDataSource {
+export interface DataSource {
     uuid: string;
     name: string;
     longName: string;
     confidence: number;
     manualConfidence: number;
-    type: IDataSourceTypeBrief;
+    type: DataSourceTypeBrief;
 }
 
-export interface IDataSourceTypeBrief {
+export interface DataSourceTypeBrief {
     uuid: string;
     longName: string;
     confidence: number;
