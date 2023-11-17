@@ -1,3 +1,4 @@
+import { valueWithConfidenceComponentExample } from '../../modules/features/entity-info/components/value-with-confidence';
 import {
     alertExample,
     badgeExample,
@@ -10,6 +11,7 @@ import {
     toggleFieldComponentExample,
     tooltipComponentExample
 } from '../../modules/shared/components';
+import { mockChromeI18nAdapter } from '../../modules/shared/mocks';
 import { Component, renderComponent, UIBookExample } from '../../modules/shared/utils';
 
 import './styles/main.css';
@@ -52,8 +54,11 @@ const examples: UIBookExample[] = [
     propertyRowComponentExample,
     toggleFieldComponentExample,
     tooltipComponentExample,
-    alertExample
+    alertExample,
+    valueWithConfidenceComponentExample
 ];
+
+mockChromeI18nAdapter();
 
 const page = new UIBookPage({ examples });
 

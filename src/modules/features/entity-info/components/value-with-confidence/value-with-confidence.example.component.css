@@ -1,0 +1,11 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-value-with-confidence-example {
+    & .kbq-value-with-confidence-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+
+    & .kbq-value-with-confidence {
+        max-width: 400px;
+    }
+}

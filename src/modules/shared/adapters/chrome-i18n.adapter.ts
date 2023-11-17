@@ -3,7 +3,7 @@ export class ChromeI18nAdapter {
         return chrome.i18n.getUILanguage();
     }
 
-    static translate(key: string, substitutions?: string | string[]): string {
-        return chrome.i18n.getMessage(key, substitutions);
+    static translate(key: string): string {
+        return chrome.i18n.getMessage(key);
     }
 }

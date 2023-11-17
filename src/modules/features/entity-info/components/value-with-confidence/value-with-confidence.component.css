@@ -1,0 +1,19 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-value-with-confidence {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: baseline;
+
+    & .kbq-value-with-confidence__value {
+        min-width: 0;
+    }
+
+    & .kbq-value-with-confidence__confidence {
+        cursor: default;
+        padding: 0 var(--kbq-size-xxs);
+        background: transparent;
+        flex-shrink: 0;
+        color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
+    }
+}

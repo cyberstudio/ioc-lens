@@ -88,7 +88,7 @@ export class TooltipComponent extends Component<TooltipProps> {
         const targetRect = targetElement.getBoundingClientRect();
         const tooltipRect = tooltipElement.getBoundingClientRect();
 
-        const top = targetRect.bottom;
+        const top = targetRect.bottom + window.scrollY;
         const left = targetRect.left + targetRect.width / 2 - tooltipRect.width / 2;
 
         return { top, left };

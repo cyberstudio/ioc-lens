@@ -61,6 +61,14 @@ module.exports = {
                     to: 'images'
                 }
             ]
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: helpers.root('src/modules/shared/resources/_locales'),
+                    to: '_locales'
+                }
+            ]
         })
     ]
 };
