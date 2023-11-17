@@ -5,11 +5,11 @@ import { AccessTokenRequest, AccessTokenResponse, UserInfoResponse } from '../mo
 export class AuthApiService {
     constructor(private api: ApiService) {}
 
-    getAccessToken(params: AccessTokenRequest) {
-        return this.api.get<AccessTokenResponse>('auth/token', params, { authenticatedRequest: false });
+    getAccessToken(params: AccessTokenRequest, signal: AbortSignal) {
+        return this.api.get<AccessTokenResponse>('auth/token', params, { authenticatedRequest: false, signal });
     }
 
-    getUserInfo() {
-        return this.api.get<UserInfoResponse>('users/me', null);
+    getUserInfo(signal: AbortSignal) {
+        return this.api.get<UserInfoResponse>('users/me', null, { authenticatedRequest: true, signal });
     }
 }

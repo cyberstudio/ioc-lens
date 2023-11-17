@@ -14,7 +14,8 @@
         "module": "esnext",
         "noImplicitAny": true,
         "moduleResolution": "node",
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true
     },
     "include": [
         "@types/**/*",

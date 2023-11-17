@@ -7,17 +7,19 @@ export class ChromeStorageAdapter {
     static async init<Data extends EmptyObject>(namespace: string, defaultData: Data): Promise<void> {
         const currentData = await ChromeStorageAdapter.getNamespaceData(namespace);
 
-        return ChromeStorageAdapter.set(namespace, { ...defaultData, ...currentData });
+        return ChromeStorageAdapter.set(namespace, { ...defaultData, ...currentData }, true);
     }
 
     static async get<Data extends EmptyObject>(namespace: string): Promise<Data> {
         return { ...(await ChromeStorageAdapter.getNamespaceData(namespace)) } as Data;
     }
 
-    static async set<Data extends EmptyObject>(namespace: string, data: Partial<Data>): Promise<void> {
+    static async set<Data extends EmptyObject>(namespace: string, data: Partial<Data>, rewrite = false): Promise<void> {
         const currentData = await ChromeStorageAdapter.getNamespaceData(namespace);
 
-        return chrome.storage.local.set({ [namespace]: { ...currentData, ...data } });
+        const nextData = rewrite ? data : { ...currentData, ...data };
+
+        return chrome.storage.local.set({ [namespace]: nextData });
     }
 
     static onChange<Data extends EmptyObject>(namespace: string, cb: (changes: DeepPartial<Data>) => void): () => void {

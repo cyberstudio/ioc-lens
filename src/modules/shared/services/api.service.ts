@@ -3,6 +3,7 @@ import isNil from 'lodash/isNil';
 import castArray from 'lodash/castArray';
 
 import { AuthStore, SettingsStore, isSuccessAuthState } from '../stores';
+import { AbortRequestError } from '../utils';
 
 export class ApiService {
     constructor(
@@ -10,11 +11,7 @@ export class ApiService {
         private authStore: AuthStore
     ) {}
 
-    get<Response>(
-        path: string,
-        params: ApiGetParams | null,
-        options: ApiRequestOptions = { authenticatedRequest: true }
-    ): ApiCallResult<Response> {
+    get<Response>(path: string, params: ApiGetParams | null, options: ApiRequestOptions): ApiCallResult<Response> {
         return this.sendRequest('get', path, params ? this.mapGetParamsToUrlSearchParams(params) : null, options);
     }
 
@@ -22,11 +19,9 @@ export class ApiService {
         method: string,
         path: string,
         params: BodyInit | null,
-        options: ApiRequestOptions = { authenticatedRequest: true }
+        options: ApiRequestOptions
     ): ApiCallResult<Response> {
-        const abortController = new AbortController();
-
-        const result = this.getRequestConfig()
+        return this.getRequestConfig()
             .then((requestConfig) => {
                 const hasToken = !isNil(requestConfig.token);
 
@@ -56,11 +51,15 @@ export class ApiService {
                     mode: 'cors',
                     headers,
                     body: method !== 'get' ? JSON.stringify(params) : null,
-                    signal: abortController.signal
+                    signal: options.signal
                 })
                     .then((response) => {
                         if (response.status === 401) {
                             throw new ApiError(ApiErrorCode.Unauthenticated);
+                        }
+
+                        if (response.status === 403) {
+                            throw new ApiError(ApiErrorCode.Forbidden);
                         }
 
                         if (!response.ok) {
@@ -69,14 +68,11 @@ export class ApiService {
 
                         return response.json();
                     })
-                    .then((response: Response) => Result.ok<Response, ApiError>(response))
-                    .catch(() => {
-                        throw new ApiError(ApiErrorCode.Unknown);
-                    });
+                    .then((response: Response) => Result.ok<Response, ApiError>(response));
             })
             .catch((error: Error) => {
-                if (abortController.signal.aborted) {
-                    return Result.err(new ApiError(ApiErrorCode.Aborted));
+                if (options.signal.aborted) {
+                    return Result.err(new AbortRequestError());
                 }
 
                 if (error instanceof ApiError) {
@@ -85,8 +81,6 @@ export class ApiService {
 
                 return Result.err(new ApiError(ApiErrorCode.Unknown));
             });
-
-        return { result, cancel: () => abortController.abort() };
     }
 
     private mapGetParamsToUrlSearchParams(params: ApiGetParams): URLSearchParams {
@@ -115,15 +109,15 @@ export class ApiService {
 }
 
 export const ApiErrorCode = Object.freeze({
-    Aborted: 'Aborted',
     Unknown: 'Unknown',
     UnknownHost: 'UnknownHost',
+    Forbidden: 'Forbidden',
     Unauthenticated: 'Unauthenticated'
 });
 
 type ApiErrorCodes = keyof typeof ApiErrorCode;
 
-class ApiError<ErrorName extends ApiErrorCodes = ApiErrorCodes> extends Error {
+export class ApiError<ErrorName extends ApiErrorCodes = ApiErrorCodes> extends Error {
     name: ErrorName;
 
     constructor(name: ErrorName) {
@@ -134,13 +128,11 @@ class ApiError<ErrorName extends ApiErrorCodes = ApiErrorCodes> extends Error {
     }
 }
 
-type ApiCallResult<Response> = {
-    result: Promise<Result<Response, ApiError>>;
-    cancel: () => void;
-};
+type ApiCallResult<Response> = Promise<Result<Response, ApiError | AbortRequestError>>;
 
 interface ApiRequestOptions {
-    authenticatedRequest: boolean;
+    authenticatedRequest?: boolean;
+    signal: AbortSignal;
 }
 
 export type ApiGetParams = Record<string, string | number | boolean | (string | number | boolean)[]>;
