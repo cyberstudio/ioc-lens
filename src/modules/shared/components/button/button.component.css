@@ -96,4 +96,9 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
+
+    & .kbq-button__icon {
+        display: inline-flex;
+        align-items: center;
+    }
 }

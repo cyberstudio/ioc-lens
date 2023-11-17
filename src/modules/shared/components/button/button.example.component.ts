@@ -34,6 +34,19 @@ class ButtonExampleComponent extends Component<void> {
             })
         ];
 
+        const variantsWithIcons = [
+            new ButtonComponent({
+                type: 'icon',
+                iconName: 'close',
+                onClick: () => console.log('click')
+            }),
+            new ButtonComponent({
+                type: 'icon',
+                iconName: 'back',
+                onClick: () => console.log('click')
+            })
+        ];
+
         const variantsWrapper = this.parseTemplate('<div class="kbq-button-example__row"></div>');
 
         variants.forEach((v) => renderComponent(variantsWrapper, v));
@@ -47,6 +60,12 @@ class ButtonExampleComponent extends Component<void> {
 
             el.appendChild(wrapper);
         });
+
+        const variantsWithIconsWrapper = this.parseTemplate('<div class="kbq-button-example__row"></div>');
+
+        variantsWithIcons.forEach((v) => renderComponent(variantsWithIconsWrapper, v));
+
+        el.appendChild(variantsWithIconsWrapper);
 
         return el;
     }

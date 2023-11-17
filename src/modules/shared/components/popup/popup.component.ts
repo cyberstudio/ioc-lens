@@ -46,7 +46,7 @@ export class PopupComponent extends Component<PopupProps> {
 
         this.closeButton = new ButtonComponent({
             type: 'icon',
-            iconName: '',
+            iconName: 'close',
             onClick: () => this.props.onClose()
         });
 
