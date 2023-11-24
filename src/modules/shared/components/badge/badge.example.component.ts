@@ -19,11 +19,6 @@ class BadgeExampleComponent extends Component<void> {
                 content: 'Новый'
             }),
             new BadgeComponent({
-                style: 'grey',
-                fill: 'filled',
-                content: 'Новый'
-            }),
-            new BadgeComponent({
                 style: 'dark',
                 fill: 'filled',
                 content: 'Новый'

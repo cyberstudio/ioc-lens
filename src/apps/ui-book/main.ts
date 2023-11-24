@@ -1,4 +1,7 @@
-import { valueWithConfidenceComponentExample } from '../../modules/features/entity-info/components/value-with-confidence';
+import {
+    valueWithConfidenceComponentExample,
+    entityAttributeValueComponentExample
+} from '../../modules/features/entity-info/components';
 import {
     alertExample,
     badgeExample,
@@ -55,7 +58,8 @@ const examples: UIBookExample[] = [
     toggleFieldComponentExample,
     tooltipComponentExample,
     alertExample,
-    valueWithConfidenceComponentExample
+    valueWithConfidenceComponentExample,
+    entityAttributeValueComponentExample
 ];
 
 mockChromeI18nAdapter();

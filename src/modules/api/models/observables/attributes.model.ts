@@ -30,7 +30,7 @@ export enum AttributeObservableEntity {
     Platforms = 'Platforms'
 }
 
-// prettier-ignore
+/* eslint-disable prettier/prettier */
 export type AttributeValueType<AttributeName = AttributeObservableEntity> =
     AttributeName extends AttributeObservableEntity.Size ? number :
     AttributeName extends AttributeObservableEntity.Names ? string :
@@ -53,8 +53,8 @@ export type AttributeValueType<AttributeName = AttributeObservableEntity> =
     AttributeName extends AttributeObservableEntity.AffectedCountries ? DictionaryItemBrief :
     AttributeName extends AttributeObservableEntity.ExploitedVulnerabilities ? DictionaryItemBrief :
     AttributeName extends AttributeObservableEntity.TargetedSectors ? DictionaryItemBrief :
-    AttributeName extends AttributeObservableEntity.ThreatCategory ? ThreatCategory :
-    AttributeName extends AttributeObservableEntity.RelatedThreatCategory ? RelatedThreatCategory :
+    AttributeName extends AttributeObservableEntity.ThreatCategory ? ThreatCategory | null :
+    AttributeName extends AttributeObservableEntity.RelatedThreatCategory ? RelatedThreatCategory | null :
     AttributeName extends AttributeObservableEntity.MalwareNames ? string :
     AttributeName extends AttributeObservableEntity.RegistrationCountry ? DictionaryItemBrief :
     AttributeName extends AttributeObservableEntity.PotentialDamage ? PotentialDamage :
@@ -67,7 +67,16 @@ export type AttributeValueType<AttributeName = AttributeObservableEntity> =
         | ThreatCategory
         | RelatedThreatCategory
         | DictionaryItemBrief
-        | PotentialDamage;
+        | PotentialDamage
+        | null;
+/* eslint-enable prettier/prettier */
+
+type KeysMatching<T, U> = { [K in keyof T]: T[K] extends U ? K : never }[keyof T];
+
+export type ObservableEntityAttributeByFormat<Type> = KeysMatching<
+    { [K in AttributeObservableEntity]: AttributeValueType<K> },
+    Type
+>;
 
 export enum NodeRole {
     CnC = 'CnC',
@@ -88,6 +97,8 @@ export enum NodeRole {
     BitTorrentTracker = 'BitTorrentTracker'
 }
 
+export const NODE_ROLES = Object.values(NodeRole);
+
 export enum RegionalInternetRegistry {
     RIPE = 'RIPE',
     APNIC = 'APNIC',
@@ -96,12 +107,16 @@ export enum RegionalInternetRegistry {
     LACNIC = 'LACNIC'
 }
 
+export const REGIONAL_INTERNET_REGISTRIES = Object.values(RegionalInternetRegistry);
+
 export enum IdentityClass {
     Individual = 'Individual',
     Group = 'Group',
     Organization = 'Organization',
     Class = 'Class'
 }
+
+export const IDENTITY_CLASSES = Object.values(IdentityClass);
 
 export enum ThreatCategory {
     Malware = 'Malware',
@@ -110,14 +125,39 @@ export enum ThreatCategory {
     Clean = 'Clean'
 }
 
+export const THREAT_CATEGORIES = Object.values(ThreatCategory);
+
 export enum RelatedThreatCategory {
     Malware = 'Malware',
     Adware = 'Adware',
     Riskware = 'Riskware'
 }
 
+export const RELATED_THREAT_CATEGORIES = Object.values(RelatedThreatCategory);
+
 export enum PotentialDamage {
     High = 'High',
     Medium = 'Medium',
     Low = 'Low'
 }
+
+export const POTENTIAL_DAMAGES = Object.values(PotentialDamage);
+
+export const isKnownAttributeValue = (value: unknown) => {
+    return (
+        isNumberAttributeValue(value) ||
+        isBooleanAttributeValue(value) ||
+        isStringAttributeValue(value) ||
+        isDictionaryItemAttributeValue(value)
+    );
+};
+
+export const isNumberAttributeValue = (value: unknown): value is number => typeof value === 'number';
+export const isBooleanAttributeValue = (value: unknown): value is boolean => typeof value === 'boolean';
+export const isStringAttributeValue = (value: unknown): value is string => typeof value === 'string';
+export const isDictionaryItemAttributeValue = (value: unknown): value is DictionaryItemBrief => {
+    const requiredKeys: (keyof DictionaryItemBrief)[] = ['uuid', 'key', 'dictionary'];
+    const keys = typeof value === 'object' ? Object.getOwnPropertyNames(value) : [];
+
+    return requiredKeys.every((rk) => keys.includes(rk));
+};

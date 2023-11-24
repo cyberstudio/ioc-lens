@@ -6,6 +6,9 @@
     align-items: baseline;
 
     & .kbq-value-with-confidence__value {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         min-width: 0;
     }
 

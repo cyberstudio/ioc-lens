@@ -23,28 +23,23 @@
         }
 
         &.kbq-badge--warning-off {
-            color: var(--kbq-badge-light-color-scheme-filled-fade-off-warning-color);
-            background: var(--kbq-badge-light-color-scheme-filled-fade-off-warning-background);
+            color: var(--kbq-light-color-scheme-foreground-white);
+            background: var(--kbq-light-color-scheme-foreground-warning-secondary);
         }
 
         &.kbq-badge--warning-on {
-            color: var(--kbq-badge-light-color-scheme-filled-fade-on-warning-color);
-            background: var(--kbq-badge-light-color-scheme-filled-fade-on-warning-background);
+            color: var(--kbq-light-color-scheme-foreground-white);
+            background: var(--kbq-light-color-scheme-background-warning);
         }
 
         &.kbq-badge--error {
-            color: var(--kbq-badge-light-color-scheme-filled-fade-on-error-color);
-            background: var(--kbq-badge-light-color-scheme-filled-fade-on-error-background);
+            color: var(--kbq-light-color-scheme-foreground-white);
+            background: var(--kbq-light-color-scheme-background-error);
         }
 
         &.kbq-badge--success {
-            color: var(--kbq-badge-light-color-scheme-filled-fade-off-success-color);
-            background: var(--kbq-badge-light-color-scheme-filled-fade-off-success-background);
-        }
-
-        &.kbq-badge--grey {
-            background: var(--kbq-badge-light-color-scheme-outline-fade-on-contrast-border);
-            color: var(--kbq-badge-light-color-scheme-filled-fade-on-contrast-color);
+            color: var(--kbq-light-color-scheme-foreground-white);
+            background: var(--kbq-light-color-scheme-background-success);
         }
 
         &.kbq-badge--dark {
@@ -64,12 +59,12 @@
         }
 
         &.kbq-badge--warning {
-            color: var(--kbq-badge-light-color-scheme-outline-fade-on-warning-color);
+            color: var(--kbq-badge-light-color-scheme-outline-fade-on-warning-caption);
             border-color: var(--kbq-badge-light-color-scheme-outline-fade-on-warning-border);
         }
 
         &.kbq-badge--error {
-            color: var(--kbq-badge-light-color-scheme-filled-fade-on-error-color);
+            color: var(--kbq-badge-light-color-scheme-outline-fade-on-error-color);
             border-color: var(--kbq-badge-light-color-scheme-outline-fade-on-error-border);
         }
     }

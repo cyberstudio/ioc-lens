@@ -1,0 +1,38 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-attribute-value {
+    display: inline-flex;
+    max-width: 100%;
+
+    & .kbq-badge {
+        & .kbq-value-with-confidence__confidence {
+            margin-right: calc(var(--kbq-size-xxs) * -1);
+        }
+
+        &.kbq-badge--filled {
+            &.kbq-badge--warning-off,
+            &.kbq-badge--warning-on,
+            &.kbq-badge--error,
+            &.kbq-badge--success {
+                & .kbq-value-with-confidence__confidence {
+                    color: inherit;
+                    opacity: 0.72;
+                }
+            }
+        }
+
+        &.kbq-badge--outline {
+            &.kbq-badge--error {
+                & .kbq-value-with-confidence__confidence {
+                    color: var(--kbq-light-color-scheme-error-default);
+                }
+            }
+
+            &.kbq-badge--warning {
+                & .kbq-value-with-confidence__confidence {
+                    color: var(--kbq-light-color-scheme-line-warning);
+                }
+            }
+        }
+    }
+}

@@ -184,10 +184,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@koobiq/design-tokens@3.0.0-beta.7":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@koobiq/design-tokens/-/design-tokens-3.0.0-beta.7.tgz"
-  integrity sha512-QivA2Dd5hr1+dRrWB8r88Qbowax9yZTXYr5+FMaJQ4PwXnb73kWab3kFdfRFjXP2b18kJFRRbrKpkllXfDXvgg==
+"@koobiq/design-tokens@3.0.0-beta.10":
+  version "3.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@koobiq/design-tokens/-/design-tokens-3.0.0-beta.10.tgz#614deee42b5e04000da622c570602a8eaa0b2e4d"
+  integrity sha512-nWe0+/7HLxcAeOSoRqVkKNWK3fT4pgpq7UFa+OvVWqgaQsp5VUXRTB2/WS4SMlUE7hO3yyPGAGf3kKu5VjUr0A==
 
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"

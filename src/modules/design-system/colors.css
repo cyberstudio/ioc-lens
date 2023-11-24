@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 12 Nov 2023 18:44:16 GMT
+ * Generated on Fri, 17 Nov 2023 09:48:52 GMT
  */
 
 :root {
@@ -57,6 +57,7 @@
   --kbq-light-color-scheme-foreground-divider: #E2E3E9;
   --kbq-light-color-scheme-foreground-border: #C4C7D4;
   --kbq-light-color-scheme-foreground-icon: #A7ABBE;
+  --kbq-light-color-scheme-foreground-visited: #861FC6;
   --kbq-light-color-scheme-icon-white: #FFFFFF;
   --kbq-light-color-scheme-icon-theme: #0066FF;
   --kbq-light-color-scheme-icon-contrast: #21222C;
@@ -74,6 +75,7 @@
   --kbq-light-color-scheme-line-warning-fade: #FFC766;
   --kbq-light-color-scheme-line-error: #E21D03;
   --kbq-light-color-scheme-line-error-fade: #FDA69B;
+  --kbq-light-color-scheme-line-visited: #D5A7F1;
   --kbq-light-color-scheme-states-background-disabled: #F0F1F4;
   --kbq-light-color-scheme-states-background-contrast-hover: #292B3E;
   --kbq-light-color-scheme-states-background-contrast-active: #1C2133;
@@ -102,7 +104,8 @@
   --kbq-light-color-scheme-states-foreground-disabled: #A7ABBE;
   --kbq-light-color-scheme-states-foreground-theme-hover: #005CE5;
   --kbq-light-color-scheme-states-foreground-theme-active: #0052CC;
-  --kbq-light-color-scheme-states-foreground-visited: #831FC1;
+  --kbq-light-color-scheme-states-foreground-visited-hover: #771DAF;
+  --kbq-light-color-scheme-states-foreground-visited-active: #68189A;
   --kbq-light-color-scheme-states-icon-theme-hover: #005CE5;
   --kbq-light-color-scheme-states-icon-theme-active: #0052CC;
   --kbq-light-color-scheme-states-icon-contrast-hover: #16171D;
@@ -114,6 +117,8 @@
   --kbq-light-color-scheme-states-icon-success-hover: #48A626;
   --kbq-light-color-scheme-states-icon-success-active: #367D1C;
   --kbq-light-color-scheme-states-icon-disabled: #C4C7D4;
+  --kbq-light-color-scheme-states-icon-warning-hover: #E59100;
+  --kbq-light-color-scheme-states-icon-warning-active: #D68800;
   --kbq-light-color-scheme-states-line-focus: #0066FF;
   --kbq-light-color-scheme-states-line-focus-theme: #3385FF;
   --kbq-light-color-scheme-states-line-focus-error: #E21D03;

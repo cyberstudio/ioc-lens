@@ -2,7 +2,155 @@
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
+
     "Entity_Confidence_Text_Tooltip": {
         "message": "Достоверность"
+    },
+
+    "Entity_AttributeName_Text_IsIoC": {
+        "message": "IOC"
+    },
+    "Entity_AttributeName_Text_IsDGA": {
+        "message": "DGA"
+    },
+    "Entity_AttributeName_Text_IsTrusted": {
+        "message": "Доверенный"
+    },
+    "Entity_AttributeName_Text_IsDelegated": {
+        "message": "Делегирование домена"
+    },
+    "Entity_AttributeName_Text_ASN": {
+        "message": "ASN"
+    },
+    "Entity_AttributeName_Text_RegionalInternetRegistry": {
+        "message": "Региональный интернет-регистратор"
+    },
+    "Entity_AttributeName_Text_NodeRoles": {
+        "message": "Роли узла в\u00A0сети"
+    },
+    "Entity_AttributeName_Text_Class": {
+        "message": "Категория"
+    },
+    "Entity_AttributeName_Text_Sectors": {
+        "message": "Сферы деятельности"
+    },
+    "Entity_AttributeName_Text_Size": {
+        "message": "Размер"
+    },
+    "Entity_AttributeName_Text_FileNames": {
+        "message": "Коллекция названий"
+    },
+    "Entity_AttributeName_Text_MalwareNames": {
+        "message": "Вредоносное ПО"
+    },
+    "Entity_AttributeName_Text_IdentityNames": {
+        "message": "Имена / Названия"
+    },
+    "Entity_AttributeName_Text_DisplayNames": {
+        "message": "Имена отправителей"
+    },
+    "Entity_AttributeName_Text_MalwareClasses": {
+        "message": "Классы ВПО"
+    },
+    "Entity_AttributeName_Text_MalwareFamilies": {
+        "message": "Семейства ВПО"
+    },
+    "Entity_AttributeName_Text_RelatedMalwareFamilies": {
+        "message": "Связан с семействами ВПО"
+    },
+    "Entity_AttributeName_Text_ThreatCategory": {
+        "message": "Уровень опасности"
+    },
+    "Entity_AttributeName_Text_IpAddressStatuses": {
+        "message": "Статусы IP-адреса"
+    },
+    "Entity_AttributeName_Text_DomainNameStatuses": {
+        "message": "Статусы домена"
+    },
+    "Entity_AttributeName_Text_Campaigns": {
+        "message": "Связан с вредоносными кампаниями"
+    },
+    "Entity_AttributeName_Text_ThreatActors": {
+        "message": "Связан со злоумышленниками"
+    },
+    "Entity_AttributeName_Text_AffectedCountries": {
+        "message": "Страны объектов, подверженных угрозам"
+    },
+    "Entity_AttributeName_Text_ExploitedVulnerabilities": {
+        "message": "Эксплуатирует уязвимости"
+    },
+    "Entity_AttributeName_Text_TargetedSectors": {
+        "message": "Нацелен на сферы деятельности"
+    },
+    "Entity_AttributeName_Text_RegistrationCountry": {
+        "message": "Зарегистрирован в стране"
+    },
+    "Entity_AttributeName_Text_PotentialDamage": {
+        "message": "Потенциальный ущерб"
+    },
+    "Entity_AttributeName_Text_Platforms": {
+        "message": "ОС / Платформы"
+    },
+
+    "Entity_IsDelegated_Text_Delegated": {
+        "message": "Делегирован"
+    },
+    "Entity_IsDelegated_Text_NotDelegated": {
+        "message": "Не делегирован"
+    },
+
+    "Entity_IdentityClass_Text_Unknown": {
+        "message": "Не определена"
+    },
+    "Entity_IdentityClass_Text_Individual": {
+        "message": "Человек"
+    },
+    "Entity_IdentityClass_Text_Group": {
+        "message": "Неформальная группа"
+    },
+    "Entity_IdentityClass_Text_Organization": {
+        "message": "Организация"
+    },
+    "Entity_IdentityClass_Text_Class": {
+        "message": "Класс"
+    },
+
+    "Entity_ThreatCategory_Text_Unknown": {
+        "message": "Уровень опасности неизвестен"
+    },
+    "Entity_ThreatCategory_Text_Clean": {
+        "message": "Без обнаруженных угроз"
+    },
+    "Entity_ThreatCategory_Text_Adware": {
+        "message": "Рекламное ПО"
+    },
+    "Entity_ThreatCategory_Text_Riskware": {
+        "message": "Потенциально опасное ПО"
+    },
+    "Entity_ThreatCategory_Text_Malware": {
+        "message": "Вредоносное ПО"
+    },
+
+    "Entity_RelatedThreatCategory_Text_Unknown": {
+        "message": "Уровень опасности неизвестен"
+    },
+    "Entity_RelatedThreatCategory_Text_Adware": {
+        "message": "Связан с рекламным ПО"
+    },
+    "Entity_RelatedThreatCategory_Text_Riskware": {
+        "message": "Связан с потенциально опасным ПО"
+    },
+    "Entity_RelatedThreatCategory_Text_Malware": {
+        "message": "Связан с вредоносным ПО"
+    },
+
+    "Entity_PotentialDamage_Text_High": {
+        "message": "Значительный"
+    },
+    "Entity_PotentialDamage_Text_Medium": {
+        "message": "Средний"
+    },
+    "Entity_PotentialDamage_Text_Low": {
+        "message": "Незначительный"
     }
 }

@@ -1,5 +1,6 @@
 import { ChromeI18nAdapter } from '../../../../shared/adapters';
 import { TooltipComponent } from '../../../../shared/components';
+import { initKbqTitle } from '../../../../shared/directives';
 import { TranslateService } from '../../../../shared/services';
 import { Component } from '../../../../shared/utils';
 
@@ -8,8 +9,8 @@ import { formatConfidence } from '../../formatters';
 import './value-with-confidence.component.css';
 
 interface ValueWithConfidenceProps {
-    valueContent: string | Component<unknown>;
-    confidence: number;
+    valueContent: string | HTMLElement | Component<unknown>;
+    confidence: number | null;
 }
 
 export class ValueWithConfidenceComponent extends Component<ValueWithConfidenceProps> {
@@ -28,18 +29,30 @@ export class ValueWithConfidenceComponent extends Component<ValueWithConfidenceP
             confidence: 'kbq-value-with-confidence__confidence'
         };
 
+        const hasConfidence = this.props.confidence !== null;
+
         const el = this.parseTemplate(`
-            <div class="kbq-value-with-confidence small-text">
+            <div class="kbq-value-with-confidence">
                 <div class="${classes.value}"></div>
-                <div class="${classes.confidence} extra-small-text"></div>
+                ${hasConfidence ? `<div class="${classes.confidence} extra-small-text"></div>` : ''}
             </div>
         `);
 
         const valueEl = el.querySelector<HTMLElement>(`.${classes.value}`);
         const confidenceEl = el.querySelector<HTMLElement>(`.${classes.confidence}`);
 
+        if (valueEl) {
+            initKbqTitle(valueEl);
+        }
+
         this.renderContent(valueEl, this.props.valueContent);
-        this.renderContent(confidenceEl, formatConfidence(this.props.confidence, ChromeI18nAdapter.getCurrentLocale()));
+
+        if (this.props.confidence !== null) {
+            this.renderContent(
+                confidenceEl,
+                formatConfidence(this.props.confidence, ChromeI18nAdapter.getCurrentLocale())
+            );
+        }
 
         if (confidenceEl) {
             this.on(confidenceEl, 'mouseenter', () => this.handleMouseEnterConfidence(confidenceEl));

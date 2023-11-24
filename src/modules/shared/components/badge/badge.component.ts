@@ -2,22 +2,22 @@ import { Component } from '../../utils';
 
 import './badge.component.css';
 
-interface FilledBadgeProps {
+export interface FilledBadgeProps {
     fill: 'filled';
-    style: 'error' | 'warning-off' | 'warning-on' | 'success' | 'dark' | 'contrast' | 'grey';
+    style: 'error' | 'warning-off' | 'warning-on' | 'success' | 'dark' | 'contrast';
     content: string | Component<unknown>;
 }
 
-interface OutlineBadgeProps {
+export interface OutlineBadgeProps {
     fill: 'outline';
     style: 'error' | 'warning' | 'contrast';
     content: string | Component<unknown>;
 }
-type BadgeProps = FilledBadgeProps | OutlineBadgeProps;
+export type BadgeProps = FilledBadgeProps | OutlineBadgeProps;
 
 export class BadgeComponent extends Component<BadgeProps> {
     protected createComponent() {
-        const el = this.parseTemplate('<span class="kbq-badge small-text"></span>');
+        const el = this.parseTemplate('<span class="kbq-badge extra-small-text-strong"></span>');
         const contentEl = this.parseTemplate('<span class="kbq-badge__content"></span>');
 
         el.appendChild(contentEl);
@@ -69,9 +69,6 @@ export class BadgeComponent extends Component<BadgeProps> {
                 break;
             case 'dark':
                 element.classList.add('kbq-badge--dark');
-                break;
-            case 'grey':
-                element.classList.add('kbq-badge--grey');
                 break;
             default:
                 break;

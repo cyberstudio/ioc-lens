@@ -5,8 +5,12 @@ import { ChromeI18nAdapter } from '../adapters';
 export class TranslateService {
     private mf: MessageFormat;
 
+    get currentLocale(): string {
+        return ChromeI18nAdapter.getCurrentLocale();
+    }
+
     constructor() {
-        this.mf = new MessageFormat(ChromeI18nAdapter.getCurrentLocale());
+        this.mf = new MessageFormat(this.currentLocale);
     }
 
     translate(key: string, params?: object): string {
@@ -17,5 +21,9 @@ export class TranslateService {
         }
 
         return this.mf.compile(message)(params || {});
+    }
+
+    translateNumber(value: number): string {
+        return value.toLocaleString(this.currentLocale);
     }
 }

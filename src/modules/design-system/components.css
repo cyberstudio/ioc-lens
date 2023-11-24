@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 12 Nov 2023 18:44:16 GMT
+ * Generated on Fri, 17 Nov 2023 09:48:52 GMT
  */
 
 :root {
@@ -24,47 +24,60 @@
   --kbq-badge-light-color-scheme-filled-fade-off-success-background: #51BB2A;
   --kbq-badge-light-color-scheme-filled-fade-off-success-color: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-off-success-caption: #DEF6D5;
+  --kbq-badge-light-color-scheme-filled-fade-off-success-icon: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-off-warning-background: #FFA100;
   --kbq-badge-light-color-scheme-filled-fade-off-warning-color: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-off-warning-caption: #FFECCC;
+  --kbq-badge-light-color-scheme-filled-fade-off-warning-icon: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-off-error-background: #FC4D36;
   --kbq-badge-light-color-scheme-filled-fade-off-error-color: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-off-error-caption: #FED3CD;
+  --kbq-badge-light-color-scheme-filled-fade-off-error-icon: #FFFFFF;
   --kbq-badge-light-color-scheme-filled-fade-on-theme-background: #E5F0FF;
   --kbq-badge-light-color-scheme-filled-fade-on-theme-color: #0066FF;
   --kbq-badge-light-color-scheme-filled-fade-on-theme-caption: #3385FF;
+  --kbq-badge-light-color-scheme-filled-fade-on-theme-icon: #0066FF;
   --kbq-badge-light-color-scheme-filled-fade-on-contrast-background: #E8E9EE;
   --kbq-badge-light-color-scheme-filled-fade-on-contrast-color: #21222C;
   --kbq-badge-light-color-scheme-filled-fade-on-contrast-caption: #6C7393;
+  --kbq-badge-light-color-scheme-filled-fade-on-contrast-icon: #8A8FA8;
   --kbq-badge-light-color-scheme-filled-fade-on-success-background: #D9F3CE;
   --kbq-badge-light-color-scheme-filled-fade-on-success-color: #3F9121;
   --kbq-badge-light-color-scheme-filled-fade-on-success-caption: #51BB2A;
+  --kbq-badge-light-color-scheme-filled-fade-on-success-icon: #51BB2A;
   --kbq-badge-light-color-scheme-filled-fade-on-warning-background: #FFECCC;
   --kbq-badge-light-color-scheme-filled-fade-on-warning-color: #D68800;
   --kbq-badge-light-color-scheme-filled-fade-on-warning-caption: #CC8100;
+  --kbq-badge-light-color-scheme-filled-fade-on-warning-icon: #F59B00;
   --kbq-badge-light-color-scheme-filled-fade-on-error-background: #FFE9E6;
   --kbq-badge-light-color-scheme-filled-fade-on-error-color: #E21D03;
   --kbq-badge-light-color-scheme-filled-fade-on-error-caption: #FB2104;
+  --kbq-badge-light-color-scheme-filled-fade-on-error-icon: #FB2104;
   --kbq-badge-light-color-scheme-outline-fade-on-theme-background: transparent;
   --kbq-badge-light-color-scheme-outline-fade-on-theme-color: #0066FF;
   --kbq-badge-light-color-scheme-outline-fade-on-theme-border: #99C2FF;
   --kbq-badge-light-color-scheme-outline-fade-on-theme-caption: #3385FF;
+  --kbq-badge-light-color-scheme-outline-fade-on-theme-icon: #0066FF;
   --kbq-badge-light-color-scheme-outline-fade-on-contrast-background: transparent;
   --kbq-badge-light-color-scheme-outline-fade-on-contrast-color: #21222C;
   --kbq-badge-light-color-scheme-outline-fade-on-contrast-border: #D3D5DE;
   --kbq-badge-light-color-scheme-outline-fade-on-contrast-caption: #6C7393;
+  --kbq-badge-light-color-scheme-outline-fade-on-contrast-icon: #8A8FA8;
   --kbq-badge-light-color-scheme-outline-fade-on-success-background: transparent;
   --kbq-badge-light-color-scheme-outline-fade-on-success-color: #3F9121;
   --kbq-badge-light-color-scheme-outline-fade-on-success-border: #7BD959;
   --kbq-badge-light-color-scheme-outline-fade-on-success-caption: #51BB2A;
+  --kbq-badge-light-color-scheme-outline-fade-on-success-icon: #51BB2A;
   --kbq-badge-light-color-scheme-outline-fade-on-warning-background: transparent;
   --kbq-badge-light-color-scheme-outline-fade-on-warning-color: #D68800;
   --kbq-badge-light-color-scheme-outline-fade-on-warning-border: #FFC766;
   --kbq-badge-light-color-scheme-outline-fade-on-warning-caption: #CC8100;
+  --kbq-badge-light-color-scheme-outline-fade-on-warning-icon: #F59B00;
   --kbq-badge-light-color-scheme-outline-fade-on-error-background: transparent;
   --kbq-badge-light-color-scheme-outline-fade-on-error-color: #E21D03;
   --kbq-badge-light-color-scheme-outline-fade-on-error-border: #FDA69B;
   --kbq-badge-light-color-scheme-outline-fade-on-error-caption: #FB2104;
+  --kbq-badge-light-color-scheme-outline-fade-on-error-icon: #FB2104;
   --kbq-badge-dark-color-scheme-pastel-primary-background: #003380;
   --kbq-badge-dark-color-scheme-pastel-primary-border: transparent;
   --kbq-badge-dark-color-scheme-pastel-primary-color: #99C2FF;
@@ -104,11 +117,23 @@
   --kbq-badge-dark-color-scheme-solid-secondary-background: #5F6581;
   --kbq-badge-dark-color-scheme-solid-secondary-border: transparent;
   --kbq-badge-dark-color-scheme-solid-secondary-color: white;
+  --kbq-badge-size-normal-icon-left-width: 16px;
+  --kbq-badge-size-normal-icon-left-height: 16px;
+  --kbq-badge-size-normal-icon-left-margin-right: 4px;
+  --kbq-badge-size-normal-icon-right-width: 16px;
+  --kbq-badge-size-normal-icon-right-height: 16px;
+  --kbq-badge-size-normal-icon-right-margin-left: 4px;
   --kbq-badge-size-normal-vertical-padding: 4px;
   --kbq-badge-size-normal-horizontal-padding: 8px;
   --kbq-badge-size-normal-content-padding: 4px;
   --kbq-badge-size-normal-border-width: 1px;
   --kbq-badge-size-normal-border-radius: 4px;
+  --kbq-badge-size-compact-icon-left-width: 16px;
+  --kbq-badge-size-compact-icon-left-height: 16px;
+  --kbq-badge-size-compact-icon-left-margin-right: 2px;
+  --kbq-badge-size-compact-icon-right-width: 16px;
+  --kbq-badge-size-compact-icon-right-height: 16px;
+  --kbq-badge-size-compact-icon-right-margin-left: 2px;
   --kbq-badge-size-compact-vertical-padding: 0;
   --kbq-badge-size-compact-horizontal-padding: 4px;
   --kbq-badge-size-compact-content-padding: 2px;
@@ -286,8 +311,12 @@
   --kbq-input-size-padding-vertical: 4px;
   --kbq-link-light-color-scheme-text: #0066FF;
   --kbq-link-light-color-scheme-border-bottom: #99C2FF;
-  --kbq-link-light-color-scheme-state-visited-text: #831FC1;
+  --kbq-link-light-color-scheme-state-visited-text: #861FC6;
   --kbq-link-light-color-scheme-state-visited-border-bottom: #D5A7F1;
+  --kbq-link-light-color-scheme-state-visited-hover-text: #771DAF;
+  --kbq-link-light-color-scheme-state-visited-hover-border-bottom: #D5A7F1;
+  --kbq-link-light-color-scheme-state-visited-active-text: #68189A;
+  --kbq-link-light-color-scheme-state-visited-active-border-bottom: #D5A7F1;
   --kbq-link-light-color-scheme-state-hover-text: #005CE5;
   --kbq-link-light-color-scheme-state-hover-border-bottom: #99C2FF;
   --kbq-link-light-color-scheme-state-active-text: #0052CC;
@@ -297,8 +326,12 @@
   --kbq-link-light-color-scheme-state-disabled-border-bottom: #D9DBE3;
   --kbq-link-dark-color-scheme-text: #66A3FF;
   --kbq-link-dark-color-scheme-border-bottom: rgba(#66A3FF, 0.32);;
-  --kbq-link-dark-color-scheme-state-visited-text: #AA50E2;
-  --kbq-link-dark-color-scheme-state-visited-border-bottom: rgba(#AA50E2, 0.32);
+  --kbq-link-dark-color-scheme-state-visited-text: #861FC6;
+  --kbq-link-dark-color-scheme-state-visited-border-bottom: #D5A7F1;
+  --kbq-link-dark-color-scheme-state-visited-hover-text: #771DAF;
+  --kbq-link-dark-color-scheme-state-visited-hover-border-bottom: #D5A7F1;
+  --kbq-link-dark-color-scheme-state-visited-active-text: #68189A;
+  --kbq-link-dark-color-scheme-state-visited-active-border-bottom: #D5A7F1;
   --kbq-link-dark-color-scheme-state-hover-text: #3385FF;
   --kbq-link-dark-color-scheme-state-hover-border-bottom: rgba(#3385FF, 0.32);
   --kbq-link-dark-color-scheme-state-active-text: #0052CC;
@@ -306,7 +339,7 @@
   --kbq-link-dark-color-scheme-state-focused-outline: #3385FF;
   --kbq-link-size-state-focused-outline-offset: 0px;
   --kbq-link-size-state-focused-outline-width: 2px;
-  --kbq-link-size-caption-content-padding: 2px;
+  --kbq-link-size-compact-content-padding: 2px;
   --kbq-link-size-normal-content-padding: 2px;
   --kbq-link-size-big-content-padding: 4px;
   --kbq-modal-size-small-width: 400px;
