@@ -1,4 +1,5 @@
 import { DictionaryItemBrief } from '../dictionaries';
+import isNil from 'lodash/isNil';
 
 export enum AttributeObservableEntity {
     Size = 'Size',
@@ -148,6 +149,7 @@ export const isKnownAttributeValue = (value: unknown) => {
         isNumberAttributeValue(value) ||
         isBooleanAttributeValue(value) ||
         isStringAttributeValue(value) ||
+        isNilAttributeValue(value) ||
         isDictionaryItemAttributeValue(value)
     );
 };
@@ -155,6 +157,7 @@ export const isKnownAttributeValue = (value: unknown) => {
 export const isNumberAttributeValue = (value: unknown): value is number => typeof value === 'number';
 export const isBooleanAttributeValue = (value: unknown): value is boolean => typeof value === 'boolean';
 export const isStringAttributeValue = (value: unknown): value is string => typeof value === 'string';
+export const isNilAttributeValue = (value: unknown): value is null => isNil(value);
 export const isDictionaryItemAttributeValue = (value: unknown): value is DictionaryItemBrief => {
     const requiredKeys: (keyof DictionaryItemBrief)[] = ['uuid', 'key', 'dictionary'];
     const keys = typeof value === 'object' ? Object.getOwnPropertyNames(value) : [];

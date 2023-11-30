@@ -37,4 +37,6 @@ export type BaseEntityKeyType = 'String';
 export type IdentityKeyType = 'IANAID' | 'NICHandle';
 export type FileKeyType = 'MD5Hash' | 'SHA1Hash' | 'SHA256Hash';
 
+export const FILE_KEY_TYPES: FileKeyType[] = ['MD5Hash', 'SHA1Hash', 'SHA256Hash'];
+
 export type ObservableEntityKeyType = BaseEntityKeyType | IdentityKeyType | FileKeyType;

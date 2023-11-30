@@ -26,6 +26,15 @@ export type AggregateSection<OET = ObservableEntityType> =
         | IdentityAggregateSection
         | FileAggregateSection;
 
+// prettier-ignore
+export type Section<SectionName = AggregateSectionName> =
+    SectionName extends AggregateSectionName.AssociatedAttributes ? AssociatedAttributesSection :
+        SectionName extends AggregateSectionName.NaturalAttributes ? NaturalAttributesSection :
+            SectionName extends AggregateSectionName.Labels ? LabelsSection :
+                | AssociatedAttributesSection
+                | NaturalAttributesSection
+                | LabelsSection;
+
 export interface BaseAggregateSection<SectionType extends AggregateSectionName, SectionData> {
     name: SectionType;
     data: SectionData;
