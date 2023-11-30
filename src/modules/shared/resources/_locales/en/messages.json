@@ -1,4 +1,8 @@
-{
+﻿{
+    "Common_Pseudo_Text_Save": {
+        "message": "Save"
+    },
+
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
@@ -152,5 +156,22 @@
     },
     "Entity_PotentialDamage_Text_Low": {
         "message": "Low"
+    },
+
+    "Settings_FormField_Text_Host": {
+        "message": "Server address"
+    },
+    "Settings_FormField_Text_Key": {
+        "message": "API key"
+    },
+
+    "Auth_Error_Text_Unknown": {
+        "message": "Could not save the data"
+    },
+    "Auth_Error_Text_UnknownApiKey": {
+        "message": "Unknown API key, or the key user is blocked. Replace the key."
+    },
+    "Auth_Error_Text_Forbidden": {
+        "message": "The API key permissions are insufficient for the extension to work correctly. Replace the key."
     }
 }

@@ -1,7 +1,6 @@
 {
     "name": "__MSG_Common_App_Text_Name__",
     "version": "2.0.0",
-    "description": "__MSG_Common_App_Text_Description__",
     "default_locale": "en",
     "manifest_version": 3,
     "permissions": ["storage", "tabs"],

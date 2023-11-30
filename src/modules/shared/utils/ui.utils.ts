@@ -29,7 +29,9 @@ export abstract class Component<Props> {
     protected abstract createComponent(): HTMLElement;
 
     protected registerInnerComponent(c: Component<unknown>): void {
-        this.innerComponents.push(c);
+        if (!this.innerComponents.includes(c)) {
+            this.innerComponents.push(c);
+        }
     }
 
     protected renderContent(root: HTMLElement | null, content: string | HTMLElement | Component<unknown> | null): void {

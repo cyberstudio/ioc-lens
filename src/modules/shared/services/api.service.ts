@@ -98,7 +98,9 @@ export class ApiService {
 
                 const queryParams = params && method === 'get' ? '?' + params.toString() : '';
 
-                const url = `${requestConfig.host}/${path}${queryParams}`;
+                const host = requestConfig.host.endsWith('/') ? requestConfig.host : `${requestConfig.host}/`;
+
+                const url = `${host}${path}${queryParams}`;
 
                 return fetch(url, {
                     method,

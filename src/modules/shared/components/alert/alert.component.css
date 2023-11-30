@@ -14,3 +14,12 @@
       padding-top: var(--kbq-alert-size-container-padding-vertical);
     }
 }
+
+
+.kbq-theme-auto {
+    & .kbq-alert {
+        @media (prefers-color-scheme: dark) {
+            background: var(--kbq-light-color-scheme-states-background-error-fade-active);
+        }
+    }
+}

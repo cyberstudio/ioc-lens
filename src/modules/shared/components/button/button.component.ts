@@ -6,13 +6,13 @@ import './button.component.css';
 interface TextButtonProps {
     type: 'primary' | 'transparent';
     text: string;
-    onClick: (event: Event) => void;
+    onClick?: (event: Event) => void;
 }
 
 interface IconButtonProps {
     type: 'icon';
     iconName: 'close' | 'back';
-    onClick: (event: Event) => void;
+    onClick?: (event: Event) => void;
 }
 
 type ButtonProps = TextButtonProps | IconButtonProps;
@@ -46,7 +46,11 @@ export class ButtonComponent extends Component<ButtonProps> {
             el.appendChild(textTemplate);
         }
 
-        this.on(el, 'click', (e) => this.props.onClick(e));
+        this.on(el, 'click', (e) => {
+            if (this.props.onClick) {
+                this.props.onClick(e);
+            }
+        });
 
         return el;
     }

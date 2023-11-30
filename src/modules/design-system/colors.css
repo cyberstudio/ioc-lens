@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 Nov 2023 09:48:52 GMT
+ * Generated on Tue, 21 Nov 2023 13:49:17 GMT
  */
 
 :root {
@@ -33,6 +33,7 @@
   --kbq-light-color-scheme-background-overlay-hover: rgba(black, 0.08);
   --kbq-light-color-scheme-background-overlay-active: rgba(black, 0.16);
   --kbq-light-color-scheme-background-overlay-disabled: rgba(white, 0.64);
+  --kbq-light-color-scheme-background-chrome-background: #FFFFFF;
   --kbq-light-color-scheme-foreground-white: #FFFFFF;
   --kbq-light-color-scheme-foreground-theme: #0066FF;
   --kbq-light-color-scheme-foreground-theme-secondary: #3385FF;
@@ -151,6 +152,7 @@
   --kbq-dark-color-scheme-background-overlay-hover: rgba(white, 0.05);
   --kbq-dark-color-scheme-background-overlay-active: rgba(white, 0.1);
   --kbq-dark-color-scheme-background-overlay-disabled: rgba(black, 0.2);
+  --kbq-dark-color-scheme-background-chrome-background: #292A2D;
   --kbq-dark-color-scheme-states-focused-color: #3385FF;
   --kbq-dark-color-scheme-states-focused-color-error: #DD1D04;
   --kbq-dark-color-scheme-states-selected-color: rgba(0, 102, 255, 0.32);

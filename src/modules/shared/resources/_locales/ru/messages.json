@@ -1,4 +1,8 @@
 {
+    "Common_Pseudo_Text_Save": {
+        "message": "Сохранить"
+    },
+
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
@@ -152,5 +156,22 @@
     },
     "Entity_PotentialDamage_Text_Low": {
         "message": "Незначительный"
+    },
+
+    "Settings_FormField_Text_Host": {
+        "message": "Адрес сервера"
+    },
+    "Settings_FormField_Text_Key": {
+        "message": "Ключ API"
+    },
+
+    "Auth_Error_Text_Unknown": {
+        "message": "Не удалось сохранить данные"
+    },
+    "Auth_Error_Text_UnknownApiKey": {
+        "message": "Неизвестный ключ API или пользователь ключа заблокирован. Замените его"
+    },
+    "Auth_Error_Text_Forbidden": {
+        "message": "У ключа API недостаточно привилегий для корректной работы расширения. Замените его"
     }
 }

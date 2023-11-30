@@ -1,0 +1,12 @@
+{
+    'light-color-scheme': {
+        background: {
+            'chrome-background': { value: '#FFFFFF' }
+        }
+    },
+    'dark-color-scheme': {
+        background: {
+            'chrome-background': { value: '#292A2D' }
+        }
+    }
+}

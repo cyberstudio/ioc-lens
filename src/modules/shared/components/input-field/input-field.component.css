@@ -29,3 +29,19 @@
         }
     }
 }
+
+.kbq-theme-auto {
+    & .kbq-input-field {
+        @media (prefers-color-scheme: dark) {
+            color: var(--kbq-light-color-scheme-foreground-white);
+            border-color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
+            background-color: var(--kbq-dark-color-scheme-background-chrome-background);
+        }
+
+        &:focus {
+            @media (prefers-color-scheme: dark) {
+                border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
+            }
+        }
+    }
+}

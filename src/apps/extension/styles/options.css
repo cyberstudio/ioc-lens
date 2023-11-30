@@ -1,1 +1,14 @@
 @import url('../../../modules/design-system/index.css');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.kbq-theme-auto {
+    body& {
+        @media (prefers-color-scheme: dark) {
+            background-color: var(--kbq-dark-color-scheme-background-chrome-background);
+        }
+    }
+}

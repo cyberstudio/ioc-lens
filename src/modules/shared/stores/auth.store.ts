@@ -1,8 +1,11 @@
 import { ChromeStorageAdapter } from '../adapters';
 
-type AuthIdleState = { state: 'Idle' };
-type AuthSuccessState = { state: 'Success'; token: string };
-type AuthFailureState = { state: 'Failure'; error: 'UnknownApiKey' | 'Forbidden' | 'UnknownSettings' | 'Unknown' };
+export type AuthIdleState = { state: 'Idle' };
+export type AuthSuccessState = { state: 'Success'; token: string };
+export type AuthFailureState = {
+    state: 'Failure';
+    error: 'UnknownApiKey' | 'Forbidden' | 'UnknownSettings' | 'Unknown';
+};
 
 export type AuthStoreState = AuthIdleState | AuthSuccessState | AuthFailureState;
 

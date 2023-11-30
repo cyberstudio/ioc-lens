@@ -102,3 +102,44 @@
         align-items: center;
     }
 }
+
+.kbq-theme-auto {
+    & .kbq-button {
+        /* stylelint-disable-next-line no-descending-specificity */
+        &.kbq-button--primary {
+            @media (prefers-color-scheme: dark) {
+                border-color: var(--kbq-light-color-scheme-background-bg);
+                color: var(--kbq-light-color-scheme-foreground-contrast);
+                background: var(--kbq-light-color-scheme-background-bg);
+            }
+
+            &:focus-visible {
+                border-color: var(--kbq-light-color-scheme-states-focused-color);
+            }
+
+            &:hover {
+                @media (prefers-color-scheme: dark) {
+                    border-color: var(--kbq-light-color-scheme-background-background-less-contrast);
+                    color: var(--kbq-light-color-scheme-foreground-contrast);
+                    background: var(--kbq-light-color-scheme-background-background-less-contrast);
+                }
+            }
+
+            &:active {
+                @media (prefers-color-scheme: dark) {
+                    border-color: var(--kbq-light-color-scheme-background-contrast-fade);
+                    color: var(--kbq-light-color-scheme-foreground-contrast);
+                    background: var(--kbq-light-color-scheme-background-contrast-fade);
+                }
+            }
+
+            &:active:hover {
+                @media (prefers-color-scheme: dark) {
+                    border-color: var(--kbq-light-color-scheme-background-contrast-fade);
+                    color: var(--kbq-light-color-scheme-foreground-contrast);
+                    background: var(--kbq-light-color-scheme-background-contrast-fade);
+                }
+            }
+        }
+    }
+}
