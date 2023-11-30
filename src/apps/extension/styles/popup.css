@@ -1,1 +1,8 @@
 @import url('../../../modules/design-system/index.css');
+
+body {
+    margin: 0;
+    padding: var(--kbq-size-xxl) var(--kbq-size-xxl) var(--kbq-size-3xl);
+    width: 360px;
+    box-sizing: border-box;
+}

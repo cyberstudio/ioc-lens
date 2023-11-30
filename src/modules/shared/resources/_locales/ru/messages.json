@@ -7,6 +7,16 @@
         "message": "IoC Lens"
     },
 
+    "Common_Error_Text_Saving": {
+        "message": "Не удалось сохранить данные"
+    },
+    "Common_Error_Text_Loading": {
+        "message": "Не удалось загрузить данные"
+    },
+    "Common_Error_Button_Retry": {
+        "message": "Попробуйте еще раз"
+    },
+
     "Entity_Confidence_Text_Tooltip": {
         "message": "Достоверность"
     },
@@ -158,6 +168,22 @@
         "message": "Незначительный"
     },
 
+    "Welcome_ActivationState_Text_On": {
+        "message": "Включено"
+    },
+
+    "Welcome_ActivationState_Text_Off": {
+        "message": "Включить"
+    },
+
+    "Welcome_Instruction_Text_Title": {
+        "message": "Инструкция"
+    },
+
+    "Welcome_Instruction_Text_Description": {
+        "message": "Чтобы увидеть данные об IoC, наведите на доменное имя, IP-адрес, адрес эл. почты, телефонный номер, URL или хеш-сумму файла"
+    },
+
     "Settings_FormField_Text_Host": {
         "message": "Адрес сервера"
     },
@@ -165,13 +191,19 @@
         "message": "Ключ API"
     },
 
-    "Auth_Error_Text_Unknown": {
-        "message": "Не удалось сохранить данные"
+    "Auth_Error_Text_UnknownSettings": {
+        "message": "Введите адрес сервера и ключ API в параметрах"
     },
     "Auth_Error_Text_UnknownApiKey": {
         "message": "Неизвестный ключ API или пользователь ключа заблокирован. Замените его"
     },
     "Auth_Error_Text_Forbidden": {
         "message": "У ключа API недостаточно привилегий для корректной работы расширения. Замените его"
+    },
+    "Auth_Error_Button_ReplaceKey": {
+        "message": "Заменить ключ"
+    },
+    "Auth_Error_Button_GoToSettings": {
+        "message": "Перейти к параметрам"
     }
 }

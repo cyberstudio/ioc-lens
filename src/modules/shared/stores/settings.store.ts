@@ -24,7 +24,7 @@ export class SettingsStore {
     async isActivated(host: string) {
         const { activations } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
 
-        return activations[host] || false;
+        return activations?.[host] || false;
     }
 
     async getDataSource() {
@@ -48,6 +48,16 @@ export class SettingsStore {
         });
     }
 
+    onActivationsChange(cb: () => void) {
+        return ChromeStorageAdapter.onChange<SettingsStoreState>(namespace, (changes) => {
+            if (isNil(changes.activations)) {
+                return;
+            }
+
+            return cb();
+        });
+    }
+
     onActivationChange(host: string, cb: (isActivated: boolean) => void) {
         return ChromeStorageAdapter.onChange<SettingsStoreState>(namespace, (changes) => {
             const isActivated = changes.activations?.[host];
@@ -61,7 +71,11 @@ export class SettingsStore {
     }
 
     private async toggleActivationState(host: string, value: boolean) {
-        const { activations } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
+        let { activations } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
+
+        if (!activations) {
+            activations = {};
+        }
 
         activations[host] = value;
 

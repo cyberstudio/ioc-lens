@@ -6,6 +6,7 @@ const helpers = require('./helpers');
 module.exports = {
     entry: {
         content: './src/apps/extension/content.ts',
+        background: './src/apps/extension/background.ts',
         popup: './src/apps/extension/popup.ts',
         options: './src/apps/extension/options.ts'
     },

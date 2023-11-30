@@ -79,7 +79,7 @@ export class ApiService {
             .then((requestConfig) => {
                 const hasToken = !isNil(requestConfig.token);
 
-                if (isNil(requestConfig.host)) {
+                if (isNil(requestConfig.host) || requestConfig.host.length === 0) {
                     return Result.err(new ApiError(ApiErrorCode.UnknownHost));
                 }
 
@@ -144,7 +144,7 @@ export class ApiService {
 
         Object.keys(params).forEach((key) => {
             castArray(params[key]).forEach((val) => {
-                urlSearchParams.append(key, val.toString());
+                urlSearchParams.append(key, val?.toString());
             });
         });
 

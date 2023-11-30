@@ -23,7 +23,7 @@ export class AuthService {
 
         const { apiKey } = await this.settingStore.getDataSource();
 
-        if (apiKey === null) {
+        if (apiKey === null || apiKey.length === 0) {
             await this.authStore.toUnknownSettingsState();
 
             return Promise.resolve();

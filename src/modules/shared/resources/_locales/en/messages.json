@@ -7,6 +7,16 @@
         "message": "IoC Lens"
     },
 
+    "Common_Error_Text_Saving": {
+        "message": "Could not save the data"
+    },
+    "Common_Error_Text_Loading": {
+        "message": "Could not load data"
+    },
+    "Common_Error_Button_Retry": {
+        "message": "Try again"
+    },
+
     "Entity_Confidence_Text_Tooltip": {
         "message": "Confidence score"
     },
@@ -158,6 +168,22 @@
         "message": "Low"
     },
 
+    "Welcome_ActivationState_Text_On": {
+        "message": "On"
+    },
+
+    "Welcome_ActivationState_Text_Off": {
+        "message": "Turn on"
+    },
+
+    "Welcome_Instruction_Text_Title": {
+        "message": "Instructions"
+    },
+
+    "Welcome_Instruction_Text_Description": {
+        "message": "To view the IoC data, hover over the domain name, IP address, email address, phone number, URL, or file hash"
+    },
+
     "Settings_FormField_Text_Host": {
         "message": "Server address"
     },
@@ -165,13 +191,19 @@
         "message": "API key"
     },
 
-    "Auth_Error_Text_Unknown": {
-        "message": "Could not save the data"
+    "Auth_Error_Text_UnknownSettings": {
+        "message": "Enter a server address and API key in parameters"
     },
     "Auth_Error_Text_UnknownApiKey": {
         "message": "Unknown API key, or the key user is blocked. Replace the key."
     },
     "Auth_Error_Text_Forbidden": {
         "message": "The API key permissions are insufficient for the extension to work correctly. Replace the key."
+    },
+    "Auth_Error_Button_ReplaceKey": {
+        "message": "Replace the key"
+    },
+    "Auth_Error_Button_GoToSettings": {
+        "message": "Go to parameters"
     }
 }

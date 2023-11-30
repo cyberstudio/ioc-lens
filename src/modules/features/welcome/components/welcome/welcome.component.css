@@ -1,0 +1,45 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-welcome {
+    position: relative;
+    color: var(--kbq-light-color-scheme-foreground-contrast);
+
+    & .kbq-welcome__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: var(--kbq-size-l);
+    }
+
+    & .kbq-welcome__icon {
+        margin-right: var(--kbq-size-m);
+        width: 48px;
+        height: 48px;
+        background-image: image-set(
+            url('../../../../shared/resources/images/icon_48.png') 1x,
+            url('../../../../shared/resources/images/icon_96.png') 2x
+        );
+    }
+
+    & .kbq-welcome__activation {
+        display: flex;
+        margin-left: auto;
+    }
+
+    & .kbq-welcome__activation-field {
+        margin-right: var(--kbq-size-s);
+    }
+
+    & .kbq-welcome__instruction-title {
+        margin-top: 0;
+        display: inline-block;
+        color: var(--kbq-light-color-scheme-foreground-text-less-contrast);
+        margin-bottom: var(--kbq-size-s);
+    }
+
+    & .kbq-welcome__auth-info {
+        &:not(:empty) {
+            margin-top: var(--kbq-size-l);
+        }
+    }
+}

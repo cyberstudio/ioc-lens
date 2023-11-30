@@ -1,4 +1,5 @@
 export * from './alert';
+export * from './auth-error-alert';
 export * from './badge';
 export * from './button';
 export * from './input-field';

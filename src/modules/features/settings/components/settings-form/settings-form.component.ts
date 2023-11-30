@@ -171,7 +171,7 @@ export class SettingsFormComponent extends Component<SettingsFormProps> {
             }
 
             default: {
-                return new AlertComponent({ text: this.translateService.translate('Auth_Error_Text_Unknown') });
+                return new AlertComponent({ text: this.translateService.translate('Common_Error_Text_Saving') });
             }
         }
     }
