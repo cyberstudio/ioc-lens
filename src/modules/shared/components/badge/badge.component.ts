@@ -1,3 +1,4 @@
+import { initKbqTitle } from '../../directives';
 import { Component } from '../../utils';
 
 import './badge.component.css';
@@ -30,6 +31,8 @@ export class BadgeComponent extends Component<BadgeProps> {
         } else {
             contentEl.appendChild(this.props.content.render());
         }
+
+        initKbqTitle(contentEl);
 
         return el;
     }

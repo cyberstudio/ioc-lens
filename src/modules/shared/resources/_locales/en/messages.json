@@ -17,6 +17,16 @@
         "message": "Try again"
     },
 
+    "Common_HashSum_Text_MD5": {
+        "message": "MD5"
+    },
+    "Common_HashSum_Text_SHA1": {
+        "message": "SHA-1"
+    },
+    "Common_HashSum_Text_SHA256": {
+        "message": "SHA-256"
+    },
+
     "Entity_Confidence_Text_Tooltip": {
         "message": "Confidence score"
     },
@@ -166,6 +176,10 @@
     },
     "Entity_PotentialDamage_Text_Low": {
         "message": "Low"
+    },
+
+    "Entity_Url_Text_FullLink": {
+        "message": "Full link"
     },
 
     "Welcome_ActivationState_Text_On": {

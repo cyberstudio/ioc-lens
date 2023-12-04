@@ -184,19 +184,20 @@ export class EntityMetadataMapper {
             .filter((attribute) => !!attribute)
             .map((attribute) =>
                 this.getEntityAttributeValuesProps(attribute as FactOfNaturalAttribute | FactOfAssociatedAttribute)
-            );
+            )
+            .filter((attribute) => attribute.values.length > 0);
 
         const factsOfKnownAttributes = entity
             .getAllFactsOfAttribute()
             .filter(
                 (fact) =>
-                    verdictAttributesOrder.indexOf(<AttributeObservableEntity>fact.attributeName) === -1 &&
-                    isKnownAttributeValue(fact.values[0]?.value)
+                    verdictAttributesOrder.indexOf(fact.attributeName as AttributeObservableEntity) === -1 &&
+                    isKnownAttributeValue(fact.attributeName, fact.values[0]?.value)
             );
 
         const attributes = factsOfKnownAttributes
             .sort((fact) => {
-                const isKnownAttribute = attributesOrder.includes(<AttributeObservableEntity>fact.attributeName);
+                const isKnownAttribute = attributesOrder.includes(fact.attributeName as AttributeObservableEntity);
 
                 return isKnownAttribute ? -1 : Infinity;
             })
@@ -235,6 +236,6 @@ export class EntityMetadataMapper {
         const values = fact?.values || [];
         const hasValues = values.length > 0;
 
-        return hasValues ? values : [{ confidence: 0, value: null }];
+        return hasValues ? values : [{ confidence: null, value: null }];
     }
 }

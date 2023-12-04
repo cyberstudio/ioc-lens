@@ -9,11 +9,11 @@ export const mockChromeI18nAdapter = (currentLocale: string = 'ru') => {
     ChromeI18nAdapter.translate = (key: string): string => {
         switch (currentLocale) {
             case 'ru': {
-                return ru[key as keyof typeof ru].message;
+                return ru[key as keyof typeof ru]?.message || '';
             }
 
             case 'en': {
-                return en[key as keyof typeof en].message;
+                return en[key as keyof typeof en]?.message || '';
             }
 
             default: {

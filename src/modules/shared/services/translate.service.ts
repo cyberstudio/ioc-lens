@@ -11,7 +11,7 @@ export class TranslateService {
         const message = ChromeI18nAdapter.translate(key);
 
         if (message.length === 0) {
-            return key;
+            return '';
         }
 
         return new IntlMessageFormat(message, ChromeI18nAdapter.getCurrentLocale()).format(params || {}) as string;

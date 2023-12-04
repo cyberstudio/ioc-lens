@@ -1,0 +1,26 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-attributes {
+    display: block;
+
+    & .kbq-entity-attributes__verdicts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--kbq-size-s);
+        margin-bottom: var(--kbq-size-m);
+    }
+
+    & .kbq-entity-attributes__attributes {
+        margin-bottom: var(--kbq-size-s);
+    }
+
+    & .kbq-entity-attributes__empty-value {
+        color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
+    }
+
+    & .kbq-entity-attributes__labels {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--kbq-size-xs);
+    }
+}

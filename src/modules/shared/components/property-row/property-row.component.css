@@ -6,9 +6,21 @@
     padding-bottom: var(--kbq-size-m);
 
     & .kbq-property-row__header {
-        width: 128px;
+        width: 150px;
         flex-shrink: 0;
         color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
+        word-break: break-word;
+
+        &.kbq-property-row__header--with-note {
+            &::before {
+                position: absolute;
+                display: inline-block;
+                content: '*';
+                margin-left: -0.8em;
+                padding-right: var(--kbq-size-xxs);
+                color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
+            }
+        }
     }
 
     & .kbq-property-row__body {
@@ -18,5 +30,6 @@
         flex-grow: 1;
         min-width: 0;
         color: var(--kbq-light-color-scheme-foreground-contrast);
+        word-break: break-word;
     }
 }

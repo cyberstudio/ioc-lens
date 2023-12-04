@@ -79,6 +79,10 @@ class KbqTitleDirective {
 let directive: KbqTitleDirective | null = null;
 
 export const initKbqTitle = (el: HTMLElement) => {
+    if (el.querySelectorAll(`[${directiveName}]`).length > 0 || el.hasAttribute(directiveName)) {
+        return;
+    }
+
     el.setAttribute(directiveName, '');
 
     if (directive) {

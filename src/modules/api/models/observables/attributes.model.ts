@@ -31,6 +31,8 @@ export enum AttributeObservableEntity {
     Platforms = 'Platforms'
 }
 
+export const ATTRIBUTES = Object.values(AttributeObservableEntity);
+
 /* eslint-disable prettier/prettier */
 export type AttributeValueType<AttributeName = AttributeObservableEntity> =
     AttributeName extends AttributeObservableEntity.Size ? number :
@@ -144,12 +146,16 @@ export enum PotentialDamage {
 
 export const POTENTIAL_DAMAGES = Object.values(PotentialDamage);
 
-export const isKnownAttributeValue = (value: unknown) => {
+export const isKnownAttribute = (attributeName: AttributeObservableEntity | string) => {
+    return ATTRIBUTES.includes(attributeName as AttributeObservableEntity);
+};
+
+export const isKnownAttributeValue = (attributeName: AttributeObservableEntity | string, value: unknown) => {
     return (
         isNumberAttributeValue(value) ||
         isBooleanAttributeValue(value) ||
         isStringAttributeValue(value) ||
-        isNilAttributeValue(value) ||
+        (isNilAttributeValue(value) && isKnownAttribute(attributeName)) ||
         isDictionaryItemAttributeValue(value)
     );
 };
@@ -159,6 +165,10 @@ export const isBooleanAttributeValue = (value: unknown): value is boolean => typ
 export const isStringAttributeValue = (value: unknown): value is string => typeof value === 'string';
 export const isNilAttributeValue = (value: unknown): value is null => isNil(value);
 export const isDictionaryItemAttributeValue = (value: unknown): value is DictionaryItemBrief => {
+    if (isNilAttributeValue(value)) {
+        return false;
+    }
+
     const requiredKeys: (keyof DictionaryItemBrief)[] = ['uuid', 'key', 'dictionary'];
     const keys = typeof value === 'object' ? Object.getOwnPropertyNames(value) : [];
 
