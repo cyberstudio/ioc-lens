@@ -1,0 +1,27 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-info {
+    display: block;
+
+    & .kbq-entity-info__relations-statistic {
+        margin-top: var(--kbq-size-l);
+
+        &.kbq-entity-info__relations-statistic--empty {
+            color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
+        }
+    }
+
+    & .kbq-entity-info__i18n-notes {
+        margin-top: var(--kbq-size-xl);
+        color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
+
+        &::before {
+            position: absolute;
+            display: inline-block;
+            content: '*';
+            margin-left: -0.8em;
+            padding-right: var(--kbq-size-xxs);
+            color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
+        }
+    }
+}

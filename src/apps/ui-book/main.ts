@@ -1,7 +1,8 @@
 import {
     valueWithConfidenceComponentExample,
     entityAttributeValueComponentExample,
-    entityAttributesComponentExample
+    entityAttributesComponentExample,
+    entityInfoComponentExample
 } from '../../modules/features/entity-info/components';
 import {
     alertExample,
@@ -61,7 +62,8 @@ const examples: UIBookExample[] = [
     alertExample,
     valueWithConfidenceComponentExample,
     entityAttributeValueComponentExample,
-    entityAttributesComponentExample
+    entityAttributesComponentExample,
+    entityInfoComponentExample
 ];
 
 mockChromeI18nAdapter();

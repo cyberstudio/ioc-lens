@@ -3,6 +3,7 @@ import {
     FactOfAssociatedAttribute,
     FactOfNaturalAttribute,
     FILE_KEY_TYPES,
+    isKnownAttribute,
     isKnownAttributeValue,
     ObservableEntityType
 } from '../../../api/models';
@@ -210,7 +211,8 @@ export class EntityMetadataMapper {
             verdictAttributes,
             attributes,
             relatedEntitiesAmount: entity.getLinksAmount(),
-            labels: entity.getLabels()
+            labels: entity.getLabels(),
+            hasUnknownAttributes: attributes.some(({ isKnownAttribute }) => !isKnownAttribute)
         };
     }
 
@@ -228,6 +230,7 @@ export class EntityMetadataMapper {
 
         return {
             attributeName: fact.attributeName,
+            isKnownAttribute: isKnownAttribute(fact.attributeName),
             values
         };
     }

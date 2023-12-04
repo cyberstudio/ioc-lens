@@ -10,10 +10,6 @@
         margin-bottom: var(--kbq-size-m);
     }
 
-    & .kbq-entity-attributes__attributes {
-        margin-bottom: var(--kbq-size-s);
-    }
-
     & .kbq-entity-attributes__empty-value {
         color: var(--kbq-light-color-scheme-foreground-contrast-tertiary);
     }
@@ -22,5 +18,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: var(--kbq-size-xs);
+        padding-top: var(--kbq-size-s);
+        padding-bottom: var(--kbq-size-s);
     }
 }

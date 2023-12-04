@@ -6,6 +6,9 @@
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
+    "Common_App_Text_I18nNote": {
+        "message": "Будет переведено на русский язык в следующих версиях расширения."
+    },
 
     "Common_Error_Text_Saving": {
         "message": "Не удалось сохранить данные"
@@ -180,6 +183,13 @@
 
     "Entity_Url_Text_FullLink": {
         "message": "Полная ссылка"
+    },
+
+    "Entity_Relations_Text_StatisticTitle": {
+        "message": "{count, plural, one{# связь с другим объектом} few{# связи с другими объектами} other{# cвязей с другими объектами}}"
+    },
+    "Entity_Relations_Text_EmptyStatisticTitle": {
+        "message": "Связи отсутствуют"
     },
 
     "Welcome_ActivationState_Text_On": {

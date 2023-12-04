@@ -7,6 +7,10 @@ export class TranslateService {
         return ChromeI18nAdapter.getCurrentLocale();
     }
 
+    get isEnglishLocale(): boolean {
+        return this.currentLocale.toLowerCase().includes('en');
+    }
+
     translate(key: string, params?: Record<string, string | number | boolean>): string {
         const message = ChromeI18nAdapter.translate(key);
 

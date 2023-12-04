@@ -32,10 +32,12 @@ interface BaseEntityMetadata<Type extends ObservableEntityType> {
     attributes: EntityAttributeValuesProps[];
     labels: string[];
     relatedEntitiesAmount: number;
+    hasUnknownAttributes: boolean;
 }
 
 export interface EntityAttributeValuesProps<A extends AttributeObservableEntity | string = AttributeObservableEntity> {
     attributeName: A | string;
+    isKnownAttribute: boolean;
     values: {
         value: AttributeValueType<A>;
         confidence: number | null;

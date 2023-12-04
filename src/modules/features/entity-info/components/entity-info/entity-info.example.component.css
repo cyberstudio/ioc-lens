@@ -1,0 +1,11 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-info-example {
+    & .kbq-entity-info-example__row {
+        margin-bottom: var(--kbq-size-l);
+    }
+
+    & .kbq-entity-info {
+        max-width: 400px;
+    }
+}

@@ -1,5 +1,5 @@
 import { EntityAttributeValueComponent } from '../entity-attribute-value/entity-attribute-value.component';
-import { AttributeObservableEntity, ObservableEntityType, isKnownAttribute } from '../../../../api/models';
+import { AttributeObservableEntity, ObservableEntityType } from '../../../../api/models';
 import { BadgeComponent, PropertyRowComponent } from '../../../../shared/components';
 import { TranslateService } from '../../../../shared/services';
 import { Component } from '../../../../shared/utils';
@@ -124,7 +124,7 @@ export class EntityAttributesComponent extends Component<EntityAttributesProps> 
 
         return new PropertyRowComponent({
             title: translatedTitle,
-            hasTitleNote: !isKnownAttribute(attribute.attributeName),
+            hasTitleNote: !attribute.isKnownAttribute,
             content: valuesContainer
         });
     }

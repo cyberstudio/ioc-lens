@@ -6,6 +6,9 @@
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
+    "Common_App_Text_I18nNote": {
+        "message": "Russian translations will be provided in the next versions of the extension."
+    },
 
     "Common_Error_Text_Saving": {
         "message": "Could not save the data"
@@ -180,6 +183,13 @@
 
     "Entity_Url_Text_FullLink": {
         "message": "Full link"
+    },
+
+    "Entity_Relations_Text_StatisticTitle": {
+        "message": "{count, plural, one{# relation to another object} other{# relations to other objects}}"
+    },
+    "Entity_Relations_Text_EmptyStatisticTitle": {
+        "message": "No relations"
     },
 
     "Welcome_ActivationState_Text_On": {
