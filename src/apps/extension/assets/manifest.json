@@ -25,6 +25,7 @@
         {
             "matches": ["*://*/*"],
             "all_frames": true,
+            "css": ["styles/content.css"],
             "js": ["content.js"]
         }
     ],
@@ -34,12 +35,7 @@
     },
     "web_accessible_resources": [
         {
-            "resources": [
-                "images/icon_16.png",
-                "images/icon_32.png",
-                "images/icon_disabled_16.png",
-                "images/icon_disabled_32.png"
-            ],
+            "resources": ["images/*.png", "*.png"],
             "matches": ["<all_urls>"]
         }
     ],

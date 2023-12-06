@@ -1,0 +1,44 @@
+@import url('../../../design-system/index.css');
+
+.kbq-key-icon-button {
+    position: fixed;
+    width: var(--kbq-size-xxl);
+    height: var(--kbq-size-xxl);
+    cursor: pointer;
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    padding: 3px;
+    background: transparent;
+    border-radius: var(--kbq-size-xxs);
+    border: 1px solid  var(--kbq-light-color-scheme-line-error-fade);
+    z-index: 999999;
+
+    &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+        right: 0;
+        z-index: -1;
+    }
+
+    &:active,
+    &:hover,
+    &:hover:active, {
+        background: transparent;
+        border: 1px solid  var(--kbq-light-color-scheme-line-error-fade);
+    }
+
+    & .kbq-key-icon-button__icon {
+        width: var(--kbq-size-l);
+        height: var(--kbq-size-l);
+        background-image: image-set(
+            url('chrome-extension://__MSG_@@extension_id__/images/icon_16.png') 1x,
+            url('chrome-extension://__MSG_@@extension_id__/images/icon_32.png') 2x
+        );
+    }
+}

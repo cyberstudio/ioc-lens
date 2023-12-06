@@ -1,3 +1,5 @@
+import isNil from 'lodash/isNil';
+
 import { AuthApiService } from '../../../api/services';
 import { AuthStore, AuthStoreState, SettingsStore } from '../../../shared/stores';
 import { AbortRequestError } from '../../../shared/utils';
@@ -23,7 +25,7 @@ export class AuthService {
 
         const { apiKey } = await this.settingStore.getDataSource();
 
-        if (apiKey === null || apiKey.length === 0) {
+        if (isNil(apiKey) || apiKey.length === 0) {
             await this.authStore.toUnknownSettingsState();
 
             return Promise.resolve();

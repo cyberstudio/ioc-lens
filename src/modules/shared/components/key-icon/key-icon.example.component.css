@@ -1,0 +1,11 @@
+@import url('../../../design-system/index.css');
+
+.kbq-key-icon-example {
+    & .kbq-key-icon-example__row {
+        margin-bottom: var(--kbq-size-l);
+
+        & .kbq-key-icon {
+            margin-right: var(--kbq-size-l);
+        }
+    }
+}

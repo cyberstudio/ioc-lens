@@ -1,4 +1,8 @@
 export abstract class Component<Props> {
+    get ref(): HTMLElement | null {
+        return this.el;
+    }
+
     protected el: HTMLElement | null = null;
 
     private subscriptions: (() => void)[] = [];

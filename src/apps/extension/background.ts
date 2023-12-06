@@ -1,4 +1,5 @@
 import { ChromeRuntimeAdapter, ChromeTabsAdapter } from '../../modules/shared/adapters';
+import { ActiveTabController } from '../../modules/shared/controllers';
 import { ActiveTabService, StatusIconService } from '../../modules/shared/services';
 import { SettingsStore } from '../../modules/shared/stores';
 
@@ -19,6 +20,8 @@ async function main() {
 
         statusIconService.updateIcon(currentActivationState);
     };
+
+    new ActiveTabController(activeTabService);
 }
 
 main();

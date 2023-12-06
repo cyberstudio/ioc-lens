@@ -3,6 +3,7 @@ export * from './auth-error-alert';
 export * from './badge';
 export * from './button';
 export * from './input-field';
+export * from './key-icon';
 export * from './link';
 export * from './popup';
 export * from './progress-spinner';
