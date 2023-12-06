@@ -1,0 +1,15 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-info-popup-example {
+    & .kbq-entity-attributes-example__buttons {
+        & .kbq-button {
+            margin-right: var(--kbq-size-m);
+        }
+    }
+
+    & .kbq-entity-info-popup {
+        margin-top: var(--kbq-size-l);
+        max-width: 500px;
+        max-height: 500px;
+    }
+}

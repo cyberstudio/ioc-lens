@@ -1,11 +1,13 @@
 {
     'light-color-scheme': {
         background: {
+            'error-fade': { value: '#FFE4E0' },
             'chrome-background': { value: '#FFFFFF' }
         }
     },
     'dark-color-scheme': {
         background: {
+            'error-fade': { value: '#FFE4E0' },
             'chrome-background': { value: '#292A2D' }
         }
     }

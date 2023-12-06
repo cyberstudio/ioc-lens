@@ -1,6 +1,7 @@
 @import url('../../../../design-system/index.css');
 
 .kbq-entity-info {
+    position: relative;
     display: block;
 
     & .kbq-entity-info__relations-statistic {

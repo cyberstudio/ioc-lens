@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 21 Nov 2023 13:49:17 GMT
+ * Generated on Thu, 30 Nov 2023 14:17:14 GMT
  */
 
 :root {
@@ -14,7 +14,7 @@
   --kbq-light-color-scheme-secondary-default: #6C7393;
   --kbq-light-color-scheme-info-default: #39C6C6;
   --kbq-light-color-scheme-background-contrast-fade: #E8E9EE;
-  --kbq-light-color-scheme-background-error-fade: #FFE9E6;
+  --kbq-light-color-scheme-background-error-fade: #FFE4E0;
   --kbq-light-color-scheme-background-success-fade: #D9F3CE;
   --kbq-light-color-scheme-background-theme-fade: #E5F0FF;
   --kbq-light-color-scheme-background-warning-fade: #FFECCC;
@@ -152,6 +152,7 @@
   --kbq-dark-color-scheme-background-overlay-hover: rgba(white, 0.05);
   --kbq-dark-color-scheme-background-overlay-active: rgba(white, 0.1);
   --kbq-dark-color-scheme-background-overlay-disabled: rgba(black, 0.2);
+  --kbq-dark-color-scheme-background-error-fade: #FFE4E0;
   --kbq-dark-color-scheme-background-chrome-background: #292A2D;
   --kbq-dark-color-scheme-states-focused-color: #3385FF;
   --kbq-dark-color-scheme-states-focused-color-error: #DD1D04;

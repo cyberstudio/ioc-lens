@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 21 Nov 2023 13:49:17 GMT
+ * Generated on Thu, 30 Nov 2023 14:17:14 GMT
  */
 
 :root {
@@ -13,7 +13,7 @@
   --kbq-alert-size-container-padding-horizontal: 20px;
   --kbq-alert-size-close-button-margin-top: -8px;
   --kbq-alert-size-close-button-margin-right: -12px;
-  --kbq-alert-size-button-stack-padding-top: 12px;
+  --kbq-alert-size-button-stack-padding-top: 8px;
   --kbq-alert-size-button-stack-content-gap-horizontal: 4px;
   --kbq-alert-light-color-scheme-contrast-container-background: #F0F1F4;
   --kbq-alert-light-color-scheme-contrast-container-title: #21222C;
@@ -49,7 +49,7 @@
   --kbq-badge-light-color-scheme-filled-fade-on-warning-color: #D68800;
   --kbq-badge-light-color-scheme-filled-fade-on-warning-caption: #CC8100;
   --kbq-badge-light-color-scheme-filled-fade-on-warning-icon: #F59B00;
-  --kbq-badge-light-color-scheme-filled-fade-on-error-background: #FFE9E6;
+  --kbq-badge-light-color-scheme-filled-fade-on-error-background: #FFE4E0;
   --kbq-badge-light-color-scheme-filled-fade-on-error-color: #E21D03;
   --kbq-badge-light-color-scheme-filled-fade-on-error-caption: #FB2104;
   --kbq-badge-light-color-scheme-filled-fade-on-error-icon: #FB2104;
@@ -356,6 +356,7 @@
   --kbq-modal-size-footer-padding-bottom: 32px;
   --kbq-modal-size-footer-padding-horizontal: 32px;
   --kbq-modal-size-footer-content-gap-horizontal: 16px;
+  --kbq-modal-light-color-scheme-overlay-background: rgba(0, 0, 0, 0.50);
   --kbq-modal-light-color-scheme-container-background: #FFFFFF;
   --kbq-modal-light-color-scheme-container-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
   --kbq-modal-light-color-scheme-close-button-color: #21222C;

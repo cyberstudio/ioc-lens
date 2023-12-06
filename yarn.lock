@@ -223,10 +223,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@koobiq/design-tokens@3.0.0-beta.10":
-  version "3.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@koobiq/design-tokens/-/design-tokens-3.0.0-beta.10.tgz#614deee42b5e04000da622c570602a8eaa0b2e4d"
-  integrity sha512-nWe0+/7HLxcAeOSoRqVkKNWK3fT4pgpq7UFa+OvVWqgaQsp5VUXRTB2/WS4SMlUE7hO3yyPGAGf3kKu5VjUr0A==
+"@koobiq/design-tokens@3.0.0-beta.11":
+  version "3.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@koobiq/design-tokens/-/design-tokens-3.0.0-beta.11.tgz#a42f6e5d533402b665dab0ced1a26d36dabff944"
+  integrity sha512-N9XLQ2gDkSKXwGqPRcimMFGvBQUq8nMXBGZfwTfhBT7ozDbF/BPVFkpF/DS9Vo7Q4DCFmlVOtTNEEHBlrQ3LbA==
 
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"

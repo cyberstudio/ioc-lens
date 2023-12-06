@@ -30,6 +30,22 @@
         "message": "SHA-256"
     },
 
+    "Entity_Type_Text_File": {
+        "message": "File"
+    },
+    "Entity_Type_Text_URL": {
+        "message": "URL"
+    },
+    "Entity_Type_Text_DomainName": {
+        "message": "Domain"
+    },
+    "Entity_Type_Text_IPAddress": {
+        "message": "IP address"
+    },
+    "Entity_Type_Text_EmailAddress": {
+        "message": "Email address"
+    },
+
     "Entity_Confidence_Text_Tooltip": {
         "message": "Confidence score"
     },
@@ -190,6 +206,16 @@
     },
     "Entity_Relations_Text_EmptyStatisticTitle": {
         "message": "No relations"
+    },
+
+    "EntityInfo_Pseudo_Text_FoundTitle": {
+        "message": "{count, plural, one{# object found} other{# objects found}}"
+    },
+    "EntityInfo_Pseudo_Text_GoToViewEntity": {
+        "message": "Go to the object page"
+    },
+    "EntityInfo_Pseudo_Text_NotFound": {
+        "message": "No data about the object"
     },
 
     "Welcome_ActivationState_Text_On": {
