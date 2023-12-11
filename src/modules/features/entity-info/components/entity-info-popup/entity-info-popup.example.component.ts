@@ -46,10 +46,15 @@ class EntityInfoPopupExampleComponent extends Component<void> {
                 onSelect: () => console.log('select entity')
             },
             {
-                type: 'ViewEntity',
+                type: 'SelectedEntity',
                 entity: entities[0],
                 viewUrl: `https://ioc-stage.com/#/objects/view/${entities[0].id}`,
                 onBack: () => console.log('back')
+            },
+            {
+                type: 'ViewEntity',
+                entity: entities[0],
+                viewUrl: `https://ioc-stage.com/#/objects/view/${entities[0].id}`
             }
         ];
 

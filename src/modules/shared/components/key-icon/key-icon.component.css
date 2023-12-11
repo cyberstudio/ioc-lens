@@ -37,8 +37,8 @@
         width: var(--kbq-size-l);
         height: var(--kbq-size-l);
         background-image: image-set(
-            url('chrome-extension://__MSG_@@extension_id__/images/icon_16.png') 1x,
-            url('chrome-extension://__MSG_@@extension_id__/images/icon_32.png') 2x
+            url('__EXTENSION__ORIGIN__/images/icon_16.png') 1x,
+            url('__EXTENSION__ORIGIN__/images/icon_32.png') 2x
         );
     }
 }

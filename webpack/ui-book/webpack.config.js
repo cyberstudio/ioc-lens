@@ -2,6 +2,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const helpers = require('./helpers');
+const common = require('../common');
 
 module.exports = {
     mode: 'development',
@@ -28,7 +29,7 @@ module.exports = {
                 test: /\.(css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    { loader: 'css-loader', options: { url: false } },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -38,10 +39,6 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource'
             },
             { test: /\.json$/, type: 'json' }
         ]
@@ -57,7 +54,24 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [{ from: helpers.root('src/apps/ui-book/assets') }]
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: helpers.root('src/modules/design-system/fonts/inter/*.woff2'),
+                    to: 'fonts/[name][ext]'
+                }
+            ]
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: helpers.root('src/modules/shared/resources/images'),
+                    to: 'images'
+                }
+            ]
+        }),
+        common.createExtensionOriginReplacer('..')
     ],
 
     devServer: {

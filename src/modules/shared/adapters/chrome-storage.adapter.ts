@@ -26,14 +26,17 @@ export class ChromeStorageAdapter {
         const listener = (storageChanges: { [key: string]: chrome.storage.StorageChange }) => {
             const namespaceChanges = storageChanges[namespace];
 
-            const hasChanges =
-                !isNil(namespaceChanges) && !isNil(namespaceChanges.newValue) && !isNil(namespaceChanges.oldValue);
+            const hasChanges = !isNil(namespaceChanges) && !isNil(namespaceChanges.newValue);
 
             if (!hasChanges) {
                 return;
             }
 
-            cb(getObjectDiff(namespaceChanges.newValue, namespaceChanges.oldValue) as DeepPartial<Data>);
+            const diff = !isNil(namespaceChanges.oldValue)
+                ? (getObjectDiff(namespaceChanges.newValue, namespaceChanges.oldValue) as DeepPartial<Data>)
+                : namespaceChanges.newValue;
+
+            cb(diff);
         };
 
         chrome.storage.local.onChanged.addListener(listener);

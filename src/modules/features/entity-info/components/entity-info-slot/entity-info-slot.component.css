@@ -1,0 +1,11 @@
+@import url('../../../../design-system/index.css');
+
+.kbq-entity-info-slot {
+    position: fixed;
+    display: flex;
+    top: var(--kbq-size-xl);
+    right: var(--kbq-size-xl);
+    max-height: calc(100% - var(--kbq-size-xl) * 2);
+    width: 500px;
+    z-index: 2147483647;
+}

@@ -39,8 +39,8 @@
         width: 24px;
         height: 24px;
         background-image: image-set(
-            url('../../resources/images/icon_24.png') 1x,
-            url('../../resources/images/icon_48.png') 2x
+            url('__EXTENSION__ORIGIN__/images/icon_24.png') 1x,
+            url('__EXTENSION__ORIGIN__/images/icon_48.png') 2x
         );
     }
 

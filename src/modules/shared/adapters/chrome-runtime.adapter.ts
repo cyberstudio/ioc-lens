@@ -1,3 +1,5 @@
+import { RuntimeMessage } from '../types';
+
 export class ChromeRuntimeAdapter {
     static onInstalled(cb: (t: chrome.runtime.InstalledDetails) => void) {
         chrome.runtime.onInstalled.addListener(cb);
@@ -7,14 +9,17 @@ export class ChromeRuntimeAdapter {
         chrome.runtime.openOptionsPage();
     }
 
-    static sendMessage<M extends { type: string }, R>(message: M): Promise<R> {
+    static sendMessage<M extends RuntimeMessage<string, unknown>, R = void>(message: M): Promise<R> {
         return chrome.runtime.sendMessage(message);
     }
 
-    static listenMessage<M extends { type: string }, R>(message: M, response: () => Promise<R>) {
-        const cb = async (m: M, _: chrome.runtime.MessageSender, sendResponse: (resp?: unknown) => void) => {
-            if (m.type === message.type) {
-                response().then((result) => sendResponse(result));
+    static listenMessage<M extends RuntimeMessage<string, unknown>>(
+        isMathMessage: (message: M) => message is M,
+        response: (message: M) => void
+    ) {
+        const cb = (m: M) => {
+            if (isMathMessage(m)) {
+                response(m);
             }
         };
 

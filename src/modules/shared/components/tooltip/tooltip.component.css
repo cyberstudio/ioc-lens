@@ -2,14 +2,14 @@
 
 .kbq-tooltip {
     display: block;
-    position: absolute;
+    position: fixed;
     margin-top: 8px;
     max-width: var(--kbq-tooltip-size-max-width);
     opacity: 0;
     pointer-events: none;
     transform-origin: center top;
     animation-fill-mode: both;
-    z-index: 100;
+    z-index: 2147483647;
 
     &.kbq-tooltip--visible {
         animation-name: kbq-tooltip-show-animation;

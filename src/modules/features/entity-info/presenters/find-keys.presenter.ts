@@ -1,9 +1,10 @@
 import isNil from 'lodash/isNil';
 import { SettingsStore } from '../../../shared/stores';
 import { KeyIconComponent } from '../../../shared/components';
-import { ActiveTabClient } from '../../../shared/clients';
+import { ActiveTabClientService } from '../../../shared/services';
 import { renderComponent } from '../../../shared/utils';
 import { EntityKeysParserService, ParsingResult } from '../services';
+import { EntityInfoPresenter } from './entity-info.presenter';
 
 enum IconPosition {
     Left = 'Left',
@@ -29,24 +30,28 @@ export class FindKeysPresenter {
     private isActivated: boolean = false;
     private selectedNode: HTMLElement | null = null;
     private highlightedNode: HTMLElement | null = null;
+    private lastFindKeysResult: FindKeysResult | null = null;
 
     private readonly iconOffset = 27;
     private readonly highlightClass = 'kbq-highlighted-node';
     private readonly keyIconComponent: KeyIconComponent = new KeyIconComponent({
         left: 0,
         top: 0,
-        onClick: this.handleShowEntityInfo.bind(this)
+        onClick: this.handleToggleEntityInfo.bind(this)
     });
 
     constructor(
         private window: Window,
         private settingsStore: SettingsStore,
-        private activeTabClient: ActiveTabClient,
-        private entityKeysParserService: EntityKeysParserService
+        private activeTabClientService: ActiveTabClientService,
+        private entityKeysParserService: EntityKeysParserService,
+        private entityInfoPresenter: EntityInfoPresenter
     ) {
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
-        this.handleShowEntityInfo = this.handleShowEntityInfo.bind(this);
+        this.handleToggleEntityInfo = this.handleToggleEntityInfo.bind(this);
+
+        this.entityInfoPresenter.onClosePopup(() => this.resetSelection());
 
         this.init();
     }
@@ -61,7 +66,7 @@ export class FindKeysPresenter {
     }
 
     private async subscribeToActivationChange() {
-        const currentHost = await this.activeTabClient.getHost();
+        const currentHost = await this.activeTabClientService.getHost();
 
         this.isActivated = await this.settingsStore.isActivated(currentHost);
 
@@ -72,25 +77,41 @@ export class FindKeysPresenter {
 
     private handleActivationChange(activationState: boolean): void {
         this.isActivated = activationState;
+
+        if (!this.isActivated) {
+            this.resetSelection();
+            this.entityInfoPresenter.closePopup();
+        }
     }
 
     handleMouseMove(event: MouseEvent) {
+        if (!this.isActivated) {
+            return;
+        }
+
         const node = event.target as HTMLElement;
 
-        if (this.isHighlightedNode(node) || this.isButtonNode(node)) {
+        if (this.isHighlightedNode(node) || this.isButtonNode(node) || this.isEntityInfoPopup(node)) {
             return;
         }
 
         const findKeysResult = this.findKeys(node);
 
+        this.lastFindKeysResult = findKeysResult;
+
         this.processFindKeysResult(findKeysResult);
     }
 
-    private handleShowEntityInfo() {
+    private handleToggleEntityInfo() {
         if (this.isSelectedNode(this.highlightedNode)) {
             this.resetSelection();
+            this.entityInfoPresenter.closePopup();
         } else {
             this.selectNode(this.highlightedNode);
+
+            if (this.lastFindKeysResult && this.lastFindKeysResult.isFound) {
+                this.entityInfoPresenter.openPopup(this.lastFindKeysResult.keys);
+            }
         }
     }
 
@@ -213,6 +234,10 @@ export class FindKeysPresenter {
         }
 
         return node === this.keyIconComponent.ref || this.keyIconComponent.ref.contains(node);
+    }
+
+    private isEntityInfoPopup(node: HTMLElement): boolean {
+        return node.closest('.kbq-entity-info-slot') !== null;
     }
 
     private getIconPosition(clientRect: DOMRect): IconPosition {

@@ -23,10 +23,10 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://*/*"],
             "all_frames": true,
             "css": ["styles/content.css"],
-            "js": ["content.js"]
+            "js": ["content.js"],
+            "matches": ["*://*/*"]
         }
     ],
     "options_ui": {
@@ -35,8 +35,8 @@
     },
     "web_accessible_resources": [
         {
-            "resources": ["images/*.png", "*.png"],
-            "matches": ["<all_urls>"]
+            "resources": ["images/*.png", "*.png", "fonts/*"],
+            "matches": ["*://*/*"]
         }
     ],
     "host_permissions": ["*://*/*"]

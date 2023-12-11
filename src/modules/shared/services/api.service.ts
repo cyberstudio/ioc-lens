@@ -80,7 +80,7 @@ export class ApiService {
                 const hasToken = !isNil(requestConfig.token);
 
                 if (isNil(requestConfig.host) || requestConfig.host.length === 0) {
-                    return Result.err(new ApiError(ApiErrorCode.UnknownHost));
+                    return Result.err(new ApiError(ApiErrorCode.UnknownSettings));
                 }
 
                 if (options.authenticatedRequest && !hasToken) {
@@ -96,7 +96,7 @@ export class ApiService {
                     headers.append('Authorization', `Bearer ${requestConfig.token}`);
                 }
 
-                const queryParams = params && method === 'get' ? '?' + params.toString() : '';
+                const queryParams = params && method === 'get' ? '?' + decodeURIComponent(params.toString()) : '';
 
                 const host = requestConfig.host.endsWith('/') ? requestConfig.host : `${requestConfig.host}/`;
 
@@ -170,7 +170,7 @@ export class ApiService {
 
 export const ApiErrorCode = Object.freeze({
     Unknown: 'Unknown',
-    UnknownHost: 'UnknownHost',
+    UnknownSettings: 'UnknownSettings',
     Forbidden: 'Forbidden',
     Unauthenticated: 'Unauthenticated'
 });
@@ -195,7 +195,7 @@ enum ResponseType {
     RAW = 'RAW'
 }
 
-interface ApiRequestOptions {
+export interface ApiRequestOptions {
     signal: AbortSignal;
     authenticatedRequest?: boolean;
     responseType?: ResponseType;

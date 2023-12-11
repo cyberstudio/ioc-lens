@@ -1,1 +1,1 @@
-export * from './active-tab.controller';
+export * from './service-worker-actions.controller';

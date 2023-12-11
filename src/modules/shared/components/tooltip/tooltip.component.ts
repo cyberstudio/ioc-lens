@@ -14,6 +14,8 @@ export class TooltipComponent extends Component<TooltipProps> {
         return this.el?.classList.contains('kbq-tooltip--visible') || false;
     }
 
+    private targetObserver: MutationObserver | null = null;
+
     constructor(props: TooltipProps) {
         super(props);
 
@@ -25,11 +27,15 @@ export class TooltipComponent extends Component<TooltipProps> {
             this.initHoverEvents();
         }
 
-        this.globalOn('scroll', () => this.hide());
+        this.initRemoveTargetListener();
+
+        this.globalOn('scroll', () => this.hide(), { capture: true });
     }
 
     attachTarget(target: HTMLElement): void {
         this.props.target = target;
+
+        this.initRemoveTargetListener();
     }
 
     updateText(text: string): void {
@@ -62,6 +68,12 @@ export class TooltipComponent extends Component<TooltipProps> {
         this.el?.classList.toggle('kbq-tooltip--visible', false);
     }
 
+    destroy() {
+        super.destroy();
+
+        this.stopListenRemoveTarget();
+    }
+
     private setDefaultProps() {
         if (isNil(this.props.trigger)) {
             this.props.trigger = 'hover';
@@ -71,6 +83,28 @@ export class TooltipComponent extends Component<TooltipProps> {
     private initHoverEvents(): void {
         this.on(this.props.target, 'mouseenter', () => this.show());
         this.on(this.props.target, 'mouseleave', () => this.hide());
+    }
+
+    private initRemoveTargetListener() {
+        this.stopListenRemoveTarget();
+
+        this.targetObserver = new MutationObserver(() => {
+            if (!document.body.contains(this.props.target)) {
+                this.hide();
+                this.stopListenRemoveTarget();
+            }
+        });
+
+        if (this.props.target.parentElement) {
+            this.targetObserver.observe(document.body, { childList: true, subtree: true });
+        }
+    }
+
+    private stopListenRemoveTarget(): void {
+        if (this.targetObserver) {
+            this.targetObserver.disconnect();
+            this.targetObserver = null;
+        }
     }
 
     private updateTooltipPosition(): void {

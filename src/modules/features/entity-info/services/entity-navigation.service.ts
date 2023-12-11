@@ -6,6 +6,8 @@ export class EntityNavigationService {
     async getViewEntityUrl(entityId: string): Promise<string> {
         const dataSource = await this.settingsStore.getDataSource();
 
-        return `${dataSource.host}/#/objects/view/${entityId}`;
+        const host = dataSource.host?.endsWith('/') ? dataSource.host.replace(/\/+$/, '') : dataSource.host;
+
+        return `${host}/#/objects/view/${entityId}`.replace(/\/\//g, '/');
     }
 }

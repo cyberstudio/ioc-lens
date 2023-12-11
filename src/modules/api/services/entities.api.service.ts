@@ -28,7 +28,7 @@ export class EntitiesApiService {
         return this.api.get('observable/entities', params as unknown as ApiGetParams, { signal });
     }
 
-    getStatistic(entityId: string, signal: AbortSignal) {
+    getRelationsStatistic(entityId: string, signal: AbortSignal) {
         const url = `observable/entities/${entityId}/link-type-statistic`;
 
         return this.api.get<RelationStatistic[]>(url, null, { signal });

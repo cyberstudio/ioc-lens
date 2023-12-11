@@ -59,7 +59,7 @@ export class AuthService {
                 break;
             }
 
-            case ApiErrorCode.UnknownHost: {
+            case ApiErrorCode.UnknownSettings: {
                 await this.authStore.toUnknownSettingsState();
 
                 break;

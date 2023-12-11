@@ -38,11 +38,17 @@ interface EntityInfoPopupSelectEntityState {
     onSelect: (uuid: string) => void;
 }
 
+interface EntityInfoPopupSelectedEntityState {
+    type: 'SelectedEntity';
+    entity: EntityMetadata;
+    viewUrl: string;
+    onBack: () => void;
+}
+
 interface EntityInfoPopupViewEntityState {
     type: 'ViewEntity';
     entity: EntityMetadata;
     viewUrl: string;
-    onBack: () => void;
 }
 
 export type EntityInfoPopupState =
@@ -50,6 +56,7 @@ export type EntityInfoPopupState =
     | EntityInfoPopupEmptyState
     | EntityInfoPopupErrorState
     | EntityInfoPopupSelectEntityState
+    | EntityInfoPopupSelectedEntityState
     | EntityInfoPopupViewEntityState;
 
 export interface EntityInfoPopupProps {
@@ -99,7 +106,8 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
                 return this.renderSelectEntityHeader(props.state);
             }
 
-            case 'ViewEntity': {
+            case 'ViewEntity':
+            case 'SelectedEntity': {
                 return this.renderViewEntityHeader(props.state);
             }
 
@@ -119,7 +127,9 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         `);
     }
 
-    private renderViewEntityHeader(state: EntityInfoPopupViewEntityState): HTMLElement {
+    private renderViewEntityHeader(
+        state: EntityInfoPopupViewEntityState | EntityInfoPopupSelectedEntityState
+    ): HTMLElement {
         const el = this.parseTemplate('<div class="kbq-entity-info-popup-header"></div>');
 
         const topHeaderEl = this.parseTemplate('<div class="kbq-entity-info-popup-header__top"></div>');
@@ -144,7 +154,6 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         this.renderContent(topHeaderEl, entityTypeEl);
         this.renderContent(topHeaderEl, entityLinkEl);
 
-        const backButtonEl = this.parseTemplate('<div class="kbq-entity-info-popup-header__back"></div>');
         const entityTitleEl = this.parseTemplate(
             `<span class="kbq-entity-info-popup-header__title subheading">${truncate(state.entity.priorityKey, {
                 length: 30,
@@ -152,17 +161,21 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
             })}</span>`
         );
 
-        this.renderContent(
-            backButtonEl,
-            new ButtonComponent({
-                type: 'icon',
-                iconName: 'back',
-                onClick: () => state.onBack()
-            })
-        );
-
-        this.renderContent(bottomHeaderEl, backButtonEl);
         this.renderContent(bottomHeaderEl, entityTitleEl);
+
+        if (state.type === 'SelectedEntity') {
+            const backButtonEl = this.parseTemplate('<div class="kbq-entity-info-popup-header__back"></div>');
+            this.renderContent(
+                backButtonEl,
+                new ButtonComponent({
+                    type: 'icon',
+                    iconName: 'back',
+                    onClick: () => state.onBack()
+                })
+            );
+
+            this.renderContent(bottomHeaderEl, backButtonEl);
+        }
 
         this.renderContent(el, topHeaderEl);
         this.renderContent(el, bottomHeaderEl);
@@ -221,6 +234,7 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
                 break;
             }
 
+            case 'SelectedEntity':
             case 'ViewEntity': {
                 this.renderContent(
                     el,
@@ -242,3 +256,18 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         return this.translateService.translate(`Entity_Type_Text_${type}`) || type.toString();
     }
 }
+
+const possibleErrors: EntityInfoPopupErrorState['error'][] = [
+    'Unknown',
+    'Forbidden',
+    'UnknownApiKey',
+    'UnknownSettings'
+];
+
+export const parseEntityInfoError = (error: string): EntityInfoPopupErrorState['error'] => {
+    if (possibleErrors.includes(error as EntityInfoPopupErrorState['error'])) {
+        return error as EntityInfoPopupErrorState['error'];
+    } else {
+        return 'Unknown';
+    }
+};

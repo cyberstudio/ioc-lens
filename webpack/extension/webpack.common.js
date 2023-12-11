@@ -2,6 +2,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const helpers = require('./helpers');
+const common = require('../common');
 
 module.exports = {
     entry: {
@@ -24,8 +25,12 @@ module.exports = {
             {
                 test: /\.(css)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -35,13 +40,6 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'fonts/[hash].[ext]'
-                }
             }
         ]
     },
@@ -58,6 +56,14 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
+                    from: helpers.root('src/modules/design-system/fonts/inter/*.woff2'),
+                    to: 'fonts/[name][ext]'
+                }
+            ]
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
                     from: helpers.root('src/modules/shared/resources/images'),
                     to: 'images'
                 }
@@ -70,6 +76,7 @@ module.exports = {
                     to: '_locales'
                 }
             ]
-        })
+        }),
+        common.createExtensionOriginReplacer('chrome-extension://__MSG_@@extension_id__')
     ]
 };

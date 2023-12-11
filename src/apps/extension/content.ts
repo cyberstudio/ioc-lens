@@ -1,16 +1,38 @@
 import { SettingsStore } from '../../modules/shared/stores';
-import { EntityKeysParserService } from '../../modules/features/entity-info/services';
-import { FindKeysPresenter } from '../../modules/features/entity-info';
-import { ActiveTabClient } from '../../modules/shared/clients';
+import {
+    EntityInfoClientService,
+    EntityInfoPresenter,
+    FindKeysPresenter,
+    EntityKeysParserService,
+    EntityNavigationService
+} from '../../modules/features/entity-info';
+import {
+    ActiveTabClientService,
+    RuntimeCommunicationService,
+    ServiceWorkerActionsClientService,
+    TranslateService
+} from '../../modules/shared/services';
 
 import './styles/content.css';
 
 function main() {
+    const translateService = new TranslateService();
     const settingsStore = new SettingsStore();
-    const activeTabClient = new ActiveTabClient();
+    const activeTabClientService = new ActiveTabClientService(window);
+    const runtimeCommunicationService = new RuntimeCommunicationService();
+    const serviceWorkerActionsClientService = new ServiceWorkerActionsClientService(runtimeCommunicationService);
+    const entityInfoClientService = new EntityInfoClientService(runtimeCommunicationService);
     const entityKeysParserService = new EntityKeysParserService();
+    const entityNavigationService = new EntityNavigationService(settingsStore);
+    const entityInfoPresenter = new EntityInfoPresenter(
+        document.body,
+        translateService,
+        entityNavigationService,
+        serviceWorkerActionsClientService,
+        entityInfoClientService
+    );
 
-    new FindKeysPresenter(window, settingsStore, activeTabClient, entityKeysParserService);
+    new FindKeysPresenter(window, settingsStore, activeTabClientService, entityKeysParserService, entityInfoPresenter);
 }
 
 main();

@@ -9,6 +9,7 @@ test('should parse the string and get an array of observable entity types', () =
         4A8A9FC31DC15A4B87BB145B05DB3AE0BF2333E4,
         18ee24150dcb1d96752a4d6dd0f20dfd8ba8c38527e40aa8509b7adecf78f9c6,
         192.1.2.3,
+        192.1.2.34,
         2001:0db8:85a3:0000:0000:8a2e:0370:7334,
         test@t.com,
         hxxp://test.com:3000/,
@@ -28,7 +29,7 @@ test('should parse the string and get an array of observable entity types', () =
         {
             type: ObservableEntityType.File,
             keyType: 'SHA1Hash',
-            keyValue: '4a8a9fc31dc15a4b87bb145b05db3ae0bf2333e4'
+            keyValue: '4A8A9FC31DC15A4B87BB145B05DB3AE0BF2333E4'
         },
         {
             type: ObservableEntityType.File,
@@ -39,6 +40,11 @@ test('should parse the string and get an array of observable entity types', () =
             type: ObservableEntityType.IPAddress,
             keyType: 'String',
             keyValue: '192.1.2.3'
+        },
+        {
+            type: ObservableEntityType.IPAddress,
+            keyType: 'String',
+            keyValue: '192.1.2.34'
         },
         {
             type: ObservableEntityType.IPAddress,

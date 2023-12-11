@@ -36,5 +36,5 @@ export interface AggregatesRequestParams extends PaginationParams {
     section?: AggregateSectionName[];
     type?: ObservableEntityType;
     keyType?: ObservableEntityKeyType;
-    key: string;
+    key?: string;
 }
