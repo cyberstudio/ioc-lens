@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'yarn'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint TS
+        run: yarn lint:ts
+
+      - name: Lint styles
+        run: yarn lint:styles
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'yarn'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint TS
+        run: yarn test
