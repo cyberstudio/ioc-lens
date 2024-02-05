@@ -1,3 +1,4 @@
+export * from './key-highlighter';
 export * from './entity-attributes';
 export * from './entity-attribute-value';
 export * from './entity-info';

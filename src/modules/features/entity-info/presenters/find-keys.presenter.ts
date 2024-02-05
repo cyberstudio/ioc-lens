@@ -3,6 +3,7 @@ import { SettingsStore } from '../../../shared/stores';
 import { KeyIconComponent } from '../../../shared/components';
 import { ActiveTabClientService } from '../../../shared/services';
 import { renderComponent } from '../../../shared/utils';
+import { KeyHighlighter, KeyHighlighterProps } from '../components';
 import { EntityKeysParserService, ParsingResult } from '../services';
 import { EntityInfoPresenter } from './entity-info.presenter';
 
@@ -28,17 +29,18 @@ interface FindKeysResult {
 
 export class FindKeysPresenter {
     private isActivated: boolean = false;
-    private selectedNode: HTMLElement | null = null;
     private highlightedNode: HTMLElement | null = null;
     private lastFindKeysResult: FindKeysResult | null = null;
 
     private readonly iconOffset = 27;
-    private readonly highlightClass = 'kbq-highlighted-node';
+    private readonly keyHighlighterComponent = new KeyHighlighter({ x: 0, y: 0, width: 0, height: 0 });
     private readonly keyIconComponent: KeyIconComponent = new KeyIconComponent({
         left: 0,
         top: 0,
         onClick: this.handleToggleEntityInfo.bind(this)
     });
+
+    private targetObserver: MutationObserver | null = null;
 
     constructor(
         private window: Window,
@@ -51,9 +53,10 @@ export class FindKeysPresenter {
         this.handleScroll = this.handleScroll.bind(this);
         this.handleToggleEntityInfo = this.handleToggleEntityInfo.bind(this);
 
-        this.entityInfoPresenter.onClosePopup(() => this.resetSelection());
+        this.entityInfoPresenter.onClosePopup(() => this.resetHighlight());
 
         this.init();
+        this.initRemoveTargetListener();
     }
 
     private async init() {
@@ -63,6 +66,26 @@ export class FindKeysPresenter {
         this.window.addEventListener('scroll', this.handleScroll, { capture: true });
 
         renderComponent(this.window.document.body, this.keyIconComponent);
+        renderComponent(this.window.document.body, this.keyHighlighterComponent);
+    }
+
+    private initRemoveTargetListener() {
+        this.stopListenRemoveTarget();
+
+        this.targetObserver = new MutationObserver(() => {
+            if (this.highlightedNode && !document.body.contains(this.highlightedNode)) {
+                this.resetHighlight();
+            }
+        });
+
+        this.targetObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    private stopListenRemoveTarget(): void {
+        if (this.targetObserver) {
+            this.targetObserver.disconnect();
+            this.targetObserver = null;
+        }
     }
 
     private async subscribeToActivationChange() {
@@ -79,12 +102,12 @@ export class FindKeysPresenter {
         this.isActivated = activationState;
 
         if (!this.isActivated) {
-            this.resetSelection();
+            this.resetHighlight();
             this.entityInfoPresenter.closePopup();
         }
     }
 
-    handleMouseMove(event: MouseEvent) {
+    private handleMouseMove(event: MouseEvent) {
         if (!this.isActivated) {
             return;
         }
@@ -103,21 +126,15 @@ export class FindKeysPresenter {
     }
 
     private handleToggleEntityInfo() {
-        if (this.isSelectedNode(this.highlightedNode)) {
-            this.resetSelection();
-            this.entityInfoPresenter.closePopup();
-        } else {
-            this.selectNode(this.highlightedNode);
-
-            if (this.lastFindKeysResult && this.lastFindKeysResult.isFound) {
-                this.entityInfoPresenter.openPopup(this.lastFindKeysResult.keys);
-            }
+        if (this.lastFindKeysResult && this.lastFindKeysResult.isFound) {
+            this.entityInfoPresenter.openPopup(this.lastFindKeysResult.keys);
         }
+
+        this.resetHighlight();
     }
 
     private handleScroll() {
         this.resetHighlight();
-        this.resetSelection();
     }
 
     private findKeys(node: Node, deepFind: boolean = true): FindKeysResult {
@@ -182,34 +199,17 @@ export class FindKeysPresenter {
         const clientRect: DOMRect = this.highlightedNode.getBoundingClientRect();
 
         this.keyIconComponent.show(this.getIconCoordinates(clientRect));
-        this.highlightedNode.classList.add(this.highlightClass);
-    }
-
-    private selectNode(node: HTMLElement | null): void {
-        this.resetSelection();
-        this.selectedNode = node;
-        this.keyIconComponent.hide();
+        this.keyHighlighterComponent.show(this.getHighlighterProps(clientRect));
     }
 
     private resetHighlight(): void {
-        this.hideHighlight(this.highlightedNode);
+        this.hideHighlight();
         this.highlightedNode = null;
     }
 
-    private resetSelection(): void {
-        const currentSelectedNode = this.selectedNode;
-
-        this.selectedNode = null;
-
-        this.hideHighlight(currentSelectedNode);
-    }
-
-    private hideHighlight(node: HTMLElement | null): void {
-        if (node && !this.isSelectedNode(node)) {
-            node.classList.remove(this.highlightClass);
-        }
-
+    private hideHighlight(): void {
         this.keyIconComponent.hide();
+        this.keyHighlighterComponent.hide();
     }
 
     private isHighlightedNode(node: HTMLElement | null): boolean {
@@ -218,14 +218,6 @@ export class FindKeysPresenter {
         }
 
         return node === this.highlightedNode;
-    }
-
-    private isSelectedNode(node: HTMLElement | null): boolean {
-        if (isNil(node) || isNil(this.selectedNode)) {
-            return false;
-        }
-
-        return node === this.selectedNode;
     }
 
     private isButtonNode(node: HTMLElement | null): boolean {
@@ -296,5 +288,16 @@ export class FindKeysPresenter {
                     top: clientRect.bottom + 2
                 };
         }
+    }
+
+    private getHighlighterProps(clientRect: DOMRect): KeyHighlighterProps {
+        const keyIconHeight = this.keyIconComponent.ref?.getBoundingClientRect()?.height || 0;
+
+        return {
+            x: clientRect.left,
+            y: clientRect.top,
+            width: clientRect.width,
+            height: Math.max(clientRect.height, keyIconHeight - 4)
+        };
     }
 }
