@@ -18,7 +18,7 @@ type LinkProps = RegularLinkProps | PseudoLinkProps;
 
 export class LinkComponent extends Component<LinkProps> {
     protected createComponent() {
-        const el = this.parseTemplate('<a class="kbq-link caption"></a>');
+        const el = this.parseTemplate('<a class="kbq-link kbq-typography-caption"></a>');
         initKbqTitle(el);
 
         el.textContent = this.props.text;

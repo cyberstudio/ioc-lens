@@ -32,7 +32,9 @@ export class ButtonComponent extends Component<ButtonProps> {
     };
 
     protected createComponent(): HTMLElement {
-        const el = this.parseTemplate(`<button class="kbq-button kbq-button--${this.props.type} small-text"></button>`);
+        const el = this.parseTemplate(
+            `<button class="kbq-button kbq-button--${this.props.type} kbq-typography-text-normal"></button>`
+        );
 
         if (this.props.type === 'icon') {
             el.appendChild(

@@ -29,7 +29,7 @@ export class InputFieldComponent extends Component<InputFieldProps> {
     }
 
     protected createComponent(): HTMLElement {
-        const el = this.parseTemplate(`<input type="text" class="kbq-input-field small-text" />`);
+        const el = this.parseTemplate(`<input type="text" class="kbq-input-field kbq-typography-text-normal" />`);
 
         if (this.props.id) {
             el.setAttribute('id', this.props.id);

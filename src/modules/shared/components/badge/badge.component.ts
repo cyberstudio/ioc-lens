@@ -18,7 +18,7 @@ export type BadgeProps = FilledBadgeProps | OutlineBadgeProps;
 
 export class BadgeComponent extends Component<BadgeProps> {
     protected createComponent() {
-        const el = this.parseTemplate('<span class="kbq-badge extra-small-text-strong"></span>');
+        const el = this.parseTemplate('<span class="kbq-badge kbq-typography-extra-small-text-strong"></span>');
         const contentEl = this.parseTemplate('<span class="kbq-badge__content"></span>');
 
         el.appendChild(contentEl);

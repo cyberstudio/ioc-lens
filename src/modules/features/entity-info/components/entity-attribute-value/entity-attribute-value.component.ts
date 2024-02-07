@@ -28,7 +28,7 @@ export class EntityAttributeValueComponent extends Component<EntityAttributeValu
     }
 
     protected createComponent(): HTMLElement {
-        const el = this.parseTemplate('<div class="kbq-entity-attribute-value small-text"></div>');
+        const el = this.parseTemplate('<div class="kbq-entity-attribute-value kbq-typography-text-normal"></div>');
 
         this.renderContent(el, this.renderValue());
 
