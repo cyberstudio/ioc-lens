@@ -1,12 +1,5 @@
 @import url('../../../modules/design-system/index.css');
 
-.kbq-highlighted-node {
-    outline: 1px solid var(--kbq-light-color-scheme-line-error-fade);
-    outline-offset: 1px;
-    border-radius: 2px;
-    animation: kbq-highlighted-node 0.2s cubic-bezier(0.455,  0.030, 0.515, 0.955);
-}
-
 .kbq-key-icon-button::before {
     cursor: default;
     display: block;
@@ -19,14 +12,4 @@
     /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
     right: -8px;
     z-index: -1;
-}
-
-@keyframes kbq-highlighted-node {
-    0% {
-        outline-color: transparent;
-    }
-
-    100% {
-        outline-color: var(--kbq-light-color-scheme-line-error-fade);
-    }
 }
