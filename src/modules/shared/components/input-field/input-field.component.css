@@ -1,46 +1,81 @@
 @import url('../../../design-system/index.css');
 
 .kbq-input-field {
-    display: inline-flex;
-    width: 100%;
-    padding: var(--kbq-input-size-padding-vertical) var(--kbq-input-size-padding-horizontal);
-    height: var(--kbq-form-field-size-height);
-    color: var(--kbq-form-field-light-color-scheme-default-text);
-    background-color: var(--kbq-form-field-light-color-scheme-default-background);
-    border-style: solid;
-    border-width: var(--kbq-form-field-size-border-width);
-    border-radius: var(--kbq-form-field-size-border-radius);
-    border-color: var(--kbq-form-field-light-color-scheme-default-border-color);
-    box-sizing: border-box;
+    position: relative;
 
-    &::placeholder {
-        color: var(--kbq-form-field-light-color-scheme-default-placeholder);
-    }
-
-    &:focus {
-        background-color: var(--kbq-form-field-light-color-scheme-states-focused-background);
-        border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
-        color: var(--kbq-form-field-light-color-scheme-states-focused-text);
-        box-shadow: 0 0 0 1px var(--kbq-form-field-light-color-scheme-states-focused-focus-outline);
-        outline:none;
+    & .kbq-input-field__control {
+        display: inline-flex;
+        width: 100%;
+        padding: var(--kbq-input-size-padding-vertical) var(--kbq-input-size-padding-horizontal);
+        height: var(--kbq-form-field-size-height);
+        color: var(--kbq-form-field-light-color-scheme-default-text);
+        background-color: var(--kbq-form-field-light-color-scheme-default-background);
+        border-style: solid;
+        border-width: var(--kbq-form-field-size-border-width);
+        border-radius: var(--kbq-form-field-size-border-radius);
+        border-color: var(--kbq-form-field-light-color-scheme-default-border-color);
+        box-sizing: border-box;
 
         &::placeholder {
-            color: var(--kbq-form-field-light-color-scheme-states-focused-placeholder);
+            color: var(--kbq-form-field-light-color-scheme-default-placeholder);
+        }
+
+        &:focus {
+            background-color: var(--kbq-form-field-light-color-scheme-states-focused-background);
+            border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
+            color: var(--kbq-form-field-light-color-scheme-states-focused-text);
+            box-shadow: 0 0 0 1px var(--kbq-form-field-light-color-scheme-states-focused-focus-outline);
+            outline:none;
+
+            &::placeholder {
+                color: var(--kbq-form-field-light-color-scheme-states-focused-placeholder);
+            }
+        }
+    }
+
+    &.kbq-input-field--masked {
+        & .kbq-input-field__control {
+            padding-right: var(--kbq-size-3xl);
+        }
+
+        & .kbq-input-field__toggle-button {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+
+            & .kbq-button {
+                width: 24px;
+                height: 24px;
+                min-height: 24px;
+                color: var(--kbq-light-color-scheme-icon-contrast-fade);
+            }
         }
     }
 }
 
 .kbq-theme-auto {
     & .kbq-input-field {
-        @media (prefers-color-scheme: dark) {
-            color: var(--kbq-light-color-scheme-foreground-white);
-            border-color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
-            background-color: var(--kbq-dark-color-scheme-background-chrome-background);
+        & .kbq-input-field__control {
+            @media (prefers-color-scheme: dark) {
+                color: var(--kbq-light-color-scheme-foreground-white);
+                border-color: var(--kbq-light-color-scheme-foreground-contrast-secondary);
+                background-color: var(--kbq-dark-color-scheme-background-chrome-background);
+            }
+
+            &:focus {
+                @media (prefers-color-scheme: dark) {
+                    border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
+                }
+            }
         }
 
-        &:focus {
-            @media (prefers-color-scheme: dark) {
-                border-color: var(--kbq-form-field-light-color-scheme-states-focused-border-color);
+        &.kbq-input-field--masked {
+            & .kbq-input-field__toggle-button {
+                & .kbq-button {
+                    @media (prefers-color-scheme: dark) {
+                        color: var(--kbq-dark-color-scheme-icon-contrast-fade);
+                    }
+                }
             }
         }
     }
