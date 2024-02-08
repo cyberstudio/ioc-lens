@@ -44,6 +44,16 @@ class ButtonExampleComponent extends Component<void> {
                 type: 'icon',
                 iconName: 'back',
                 onClick: () => console.log('click')
+            }),
+            new ButtonComponent({
+                type: 'icon',
+                iconName: 'eye',
+                onClick: () => console.log('click')
+            }),
+            new ButtonComponent({
+                type: 'icon',
+                iconName: 'eye-crossed',
+                onClick: () => console.log('click')
             })
         ];
 
