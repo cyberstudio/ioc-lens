@@ -8,6 +8,6 @@ export class EntityNavigationService {
 
         const host = dataSource.host?.endsWith('/') ? dataSource.host.replace(/\/+$/, '') : dataSource.host;
 
-        return `${host}/#/objects/view/${entityId}`.replace(/\/\//g, '/');
+        return `${host}/#/objects/view/${entityId}`.replace(/(?<=\w)\/\/+/g, '/');
     }
 }
