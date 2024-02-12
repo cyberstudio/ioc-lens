@@ -27,7 +27,7 @@ class UIBookPage extends Component<{ examples: UIBookExample[] }> {
         const el = document.createElement('div');
 
         el.innerHTML = `
-            <h1 class="headline">IoC Lens UI Book</h1>
+            <h1 class="kbq-typography-headline">IoC Lens UI Book</h1>
         `;
 
         this.props.examples.forEach((e) => {
@@ -40,7 +40,7 @@ class UIBookPage extends Component<{ examples: UIBookExample[] }> {
     private renderExample(root: HTMLElement, e: UIBookExample): void {
         const titleEl = document.createElement('h2');
 
-        titleEl.classList.add('title');
+        titleEl.classList.add('kbq-typography-title');
         titleEl.textContent = e.title;
 
         const componentEl = e.content.render();

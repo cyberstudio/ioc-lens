@@ -26,7 +26,7 @@ module.exports = (StyleDictionary) => {
 
             const typographyClasses = fonts
                 .map(([name, props]) => {
-                    return `.${name} {\n${buildCSSClassProperties(props)}\n}`;
+                    return `.kbq-typography-${name} {\n${buildCSSClassProperties(props)}\n}`;
                 })
                 .join('\n\n');
 

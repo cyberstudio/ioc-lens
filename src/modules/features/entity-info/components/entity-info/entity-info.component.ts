@@ -45,7 +45,9 @@ export class EntityInfoComponent extends Component<EntityInfoProps> {
 
         const hasRelations = relatedEntitiesAmount > 0;
 
-        const root = this.parseTemplate('<div class="kbq-entity-info__relations-statistic subheading"></div>');
+        const root = this.parseTemplate(
+            '<div class="kbq-entity-info__relations-statistic kbq-typography-subheading"></div>'
+        );
 
         if (!hasRelations) {
             root.classList.add('kbq-entity-info__relations-statistic--empty');
@@ -63,7 +65,7 @@ export class EntityInfoComponent extends Component<EntityInfoProps> {
     }
 
     private renderI18nNotes(): HTMLElement {
-        const root = this.parseTemplate('<div class="kbq-entity-info__i18n-notes small-text"></div>');
+        const root = this.parseTemplate('<div class="kbq-entity-info__i18n-notes kbq-typography-text-normal"></div>');
 
         this.renderContent(root, this.translateService.translate('Common_App_Text_I18nNote'));
 

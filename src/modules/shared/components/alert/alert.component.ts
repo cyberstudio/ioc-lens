@@ -8,7 +8,7 @@ interface AlertProps {
 
 export class AlertComponent extends Component<AlertProps> {
     protected createComponent(): HTMLElement {
-        const el = this.parseTemplate('<div class="kbq-alert caption"></div>');
+        const el = this.parseTemplate('<div class="kbq-alert kbq-typography-caption"></div>');
         const contentEl = this.parseTemplate('<div class="kbq-alert__content"></div>');
 
         el.appendChild(contentEl);

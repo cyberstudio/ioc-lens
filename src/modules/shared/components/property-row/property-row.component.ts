@@ -11,7 +11,7 @@ interface PropertyRowProps {
 export class PropertyRowComponent extends Component<PropertyRowProps> {
     protected createComponent(): HTMLElement {
         const el = this.parseTemplate(`
-            <div class="kbq-property-row small-text">
+            <div class="kbq-property-row kbq-typography-text-normal">
                 <div class="kbq-property-row__header ${
                     this.props.hasTitleNote ? 'kbq-property-row__header--with-note' : ''
                 }"></div>

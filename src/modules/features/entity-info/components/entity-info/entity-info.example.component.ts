@@ -43,7 +43,10 @@ class EntityInfoExampleComponent extends Component<void> {
         const renderEntity = (title: string, entity: EntityMetadata) => {
             const el = this.parseTemplate('<div></div>');
 
-            this.renderContent(el, this.parseTemplate(`<h3 class="subheading">${title} ${entity.type}</h3>`));
+            this.renderContent(
+                el,
+                this.parseTemplate(`<h3 class="kbq-typography-subheading">${title} ${entity.type}</h3>`)
+            );
             this.renderContent(el, new EntityInfoComponent({ metadata: entity }, translateService));
 
             return el;

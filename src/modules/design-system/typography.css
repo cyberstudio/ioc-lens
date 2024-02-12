@@ -1,9 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Thu, 30 Nov 2023 14:17:14 GMT
+ * Generated on Thu, 08 Feb 2024 11:37:40 GMT
  */
 
-.display-1 {
+.kbq-typography-display-1 {
     font-size: 57px;
     line-height: 64px;
     letter-spacing: normal;
@@ -12,7 +12,7 @@
     font-feature-settings: initial;
 }
 
-.display-2 {
+.kbq-typography-display-2 {
     font-size: 45px;
     line-height: 52px;
     letter-spacing: normal;
@@ -21,7 +21,7 @@
     font-feature-settings: initial;
 }
 
-.display-3 {
+.kbq-typography-display-3 {
     font-size: 36px;
     line-height: 44px;
     letter-spacing: normal;
@@ -30,7 +30,7 @@
     font-feature-settings: initial;
 }
 
-.headline {
+.kbq-typography-headline {
     font-size: 28px;
     line-height: 32px;
     letter-spacing: normal;
@@ -39,7 +39,7 @@
     font-feature-settings: initial;
 }
 
-.title {
+.kbq-typography-title {
     font-size: 20px;
     line-height: 28px;
     letter-spacing: normal;
@@ -48,7 +48,7 @@
     font-feature-settings: initial;
 }
 
-.subheading {
+.kbq-typography-subheading {
     font-size: 17px;
     line-height: 20px;
     letter-spacing: normal;
@@ -57,7 +57,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.body {
+.kbq-typography-body {
     font-size: 15px;
     line-height: 20px;
     letter-spacing: normal;
@@ -66,7 +66,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.body-tabular {
+.kbq-typography-body-tabular {
     font-size: 15px;
     line-height: 20px;
     letter-spacing: normal;
@@ -75,7 +75,7 @@
     font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
 }
 
-.body-strong {
+.kbq-typography-body-strong {
     font-size: 15px;
     line-height: 20px;
     letter-spacing: normal;
@@ -84,7 +84,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.body-caps {
+.kbq-typography-body-caps {
     font-size: 15px;
     line-height: 20px;
     letter-spacing: 0.08em;
@@ -94,7 +94,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.caption {
+.kbq-typography-caption {
     font-size: 13px;
     line-height: 16px;
     letter-spacing: 0.005em;
@@ -103,7 +103,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.caption-tabular {
+.kbq-typography-caption-tabular {
     font-size: 13px;
     line-height: 16px;
     letter-spacing: 0.005em;
@@ -112,7 +112,7 @@
     font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
 }
 
-.caption-strong {
+.kbq-typography-caption-strong {
     font-size: 13px;
     line-height: 16px;
     letter-spacing: 0.5%;
@@ -121,7 +121,7 @@
     font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
 }
 
-.caption-caps {
+.kbq-typography-caption-caps {
     font-size: 13px;
     line-height: 16px;
     letter-spacing: 0.08em;
@@ -131,16 +131,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.small-text {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0.005em;
-    font-weight: normal;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    font-feature-settings: "ss01" on, "ss04" on;
-}
-
-.extra-small-text {
+.kbq-typography-extra-small-text {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: 0.01em;
@@ -149,7 +140,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.extra-small-text-strong {
+.kbq-typography-extra-small-text-strong {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: 0.01em;
@@ -158,7 +149,7 @@
     font-feature-settings: "ss01" on, "ss04" on;
 }
 
-.extra-small-text-caps {
+.kbq-typography-extra-small-text-caps {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: 1px;
@@ -166,4 +157,259 @@
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     text-transform: uppercase;
     font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-display-big {
+    font-size: 57px;
+    line-height: 64px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.kbq-typography-display-normal {
+    font-size: 45px;
+    line-height: 52px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.kbq-typography-display-compact {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: initial;
+}
+
+.kbq-typography-text-big {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-text-big-strong {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-text-normal {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-text-normal-strong {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.5%;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-text-compact {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-text-compact-strong {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-big {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-big-strong {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-normal {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-normal-strong {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-compact {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-caps-compact-strong {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    font-feature-settings: "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-big {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-big-strong {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-normal {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-normal-strong {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.5%;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-compact {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-tabular-compact-strong {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-big {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-big-strong {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: normal;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-normal {
+    font-style: italic;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-normal-strong {
+    font-style: italic;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.5%;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-compact {
+    font-style: italic;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
+}
+
+.kbq-typography-italic-compact-strong {
+    font-style: italic;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "tnum" on, "ss01" on, "ss04" on;
 }

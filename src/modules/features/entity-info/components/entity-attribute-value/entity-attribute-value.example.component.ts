@@ -237,7 +237,9 @@ class EntityAttributeValueExampleComponent extends Component<void> {
         const variantsWrapper = this.parseTemplate('<div class="kbq-entity-attribute-value-example__row"></div>');
 
         data.forEach((params) => {
-            variantsWrapper.appendChild(this.parseTemplate(`<h3 class="subheading">${params.attributeName}</h3>`));
+            variantsWrapper.appendChild(
+                this.parseTemplate(`<h3 class="kbq-typography-subheading">${params.attributeName}</h3>`)
+            );
 
             params.values.forEach((value) => {
                 const variant = new EntityAttributeValueComponent(

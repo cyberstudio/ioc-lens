@@ -130,7 +130,7 @@ export class TooltipComponent extends Component<TooltipProps> {
 
     protected createComponent(): HTMLElement {
         const el = this.parseTemplate(`
-            <div class="kbq-tooltip kbq-tooltip--hidden small-text">
+            <div class="kbq-tooltip kbq-tooltip--hidden kbq-typography-text-normal">
                 <div class="kbq-tooltip__inner">
                     <div class="kbq-tooltip__arrow"></div>
                     <div class="kbq-tooltip__content">${this.props.text}</span>

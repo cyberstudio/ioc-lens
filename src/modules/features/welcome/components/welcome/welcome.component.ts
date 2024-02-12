@@ -41,10 +41,10 @@ export class WelcomeComponent extends Component<WelcomeProps> {
 
     protected createComponent(): HTMLElement {
         const el = this.parseTemplate(`
-            <div class="kbq-welcome caption">
+            <div class="kbq-welcome kbq-typography-caption">
                 <div class="kbq-welcome__header">
                     <div class="kbq-welcome__icon"></div>
-                    <h1 class="kbq-welcome__title title">
+                    <h1 class="kbq-welcome__title kbq-typography-title">
                         ${this.translateService.translate('Common_App_Text_Name')}
                     </h1>
                     <div class="kbq-welcome__activation">
@@ -53,7 +53,7 @@ export class WelcomeComponent extends Component<WelcomeProps> {
                     </div>
                 </div>
                 <div class="kbq-welcome__body">
-                    <h2 class="kbq-welcome__instruction-title caption">
+                    <h2 class="kbq-welcome__instruction-title kbq-typography-caption">
                         ${this.translateService.translate('Welcome_Instruction_Text_Title')}
                     </h2>
                     <div class="kbq-welcome__instruction-body">

@@ -77,7 +77,7 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         const el = this.parseTemplate(
             `<div class="kbq-entity-info-popup kbq-entity-info-popup--${kebabCase(
                 this.props.state.type.toString()
-            )} small-text"></div>`
+            )} kbq-typography-text-normal"></div>`
         );
 
         const popup = new PopupComponent({
@@ -119,7 +119,7 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
 
     private renderSelectEntityHeader(state: EntityInfoPopupSelectEntityState): HTMLElement {
         return this.parseTemplate(`
-            <span class="subheading">
+            <span class="kbq-typography-subheading">
                 ${this.translateService.translate('EntityInfo_Pseudo_Text_FoundTitle', {
                     count: state.entities.length
                 })}
@@ -136,7 +136,7 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         const bottomHeaderEl = this.parseTemplate('<div class="kbq-entity-info-popup-header__bottom"></div>');
 
         const entityTypeEl = this.parseTemplate(`
-            <span class="kbq-entity-info-popup-header__type small-text">
+            <span class="kbq-entity-info-popup-header__type kbq-typography-text-normal">
                 ${this.translateEntityType(state.entity.type)}
             </span>
         `);
@@ -155,10 +155,13 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         this.renderContent(topHeaderEl, entityLinkEl);
 
         const entityTitleEl = this.parseTemplate(
-            `<span class="kbq-entity-info-popup-header__title subheading">${truncate(state.entity.priorityKey, {
-                length: 30,
-                separator: '...'
-            })}</span>`
+            `<span class="kbq-entity-info-popup-header__title kbq-typography-subheading">${truncate(
+                state.entity.priorityKey,
+                {
+                    length: 30,
+                    separator: '...'
+                }
+            )}</span>`
         );
 
         this.renderContent(bottomHeaderEl, entityTitleEl);
@@ -185,7 +188,7 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
 
     private renderDefaultHeader(): HTMLElement {
         return this.parseTemplate(`
-            <span class="subheading">${this.translateService.translate('Common_App_Text_Name')}</span>
+            <span class="kbq-typography-subheading">${this.translateService.translate('Common_App_Text_Name')}</span>
         `);
     }
 

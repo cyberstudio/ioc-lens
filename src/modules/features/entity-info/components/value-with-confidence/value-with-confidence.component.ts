@@ -34,7 +34,7 @@ export class ValueWithConfidenceComponent extends Component<ValueWithConfidenceP
         const el = this.parseTemplate(`
             <div class="kbq-value-with-confidence">
                 <div class="${classes.value}"></div>
-                ${hasConfidence ? `<div class="${classes.confidence} extra-small-text"></div>` : ''}
+                ${hasConfidence ? `<div class="${classes.confidence} kbq-typography-extra-small-text"></div>` : ''}
             </div>
         `);
 
