@@ -124,7 +124,7 @@ export class EntityAttributesComponent extends Component<EntityAttributesProps> 
 
         return new PropertyRowComponent({
             title: translatedTitle,
-            hasTitleNote: !attribute.isKnownAttribute,
+            hasTitleNote: !this.translateService.isEnglishLocale && !attribute.isKnownAttribute,
             content: valuesContainer
         });
     }
