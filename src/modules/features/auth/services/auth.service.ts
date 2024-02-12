@@ -18,6 +18,10 @@ export class AuthService {
         return this.authStore.getState();
     }
 
+    async rollbackState(state: AuthStoreState): Promise<void> {
+        return this.authStore.rollbackState(state);
+    }
+
     async auth(signal: AbortSignal) {
         const currentState = await this.authStore.getState();
 
