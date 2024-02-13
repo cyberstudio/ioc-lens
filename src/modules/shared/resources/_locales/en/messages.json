@@ -231,7 +231,7 @@
     },
 
     "Welcome_Instruction_Text_Description": {
-        "message": "To view the IoC data, hover over the domain name, IP address, email address, phone number, URL, or file hash"
+        "message": "To view the IoC data, hover over the domain name, IP address, email address, URL, or file hash"
     },
 
     "Settings_FormField_Text_Host": {
