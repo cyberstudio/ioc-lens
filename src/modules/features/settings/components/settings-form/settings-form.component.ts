@@ -31,11 +31,13 @@ export class SettingsFormComponent extends Component<SettingsFormProps> {
 
     private apiKeyInputComponent = new InputFieldComponent({
         id: 'api-key-field',
+        type: 'masked',
         value: this.props.data.apiKey || ''
     });
 
     private submitButtonComponent = new ButtonComponent({
         type: 'primary',
+        domType: 'submit',
         text: this.translateService.translate('Common_Pseudo_Text_Save')
     });
 

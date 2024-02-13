@@ -16,6 +16,12 @@ class InputFieldExampleComponent extends Component<void> {
                 value: 'Default value',
                 placeholder: 'Placeholder',
                 onChange: (value) => console.log(value)
+            }),
+            new InputFieldComponent({
+                type: 'masked',
+                value: 'Default value',
+                placeholder: 'Placeholder',
+                onChange: (value) => console.log(value)
             })
         ];
 
