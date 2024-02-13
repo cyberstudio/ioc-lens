@@ -1,4 +1,4 @@
-import { OpenExtensionSettingsRequestMessage } from '../types';
+import { CheckEnabledStatusRequestMessage, OpenExtensionSettingsRequestMessage } from '../types';
 import { RuntimeCommunicationService } from './runtime-communication.service';
 
 export class ServiceWorkerActionsClientService {
@@ -7,6 +7,13 @@ export class ServiceWorkerActionsClientService {
     openExtensionSettings() {
         return this.r.sendRequest<OpenExtensionSettingsRequestMessage['name'], void, void>(
             'OpenExtensionSettings',
+            undefined
+        );
+    }
+
+    checkEnabledStatus() {
+        return this.r.sendRequest<CheckEnabledStatusRequestMessage['name'], void, boolean>(
+            'CheckEnabledStatus',
             undefined
         );
     }

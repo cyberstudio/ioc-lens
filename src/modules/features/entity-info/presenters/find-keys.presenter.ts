@@ -1,7 +1,7 @@
 import isNil from 'lodash/isNil';
 import { SettingsStore } from '../../../shared/stores';
 import { KeyIconComponent } from '../../../shared/components';
-import { ActiveTabClientService } from '../../../shared/services';
+import { ActiveTabClientService, ServiceWorkerActionsClientService } from '../../../shared/services';
 import { renderComponent } from '../../../shared/utils';
 import { KeyHighlighter, KeyHighlighterProps } from '../components';
 import { EntityKeysParserService, ParsingResult } from '../services';
@@ -46,6 +46,7 @@ export class FindKeysPresenter {
         private window: Window,
         private settingsStore: SettingsStore,
         private activeTabClientService: ActiveTabClientService,
+        private serviceWorkerActionsClientService: ServiceWorkerActionsClientService,
         private entityKeysParserService: EntityKeysParserService,
         private entityInfoPresenter: EntityInfoPresenter
     ) {
@@ -60,6 +61,8 @@ export class FindKeysPresenter {
     }
 
     private async init() {
+        this.subscribeToTurnOffExtension();
+
         await this.subscribeToActivationChange();
 
         this.window.addEventListener('mousemove', this.handleMouseMove, true);
@@ -94,6 +97,24 @@ export class FindKeysPresenter {
         this.settingsStore.onActivationChange((activationState) => {
             this.handleActivationChange(activationState);
         });
+    }
+
+    private async subscribeToTurnOffExtension() {
+        const intervalId = setInterval(async () => {
+            let isEnabled: boolean;
+
+            try {
+                isEnabled = await this.serviceWorkerActionsClientService.checkEnabledStatus();
+            } catch {
+                isEnabled = false;
+
+                clearInterval(intervalId);
+            }
+
+            if (!isEnabled) {
+                this.handleActivationChange(false);
+            }
+        }, 1000);
     }
 
     private handleActivationChange(activationState: boolean): void {

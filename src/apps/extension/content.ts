@@ -32,7 +32,14 @@ function main() {
         entityInfoClientService
     );
 
-    new FindKeysPresenter(window, settingsStore, activeTabClientService, entityKeysParserService, entityInfoPresenter);
+    new FindKeysPresenter(
+        window,
+        settingsStore,
+        activeTabClientService,
+        serviceWorkerActionsClientService,
+        entityKeysParserService,
+        entityInfoPresenter
+    );
 }
 
 main();

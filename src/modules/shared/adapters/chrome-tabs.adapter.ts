@@ -6,7 +6,7 @@ export class ChromeTabsAdapter {
     }
 
     static sendMessage<M extends RuntimeMessage<string, unknown>>(tabId: number, message: M) {
-        chrome.tabs.sendMessage(tabId, message);
+        chrome.tabs.sendMessage(tabId, message).catch((e) => console.warn('Tabs send message error', e));
     }
 
     static onActivated(cb: () => void) {
