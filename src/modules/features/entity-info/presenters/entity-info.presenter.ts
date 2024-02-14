@@ -25,6 +25,11 @@ export class EntityInfoPresenter {
         renderComponent(this.root, this.popupSlot);
     }
 
+    destroy() {
+        this.popup?.destroy();
+        this.popupSlot.destroy();
+    }
+
     async openPopup(keys: ParsingResult[]) {
         this.parsedKeys = keys;
 

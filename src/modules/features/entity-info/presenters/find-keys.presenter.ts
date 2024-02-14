@@ -1,7 +1,6 @@
 import isNil from 'lodash/isNil';
 import { SettingsStore } from '../../../shared/stores';
 import { KeyIconComponent } from '../../../shared/components';
-import { ActiveTabClientService, ServiceWorkerActionsClientService } from '../../../shared/services';
 import { renderComponent } from '../../../shared/utils';
 import { KeyHighlighter, KeyHighlighterProps } from '../components';
 import { EntityKeysParserService, ParsingResult } from '../services';
@@ -45,8 +44,6 @@ export class FindKeysPresenter {
     constructor(
         private window: Window,
         private settingsStore: SettingsStore,
-        private activeTabClientService: ActiveTabClientService,
-        private serviceWorkerActionsClientService: ServiceWorkerActionsClientService,
         private entityKeysParserService: EntityKeysParserService,
         private entityInfoPresenter: EntityInfoPresenter
     ) {
@@ -60,9 +57,17 @@ export class FindKeysPresenter {
         this.initRemoveTargetListener();
     }
 
-    private async init() {
-        this.subscribeToTurnOffExtension();
+    destroy() {
+        this.window.removeEventListener('mousemove', this.handleMouseMove);
+        this.window.removeEventListener('scroll', this.handleScroll);
 
+        this.stopListenRemoveTarget();
+
+        this.keyIconComponent.destroy();
+        this.keyHighlighterComponent.destroy();
+    }
+
+    private async init() {
         await this.subscribeToActivationChange();
 
         this.window.addEventListener('mousemove', this.handleMouseMove, true);
@@ -81,7 +86,9 @@ export class FindKeysPresenter {
             }
         });
 
-        this.targetObserver.observe(document.body, { childList: true, subtree: true });
+        if (document.body) {
+            this.targetObserver.observe(document.body, { childList: true, subtree: true });
+        }
     }
 
     private stopListenRemoveTarget(): void {
@@ -97,24 +104,6 @@ export class FindKeysPresenter {
         this.settingsStore.onActivationChange((activationState) => {
             this.handleActivationChange(activationState);
         });
-    }
-
-    private async subscribeToTurnOffExtension() {
-        const intervalId = setInterval(async () => {
-            let isEnabled: boolean;
-
-            try {
-                isEnabled = await this.serviceWorkerActionsClientService.checkEnabledStatus();
-            } catch {
-                isEnabled = false;
-
-                clearInterval(intervalId);
-            }
-
-            if (!isEnabled) {
-                this.handleActivationChange(false);
-            }
-        }, 1000);
     }
 
     private handleActivationChange(activationState: boolean): void {

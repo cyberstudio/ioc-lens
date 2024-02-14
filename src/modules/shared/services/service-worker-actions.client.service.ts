@@ -17,4 +17,20 @@ export class ServiceWorkerActionsClientService {
             undefined
         );
     }
+
+    pollEnabledStatus(cb: (status: boolean) => void) {
+        const intervalId = setInterval(async () => {
+            let isEnabled: boolean;
+
+            try {
+                isEnabled = await this.checkEnabledStatus();
+            } catch {
+                isEnabled = false;
+            }
+
+            cb(isEnabled);
+        }, 300);
+
+        return () => clearInterval(intervalId);
+    }
 }

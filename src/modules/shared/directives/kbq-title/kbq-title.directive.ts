@@ -6,50 +6,46 @@ class KbqTitleDirective {
     private tooltip: TooltipComponent | null = null;
 
     constructor() {
-        document.addEventListener(
-            'mouseenter',
-            (event) => {
-                if (event.target instanceof HTMLElement) {
-                    const titleEl = this.findTitleElement(event.target);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
 
-                    if (titleEl) {
-                        this.handleMouseEnter(titleEl);
-                    }
-                }
-            },
-            { capture: true }
-        );
-
-        document.addEventListener(
-            'mouseleave',
-            (event) => {
-                if (event.target instanceof HTMLElement) {
-                    const titleEl = this.findTitleElement(event.target);
-
-                    if (titleEl) {
-                        this.handleMouseLeave();
-                    }
-                }
-            },
-            { capture: true }
-        );
+        document.addEventListener('mouseenter', this.handleMouseEnter, { capture: true });
+        document.addEventListener('mouseleave', this.handleMouseLeave, { capture: true });
     }
 
-    handleMouseEnter(titleEl: HTMLElement): void {
-        const isNeedTitle = titleEl.offsetWidth < titleEl.scrollWidth || titleEl.offsetHeight < titleEl.scrollHeight;
+    destroy() {
+        document.removeEventListener('mouseenter', this.handleMouseEnter);
+        document.removeEventListener('mouseleave', this.handleMouseLeave);
 
-        if (!isNeedTitle) {
-            return;
+        this.tooltip?.destroy();
+    }
+
+    handleMouseEnter(event: MouseEvent): void {
+        if (event.target instanceof HTMLElement) {
+            const titleEl = this.findTitleElement(event.target);
+
+            if (titleEl) {
+                const isNeedTitle =
+                    titleEl.offsetWidth < titleEl.scrollWidth || titleEl.offsetHeight < titleEl.scrollHeight;
+
+                if (!isNeedTitle) {
+                    return;
+                }
+
+                const tooltip = this.getTooltip(titleEl, titleEl.innerText.trim());
+
+                tooltip.show();
+            }
         }
-
-        const tooltip = this.getTooltip(titleEl, titleEl.innerText.trim());
-
-        tooltip.show();
     }
 
-    handleMouseLeave(): void {
-        if (this.tooltip) {
-            this.tooltip.hide();
+    handleMouseLeave(event: MouseEvent): void {
+        if (event.target instanceof HTMLElement) {
+            const titleEl = this.findTitleElement(event.target);
+
+            if (titleEl && this.tooltip) {
+                this.tooltip.hide();
+            }
         }
     }
 
@@ -90,4 +86,10 @@ export const initKbqTitle = (el: HTMLElement) => {
     }
 
     directive = new KbqTitleDirective();
+};
+
+export const destroyKbqTitle = () => {
+    if (directive) {
+        directive.destroy();
+    }
 };

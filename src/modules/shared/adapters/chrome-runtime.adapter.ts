@@ -5,6 +5,10 @@ export class ChromeRuntimeAdapter {
         chrome.runtime.onInstalled.addListener(cb);
     }
 
+    static getManifest() {
+        return chrome.runtime.getManifest();
+    }
+
     static openOptions() {
         chrome.runtime.openOptionsPage();
     }
