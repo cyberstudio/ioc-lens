@@ -33,10 +33,8 @@ export class WelcomePresenter {
     }
 
     private async init() {
-        const currentHost = await this.activeTabService.getHost();
-
         const [activationState, authState] = await Promise.all([
-            this.settingsStore.isActivated(currentHost),
+            this.settingsStore.isActivated(),
             this.authService.getState()
         ]);
 
@@ -51,15 +49,13 @@ export class WelcomePresenter {
     }
 
     private async handleActivationChange(state: boolean) {
-        const currentHost = await this.activeTabService.getHost();
-
         this.welcomeComponent.updateActivationState(state);
 
         if (state) {
-            await this.settingsStore.activate(currentHost);
+            await this.settingsStore.activate();
             await this.auth();
         } else {
-            await this.settingsStore.deactivate(currentHost);
+            await this.settingsStore.deactivate();
 
             this.cancelAuth();
         }

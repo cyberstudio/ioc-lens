@@ -3,13 +3,13 @@ import { ChromeStorageAdapter } from '../adapters';
 import { EmptyObject } from '../types';
 
 export interface SettingsStoreState extends EmptyObject {
-    activations: Record<string, boolean>;
+    isActivated: boolean;
     dataSourceHost: string | null;
     dataSourceApiKey: string | null;
 }
 
 const defaultState: SettingsStoreState = {
-    activations: {},
+    isActivated: false,
     dataSourceHost: null,
     dataSourceApiKey: null
 };
@@ -21,10 +21,10 @@ export class SettingsStore {
         return ChromeStorageAdapter.init<SettingsStoreState>(namespace, defaultState);
     }
 
-    async isActivated(host: string) {
-        const { activations } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
+    async isActivated() {
+        const { isActivated } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
 
-        return activations?.[host] || false;
+        return isActivated || false;
     }
 
     async getDataSource() {
@@ -33,12 +33,12 @@ export class SettingsStore {
         return { host: dataSourceHost, apiKey: dataSourceApiKey };
     }
 
-    async activate(host: string) {
-        return this.toggleActivationState(host, true);
+    async activate() {
+        return this.toggleActivationState(true);
     }
 
-    async deactivate(host: string) {
-        return this.toggleActivationState(host, false);
+    async deactivate() {
+        return this.toggleActivationState(false);
     }
 
     async updateDataSource(host: string, apiKey: string) {
@@ -50,7 +50,7 @@ export class SettingsStore {
 
     onActivationsChange(cb: () => void) {
         return ChromeStorageAdapter.onChange<SettingsStoreState>(namespace, (changes) => {
-            if (isNil(changes.activations)) {
+            if (isNil(changes.isActivated)) {
                 return;
             }
 
@@ -58,9 +58,9 @@ export class SettingsStore {
         });
     }
 
-    onActivationChange(host: string, cb: (isActivated: boolean) => void) {
+    onActivationChange(cb: (isActivated: boolean) => void) {
         return ChromeStorageAdapter.onChange<SettingsStoreState>(namespace, (changes) => {
-            const isActivated = changes.activations?.[host];
+            const isActivated = changes.isActivated;
 
             if (isNil(isActivated)) {
                 return;
@@ -70,15 +70,7 @@ export class SettingsStore {
         });
     }
 
-    private async toggleActivationState(host: string, value: boolean) {
-        let { activations } = await ChromeStorageAdapter.get<SettingsStoreState>(namespace);
-
-        if (!activations) {
-            activations = {};
-        }
-
-        activations[host] = value;
-
-        return ChromeStorageAdapter.set<SettingsStoreState>(namespace, { activations });
+    private async toggleActivationState(isActivated: boolean) {
+        return ChromeStorageAdapter.set<SettingsStoreState>(namespace, { isActivated });
     }
 }

@@ -89,11 +89,9 @@ export class FindKeysPresenter {
     }
 
     private async subscribeToActivationChange() {
-        const currentHost = await this.activeTabClientService.getHost();
+        this.isActivated = await this.settingsStore.isActivated();
 
-        this.isActivated = await this.settingsStore.isActivated(currentHost);
-
-        this.settingsStore.onActivationChange(currentHost, (activationState) => {
+        this.settingsStore.onActivationChange((activationState) => {
             this.handleActivationChange(activationState);
         });
     }
