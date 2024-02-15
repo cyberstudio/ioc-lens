@@ -5,6 +5,10 @@ export class ChromeRuntimeAdapter {
         chrome.runtime.onInstalled.addListener(cb);
     }
 
+    static getManifest() {
+        return chrome.runtime.getManifest();
+    }
+
     static openOptions() {
         chrome.runtime.openOptionsPage();
     }
@@ -14,11 +18,11 @@ export class ChromeRuntimeAdapter {
     }
 
     static listenMessage<M extends RuntimeMessage<string, unknown>>(
-        isMathMessage: (message: M) => message is M,
+        isMatchMessage: (message: M) => message is M,
         response: (message: M) => void
     ) {
         const cb = (m: M) => {
-            if (isMathMessage(m)) {
+            if (isMatchMessage(m)) {
                 response(m);
             }
         };

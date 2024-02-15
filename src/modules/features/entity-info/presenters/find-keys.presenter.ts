@@ -1,7 +1,6 @@
 import isNil from 'lodash/isNil';
 import { SettingsStore } from '../../../shared/stores';
 import { KeyIconComponent } from '../../../shared/components';
-import { ActiveTabClientService } from '../../../shared/services';
 import { renderComponent } from '../../../shared/utils';
 import { KeyHighlighter, KeyHighlighterProps } from '../components';
 import { EntityKeysParserService, ParsingResult } from '../services';
@@ -45,7 +44,6 @@ export class FindKeysPresenter {
     constructor(
         private window: Window,
         private settingsStore: SettingsStore,
-        private activeTabClientService: ActiveTabClientService,
         private entityKeysParserService: EntityKeysParserService,
         private entityInfoPresenter: EntityInfoPresenter
     ) {
@@ -57,6 +55,16 @@ export class FindKeysPresenter {
 
         this.init();
         this.initRemoveTargetListener();
+    }
+
+    destroy() {
+        this.window.removeEventListener('mousemove', this.handleMouseMove);
+        this.window.removeEventListener('scroll', this.handleScroll);
+
+        this.stopListenRemoveTarget();
+
+        this.keyIconComponent.destroy();
+        this.keyHighlighterComponent.destroy();
     }
 
     private async init() {
@@ -78,7 +86,9 @@ export class FindKeysPresenter {
             }
         });
 
-        this.targetObserver.observe(document.body, { childList: true, subtree: true });
+        if (document.body) {
+            this.targetObserver.observe(document.body, { childList: true, subtree: true });
+        }
     }
 
     private stopListenRemoveTarget(): void {
@@ -89,11 +99,9 @@ export class FindKeysPresenter {
     }
 
     private async subscribeToActivationChange() {
-        const currentHost = await this.activeTabClientService.getHost();
+        this.isActivated = await this.settingsStore.isActivated();
 
-        this.isActivated = await this.settingsStore.isActivated(currentHost);
-
-        this.settingsStore.onActivationChange(currentHost, (activationState) => {
+        this.settingsStore.onActivationChange((activationState) => {
             this.handleActivationChange(activationState);
         });
     }

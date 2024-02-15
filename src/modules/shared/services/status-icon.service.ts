@@ -6,18 +6,11 @@ export class StatusIconService {
     async updateIcon(status: boolean) {
         const iconPath = this.getIconPath(status, 16);
 
-        const activeTabId = await this.activeTabService.getId();
-
-        if (!activeTabId) {
-            return;
-        }
-
         chrome.action.setIcon({
             path: {
                 '16': iconPath,
                 '32': this.getIconPath(status, 32)
-            },
-            tabId: activeTabId
+            }
         });
     }
 

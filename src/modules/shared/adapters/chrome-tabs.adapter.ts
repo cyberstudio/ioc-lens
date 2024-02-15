@@ -5,8 +5,12 @@ export class ChromeTabsAdapter {
         return chrome.tabs.query({ active: true, currentWindow: true }).then((tabs) => tabs[0]);
     }
 
+    static async getAllTabs() {
+        return chrome.tabs.query({});
+    }
+
     static sendMessage<M extends RuntimeMessage<string, unknown>>(tabId: number, message: M) {
-        chrome.tabs.sendMessage(tabId, message);
+        chrome.tabs.sendMessage(tabId, message).catch((e) => console.warn('Tabs send message error', e));
     }
 
     static onActivated(cb: () => void) {

@@ -1,6 +1,6 @@
-import { ChromeRuntimeAdapter } from '../adapters';
+import { ChromeManagementAdapter, ChromeRuntimeAdapter } from '../adapters';
 import { TabCommunicationService } from '../services';
-import { OpenExtensionSettingsRequestMessage } from '../types';
+import { CheckEnabledStatusRequestMessage, OpenExtensionSettingsRequestMessage } from '../types';
 
 export class ServiceWorkerActionsController {
     private listeners: (() => void)[] = [];
@@ -12,6 +12,14 @@ export class ServiceWorkerActionsController {
                 OpenExtensionSettingsRequestMessage['payload'],
                 void
             >('OpenExtensionSettings', this.handleOpenExtensionSettingsRequest.bind(this))
+        );
+
+        this.listeners.push(
+            this.tabCommunicationService.listenTabRequest<
+                CheckEnabledStatusRequestMessage['name'],
+                CheckEnabledStatusRequestMessage['payload'],
+                boolean
+            >('CheckEnabledStatus', this.handleCheckEnabledStatusRequest.bind(this))
         );
     }
 
@@ -25,5 +33,11 @@ export class ServiceWorkerActionsController {
         ChromeRuntimeAdapter.openOptions();
 
         return Promise.resolve();
+    }
+
+    private handleCheckEnabledStatusRequest(): Promise<boolean> {
+        return ChromeManagementAdapter.getExtensionInfo()
+            .then((info) => info?.enabled || false)
+            .catch(() => false);
     }
 }

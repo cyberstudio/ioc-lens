@@ -6,8 +6,8 @@ import {
     EntityKeysParserService,
     EntityNavigationService
 } from '../../modules/features/entity-info';
+import { destroyKbqTitle } from '../../modules/shared/directives';
 import {
-    ActiveTabClientService,
     RuntimeCommunicationService,
     ServiceWorkerActionsClientService,
     TranslateService
@@ -16,23 +16,40 @@ import {
 import './styles/content.css';
 
 function main() {
+    const root = document.body;
+
     const translateService = new TranslateService();
     const settingsStore = new SettingsStore();
-    const activeTabClientService = new ActiveTabClientService(window);
     const runtimeCommunicationService = new RuntimeCommunicationService();
     const serviceWorkerActionsClientService = new ServiceWorkerActionsClientService(runtimeCommunicationService);
     const entityInfoClientService = new EntityInfoClientService(runtimeCommunicationService);
     const entityKeysParserService = new EntityKeysParserService();
     const entityNavigationService = new EntityNavigationService(settingsStore);
     const entityInfoPresenter = new EntityInfoPresenter(
-        document.body,
+        root,
         translateService,
         entityNavigationService,
         serviceWorkerActionsClientService,
         entityInfoClientService
     );
 
-    new FindKeysPresenter(window, settingsStore, activeTabClientService, entityKeysParserService, entityInfoPresenter);
+    const findKeysPresenter = new FindKeysPresenter(
+        window,
+        settingsStore,
+        entityKeysParserService,
+        entityInfoPresenter
+    );
+
+    const unsubscribePollingExtensionStatus = serviceWorkerActionsClientService.pollEnabledStatus((isEnabled) => {
+        if (!isEnabled) {
+            findKeysPresenter.destroy();
+            entityInfoPresenter.destroy();
+
+            destroyKbqTitle();
+
+            unsubscribePollingExtensionStatus();
+        }
+    });
 }
 
 main();

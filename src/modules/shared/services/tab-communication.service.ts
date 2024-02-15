@@ -26,7 +26,13 @@ export class TabCommunicationService {
             async (m) => {
                 const { requestId, name } = m;
 
-                const tabId = await this.activeTabService.getId();
+                let tabId: number | null | undefined = null;
+
+                try {
+                    tabId = await this.activeTabService.getId();
+                } catch {
+                    console.warn('Unknown tab id for request name:', name);
+                }
 
                 if (isNil(tabId)) {
                     console.warn('Unknown tab id for request name:', name);
@@ -52,14 +58,19 @@ export class TabCommunicationService {
 
                 listeners.add(cancelRequestListener);
 
-                cb(m.payload, abortController.signal).then((response) => {
-                    cancelRequestListener();
-                    listeners.delete(cancelRequestListener);
+                cb(m.payload, abortController.signal)
+                    .then((response) => {
+                        cancelRequestListener();
+                        listeners.delete(cancelRequestListener);
 
-                    if (!abortController.signal.aborted) {
-                        ChromeTabsAdapter.sendMessage(tabId, createRuntimeResponseMessage(requestId, response));
-                    }
-                });
+                        if (!abortController.signal.aborted) {
+                            ChromeTabsAdapter.sendMessage(
+                                tabId as number,
+                                createRuntimeResponseMessage(requestId, response)
+                            );
+                        }
+                    })
+                    .catch((e) => console.warn('TabCommunicationService error', e));
             }
         );
 

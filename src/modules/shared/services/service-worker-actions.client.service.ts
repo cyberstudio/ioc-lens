@@ -1,4 +1,4 @@
-import { OpenExtensionSettingsRequestMessage } from '../types';
+import { CheckEnabledStatusRequestMessage, OpenExtensionSettingsRequestMessage } from '../types';
 import { RuntimeCommunicationService } from './runtime-communication.service';
 
 export class ServiceWorkerActionsClientService {
@@ -9,5 +9,28 @@ export class ServiceWorkerActionsClientService {
             'OpenExtensionSettings',
             undefined
         );
+    }
+
+    checkEnabledStatus() {
+        return this.r.sendRequest<CheckEnabledStatusRequestMessage['name'], void, boolean>(
+            'CheckEnabledStatus',
+            undefined
+        );
+    }
+
+    pollEnabledStatus(cb: (status: boolean) => void) {
+        const intervalId = setInterval(async () => {
+            let isEnabled: boolean;
+
+            try {
+                isEnabled = await this.checkEnabledStatus();
+            } catch {
+                isEnabled = false;
+            }
+
+            cb(isEnabled);
+        }, 300);
+
+        return () => clearInterval(intervalId);
     }
 }

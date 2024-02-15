@@ -34,7 +34,11 @@ export class RuntimeCommunicationService {
         return new Promise((res) => {
             unsubscribeFromResponse = ChromeRuntimeAdapter.listenMessage<RuntimeResponseMessage<ResponsePayload>>(
                 isResponse,
-                (m) => res(m.payload)
+                (m) => {
+                    res(m.payload);
+
+                    unsubscribeFromResponse();
+                }
             );
         });
     }

@@ -2,7 +2,12 @@ import { AuthApiService, EntitiesApiService } from '../../modules/api/services';
 import { AuthService } from '../../modules/features/auth/services/auth.service';
 import { EntityInfoController } from '../../modules/features/entity-info';
 import { EntityInfoService } from '../../modules/features/entity-info/services';
-import { ChromeRuntimeAdapter, ChromeTabsAdapter } from '../../modules/shared/adapters';
+import {
+    ChromeManagementAdapter,
+    ChromeRuntimeAdapter,
+    ChromeScriptingAdapter,
+    ChromeTabsAdapter
+} from '../../modules/shared/adapters';
 import { ServiceWorkerActionsController } from '../../modules/shared/controllers';
 import {
     ActiveTabService,
@@ -24,21 +29,47 @@ async function main() {
     const entityInfoService = new EntityInfoService(entitiesApiService, authService);
     const tabCommunicationService = new TabCommunicationService(activeTabService);
 
-    ChromeRuntimeAdapter.onInstalled(async () => updateStatusIcon());
-    ChromeTabsAdapter.onActivated(() => updateStatusIcon());
-    ChromeTabsAdapter.onUpdated(() => updateStatusIcon());
+    new ServiceWorkerActionsController(tabCommunicationService);
+    new EntityInfoController(tabCommunicationService, entityInfoService);
 
-    settingsStore.onActivationsChange(() => updateStatusIcon());
+    const initContent = () => {
+        const manifest = ChromeRuntimeAdapter.getManifest();
+
+        const contentStyles = manifest.content_scripts?.[0].css || [];
+        const contentScripts = manifest.content_scripts?.[0].js || [];
+
+        ChromeTabsAdapter.getAllTabs().then((tabs) => {
+            tabs.forEach((tab) => {
+                const tabId = tab.id;
+
+                if (typeof tabId === 'number') {
+                    ChromeScriptingAdapter.injectStyles(tabId, contentStyles).catch((e) => console.warn(e));
+                    ChromeScriptingAdapter.injectScripts(tabId, contentScripts).catch((e) => console.warn(e));
+                }
+            });
+        });
+    };
 
     const updateStatusIcon = async () => {
-        const currentHost = await activeTabService.getHost();
-        const currentActivationState = await settingsStore.isActivated(currentHost);
+        const currentActivationState = await settingsStore.isActivated();
 
         statusIconService.updateIcon(currentActivationState);
     };
 
-    new ServiceWorkerActionsController(tabCommunicationService);
-    new EntityInfoController(tabCommunicationService, entityInfoService);
+    ChromeRuntimeAdapter.onInstalled(() => {
+        initContent();
+
+        updateStatusIcon();
+    });
+    ChromeTabsAdapter.onActivated(() => updateStatusIcon());
+    ChromeTabsAdapter.onUpdated(() => updateStatusIcon());
+    ChromeManagementAdapter.onTurnOn(() => {
+        initContent();
+
+        updateStatusIcon();
+    });
+
+    settingsStore.onActivationsChange(() => updateStatusIcon());
 }
 
 main();
