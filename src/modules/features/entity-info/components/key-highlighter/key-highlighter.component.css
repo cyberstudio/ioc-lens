@@ -4,7 +4,7 @@
     position: fixed;
     visibility: hidden;
     pointer-events: none;
-    z-index: 2147483647;
+    z-index: 2147483646;
     outline: 1px solid var(--kbq-light-color-scheme-line-error-fade);
     outline-offset: 1px;
     border-radius: 2px;
