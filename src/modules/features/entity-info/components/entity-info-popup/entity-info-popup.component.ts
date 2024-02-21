@@ -1,5 +1,4 @@
 import kebabCase from 'lodash/kebabCase';
-import truncate from 'lodash/truncate';
 
 import { EntityInfoComponent } from '../entity-info/entity-info.component';
 import { ObservableEntityType } from '../../../../api/models';
@@ -10,6 +9,7 @@ import {
     PopupComponent,
     ProgressSpinnerComponent
 } from '../../../../shared/components';
+import { initKbqTitle } from '../../../../shared/directives';
 import { TranslateService } from '../../../../shared/services';
 import { AuthFailureState } from '../../../../shared/stores';
 import { Component } from '../../../../shared/utils';
@@ -155,14 +155,10 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         this.renderContent(topHeaderEl, entityLinkEl);
 
         const entityTitleEl = this.parseTemplate(
-            `<span class="kbq-entity-info-popup-header__title kbq-typography-subheading">${truncate(
-                state.entity.priorityKey,
-                {
-                    length: 30,
-                    separator: '...'
-                }
-            )}</span>`
+            `<span class="kbq-entity-info-popup-header__title kbq-typography-subheading">${state.entity.priorityKey}</span>`
         );
+
+        initKbqTitle(entityTitleEl);
 
         this.renderContent(bottomHeaderEl, entityTitleEl);
 

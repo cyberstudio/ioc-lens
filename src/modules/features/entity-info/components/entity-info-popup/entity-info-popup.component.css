@@ -32,6 +32,13 @@
             position: absolute;
             transform: translateX(calc(-100% - 2px));
         }
+
+        & .kbq-entity-info-popup-header__title {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            min-width: 0;
+        }
     }
 
     & .kbq-entity-info-popup-body {
