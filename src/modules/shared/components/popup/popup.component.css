@@ -15,6 +15,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: var(--kbq-size-3xl);
         padding: var(--kbq-size-s) var(--kbq-size-m);
         box-sizing: border-box;
 
@@ -31,7 +32,6 @@
         min-width: 0;
         padding-top: var(--kbq-size-xxs);
         padding-bottom: var(--kbq-size-xs);
-        padding-right: var(--kbq-size-l);
     }
 
     & .kbq-popup__header-icon {
