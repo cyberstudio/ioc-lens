@@ -4,7 +4,7 @@
     font: inherit;
 
     &.kbq-potential-damage-attribute-value--high {
-        color: var(--kbq-light-color-scheme-foreground-error);
+        color: var(--kbq-light-color-scheme-background-error);
     }
 
     &.kbq-potential-damage-attribute-value--medium {
@@ -12,6 +12,6 @@
     }
 
     &.kbq-potential-damage-attribute-value--low {
-        color: var(--kbq-light-color-scheme-foreground-success);
+        color: var(--kbq-light-color-scheme-background-warning);
     }
 }
