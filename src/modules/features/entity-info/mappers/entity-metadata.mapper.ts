@@ -197,10 +197,25 @@ export class EntityMetadataMapper {
             );
 
         const attributes = factsOfKnownAttributes
-            .sort((fact) => {
-                const isKnownAttribute = attributesOrder.includes(fact.attributeName as AttributeObservableEntity);
+            .sort((a, b) => {
+                const aPosition = attributesOrder.indexOf(a.attributeName as AttributeObservableEntity);
+                const bPosition = attributesOrder.indexOf(b.attributeName as AttributeObservableEntity);
 
-                return isKnownAttribute ? -1 : Infinity;
+                // If both elements are in the ordered array, sort based on their order
+                if (aPosition !== -1 && bPosition !== -1) {
+                    return aPosition - bPosition;
+                }
+
+                // If only one element is in the ordered array, it should come first
+                if (aPosition !== -1) {
+                    return -1;
+                }
+
+                if (bPosition !== -1) {
+                    return 1;
+                }
+
+                return 0;
             })
             .map((attribute) => this.getEntityAttributeValuesProps(attribute));
 
