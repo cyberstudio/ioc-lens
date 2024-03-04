@@ -5,6 +5,21 @@ import { EntityBrief } from '../mappers';
 import { EntityMetadata } from '../models/entity-metadata.model';
 import { EntityInfoClientService, EntityNavigationService, ParsingResult } from '../services';
 
+const REGEX = /%(\d[a-f0-9])/gi;
+const REPLACEMENTS: Record<string, string> = {
+    '40': '@',
+    '3A': ':',
+    '24': '$',
+    '2C': ',',
+    '3D': '=',
+    '3F': '?',
+    '2F': '/'
+};
+
+export const encoding = (value: string): string => {
+    return encodeURIComponent(value).replace(REGEX, (substring, index) => REPLACEMENTS[index] ?? substring);
+};
+
 export class EntityInfoPresenter {
     private popup: EntityInfoPopupComponent | null = null;
     private popupSlot = new EntityInfoSlot();
@@ -32,13 +47,17 @@ export class EntityInfoPresenter {
 
     async openPopup(keys: ParsingResult[]) {
         this.parsedKeys = keys;
-
         this.updatePopup({
             state: { type: 'Loading' },
             onClose: () => this.handleClosePopup()
         });
 
-        const entitiesResult = await this.loadEntities(keys);
+        const encodingKeys = keys.map((key) => ({
+            ...key,
+            keyValue: encoding(key.keyValue)
+        }));
+
+        const entitiesResult = await this.loadEntities(encodingKeys);
 
         if (entitiesResult.isErr) {
             this.updatePopup({
