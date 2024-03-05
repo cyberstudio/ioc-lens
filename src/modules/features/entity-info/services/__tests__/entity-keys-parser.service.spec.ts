@@ -15,6 +15,7 @@ test('should parse the string and get an array of observable entity types', () =
         hxxp://test.com:3000/,
         hxxps[:]//test123[.]com/
         https[:]//test123[.]com/
+        https://test.com/ps1&#39;
     `;
 
     const entityKeysParserService = new EntityKeysParserService();
@@ -80,6 +81,11 @@ test('should parse the string and get an array of observable entity types', () =
             type: ObservableEntityType.URL,
             keyType: 'String',
             keyValue: 'https://test123.com/'
+        },
+        {
+            type: ObservableEntityType.URL,
+            keyType: 'String',
+            keyValue: 'https://test.com/ps1&#39;'
         }
     ]);
 });
