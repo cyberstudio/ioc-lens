@@ -155,8 +155,11 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
         this.renderContent(topHeaderEl, entityLinkEl);
 
         const entityTitleEl = this.parseTemplate(
-            `<span class="kbq-entity-info-popup-header__title kbq-typography-subheading">${state.entity.priorityKey}</span>`
+            `<span class="kbq-entity-info-popup-header__title kbq-typography-subheading"></span>`
         );
+
+        // Такой способ передачи контента для корректного отображения символов в URL
+        this.renderContent(entityTitleEl, state.entity.priorityKey);
 
         initKbqTitle(entityTitleEl);
 

@@ -32,7 +32,6 @@ export class EntityInfoPresenter {
 
     async openPopup(keys: ParsingResult[]) {
         this.parsedKeys = keys;
-
         this.updatePopup({
             state: { type: 'Loading' },
             onClose: () => this.handleClosePopup()

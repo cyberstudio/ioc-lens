@@ -77,7 +77,10 @@ export class ButtonComponent extends Component<ButtonProps> {
                 this.parseTemplate(`<span class="kbq-button__icon">${this.icons[this.props.iconName]}</span>`)
             );
         } else {
-            const textTemplate = this.parseTemplate(`<span class="kbq-button__text">${this.props.text}</span>`);
+            const textTemplate = this.parseTemplate(`<span class="kbq-button__text"></span>`);
+
+            // Такой способ передачи контента для корректного отображения символов в URL
+            this.renderContent(textTemplate, this.props.text);
 
             initKbqTitle(textTemplate);
 
