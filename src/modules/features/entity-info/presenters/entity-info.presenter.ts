@@ -58,7 +58,8 @@ export class EntityInfoPresenter {
         if (this.entities.length === 0) {
             this.updatePopup({
                 state: {
-                    type: 'Empty'
+                    type: 'Empty',
+                    parsedKeys: keys.map((k) => k.keyValue)
                 },
                 onClose: () => this.handleClosePopup()
             });

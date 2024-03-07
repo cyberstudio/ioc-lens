@@ -23,6 +23,7 @@ interface EntityInfoPopupLoadingState {
 
 interface EntityInfoPopupEmptyState {
     type: 'Empty';
+    parsedKeys: string[];
 }
 
 interface EntityInfoPopupErrorState {
@@ -203,7 +204,49 @@ export class EntityInfoPopupComponent extends Component<EntityInfoPopupProps> {
             }
 
             case 'Empty': {
-                this.renderContent(el, this.translateService.translate('EntityInfo_Pseudo_Text_NotFound'));
+                const { parsedKeys } = state;
+
+                if (parsedKeys.length > 1) {
+                    const list = this.parseTemplate(`<ul class="kbq-entity-info-popup-body__empty-entities"></ul>`);
+
+                    parsedKeys.forEach((key) => {
+                        const item = this.parseTemplate(
+                            `<li class="kbq-entity-info-popup-body__empty-entities-item"></li>`
+                        );
+                        const itemText = this.parseTemplate(
+                            `<span class="kbq-entity-info-popup-body__empty-entities-item-text"></span>`
+                        );
+
+                        this.renderContent(itemText, key);
+                        this.renderContent(item, itemText);
+                        this.renderContent(list, item);
+
+                        initKbqTitle(itemText);
+                    });
+
+                    this.renderContent(el, this.translateService.translate('EntityInfo_Pseudo_Text_NotFoundEntities'));
+                    this.renderContent(el, list);
+                } else {
+                    const messageContainer = this.parseTemplate(
+                        `<div class="kbq-entity-info-popup-body__empty-entity"></div>`
+                    );
+                    const message = this.parseTemplate(
+                        `<div class="kbq-entity-info-popup-body__empty-entity-message"></div>`
+                    );
+                    const key = this.parseTemplate(`<div class="kbq-entity-info-popup-body__empty-entity-key"></div>`);
+
+                    this.renderContent(key, parsedKeys[0]);
+
+                    this.renderContent(
+                        message,
+                        this.translateService.translate('EntityInfo_Pseudo_Text_NotFoundEntity')
+                    );
+                    this.renderContent(messageContainer, message);
+                    this.renderContent(messageContainer, key);
+                    this.renderContent(el, messageContainer);
+
+                    initKbqTitle(key);
+                }
                 break;
             }
 
