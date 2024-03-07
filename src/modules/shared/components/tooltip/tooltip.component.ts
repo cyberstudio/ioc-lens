@@ -133,10 +133,16 @@ export class TooltipComponent extends Component<TooltipProps> {
             <div class="kbq-tooltip kbq-tooltip--hidden kbq-typography-text-normal">
                 <div class="kbq-tooltip__inner">
                     <div class="kbq-tooltip__arrow"></div>
-                    <div class="kbq-tooltip__content">${this.props.text}</span>
+                    <div class="kbq-tooltip__content"></span>
                 </div>
             </div>
         `);
+
+        const content = el.querySelector<HTMLElement>('.kbq-tooltip__content');
+
+        if (content) {
+            this.renderContent(content, this.props.text);
+        }
 
         return el;
     }
