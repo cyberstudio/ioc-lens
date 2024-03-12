@@ -218,7 +218,7 @@
         "message": "No data about the object"
     },
     "EntityInfo_Pseudo_Text_NotFoundEntities": {
-        "message": "Нет данных об объектах:"
+        "message": "No data about the objects:"
     },
 
     "Welcome_ActivationState_Text_On": {
