@@ -25,7 +25,20 @@ class EntityInfoPopupExampleComponent extends Component<void> {
 
         const states: EntityInfoPopupState[] = [
             { type: 'Loading' },
-            { type: 'Empty' },
+            {
+                type: 'Empty',
+                parsedKeys: [
+                    'http://teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest.com'
+                ]
+            },
+            {
+                type: 'Empty',
+                parsedKeys: [
+                    'http://teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest.com',
+                    'http://test.com',
+                    'http://test2.com'
+                ]
+            },
             {
                 type: 'Error',
                 error: 'Unknown',

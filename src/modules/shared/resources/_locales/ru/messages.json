@@ -214,8 +214,11 @@
     "EntityInfo_Pseudo_Text_GoToViewEntity": {
         "message": "На страницу объекта"
     },
-    "EntityInfo_Pseudo_Text_NotFound": {
+    "EntityInfo_Pseudo_Text_NotFoundEntity": {
         "message": "Нет данных об объекте"
+    },
+    "EntityInfo_Pseudo_Text_NotFoundEntities": {
+        "message": "Нет данных об объектах:"
     },
 
     "Welcome_ActivationState_Text_On": {

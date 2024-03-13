@@ -214,8 +214,11 @@
     "EntityInfo_Pseudo_Text_GoToViewEntity": {
         "message": "Go to the object page"
     },
-    "EntityInfo_Pseudo_Text_NotFound": {
+    "EntityInfo_Pseudo_Text_NotFoundEntity": {
         "message": "No data about the object"
+    },
+    "EntityInfo_Pseudo_Text_NotFoundEntities": {
+        "message": "No data about the objects:"
     },
 
     "Welcome_ActivationState_Text_On": {
