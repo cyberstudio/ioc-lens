@@ -6,6 +6,9 @@
     "Common_App_Text_Name": {
         "message": "IoC Lens"
     },
+    "Common_App_Text_Description": {
+        "message": "Google Chrome plugin, requests additional information about Threat Analyzer indicators of compromise and displays it on the browser page."
+    },
     "Common_App_Text_I18nNote": {
         "message": "Russian translations will be provided in the next versions of the extension."
     },
