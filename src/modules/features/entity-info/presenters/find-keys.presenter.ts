@@ -120,7 +120,7 @@ export class FindKeysPresenter {
             return;
         }
 
-        const node = event.target as HTMLElement;
+        const node = (event.composedPath()[0] || event.target) as HTMLElement;
 
         if (this.isHighlightedNode(node) || this.isButtonNode(node) || this.isEntityInfoPopup(node)) {
             return;
